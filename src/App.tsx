@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ScrollText } from 'lucide-react';
 import { Navigation } from './components/Navigation';
+import { Home } from './components/pages/Home';
 import { HelperCards } from './components/pages/HelperCards';
 import { Emblems } from './components/pages/Emblems';
 import { GamePhases } from './components/pages/GamePhases';
@@ -9,14 +10,18 @@ import { Configuration } from './components/pages/Configuration';
 import { Reset } from './components/pages/Reset';
 import { useThemeStore } from './store/useThemeStore';
 import { useTaglineStore } from './store/useTaglineStore';
+import { useNavigationStore } from './store/useNavigationStore';
 
 function App() {
-  const [activeSection, setActiveSection] = useState('helper-cards');
+  const activeSection = useNavigationStore(state => state.activeSection);
+  const setActiveSection = useNavigationStore(state => state.setActiveSection);
   const isDarkMode = useThemeStore(state => state.isDarkMode);
   const currentTagline = useTaglineStore(state => state.currentTagline);
 
   const renderContent = () => {
     switch (activeSection) {
+      case 'home':
+        return <Home />;
       case 'helper-cards':
         return <HelperCards />;
       case 'emblems':
@@ -30,7 +35,7 @@ function App() {
       case 'reset':
         return <Reset />;
       default:
-        return <HelperCards />;
+        return <Home />;
     }
   };
 
@@ -42,7 +47,7 @@ function App() {
             <ScrollText className="w-8 h-8" />
             <h1 className="text-2xl font-bold">MTG Reminders</h1>
           </div>
-          <p className="mt-2 text-purple-100 dark:text-dark-highlight/90">
+          <p className="mt-2 text-purple-100 dark:text-dark-highlight/90 italic">
             {currentTagline}
           </p>
         </div>

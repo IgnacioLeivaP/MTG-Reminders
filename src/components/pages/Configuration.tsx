@@ -86,7 +86,7 @@ export function Configuration() {
         {/* Support Buttons */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <a
-            href="https://www.buymeacoffee.com/mtgreminders"
+            href="https://buymeacoffee.com/nispero"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center space-x-2 bg-[#FFDD00] text-gray-900 p-4 rounded-lg hover:bg-[#FFED4A] transition-colors font-medium"

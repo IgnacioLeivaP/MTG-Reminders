@@ -2,6 +2,12 @@ import { NavItem } from '../types';
 
 export const navigationItems: NavItem[] = [
   {
+    id: 'home',
+    name: 'Home',
+    icon: 'Home',
+    description: 'Welcome to MTG Reminders'
+  },
+  {
     id: 'helper-cards',
     name: 'Helper Cards',
     icon: 'Library',
@@ -30,11 +36,5 @@ export const navigationItems: NavItem[] = [
     name: 'Configuration',
     icon: 'Settings',
     description: 'App settings and preferences'
-  },
-  {
-    id: 'reset',
-    name: 'Reset App',
-    icon: 'RefreshCw',
-    description: 'Reset all application data'
   }
 ];
