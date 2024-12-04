@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased bg-gray-100 dark:bg-dark-bg text-gray-900 dark:text-dark-text transition-colors;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white dark:bg-dark-card rounded-lg shadow-md transition-all;
+  }
+
+  .input {
+    @apply block w-full rounded-md border-gray-300 dark:border-dark-accent dark:bg-dark-card dark:text-dark-text 
+    shadow-sm focus:border-purple-500 dark:focus:border-dark-accent focus:ring-purple-500 dark:focus:ring-dark-accent
+    transition-colors;
+  }
+
+  .button-primary {
+    @apply bg-purple-600 dark:bg-dark-accent text-white hover:bg-purple-700 dark:hover:bg-dark-highlight 
+    transition-colors rounded-lg px-4 py-2 font-medium;
+  }
+
+  .button-secondary {
+    @apply bg-gray-100 dark:bg-dark-card text-gray-700 dark:text-dark-text hover:bg-gray-200 
+    dark:hover:bg-dark-accent transition-colors rounded-lg px-4 py-2 font-medium;
+  }
+
+  .card-base {
+    @apply bg-white dark:bg-dark-card rounded-lg shadow-md hover:shadow-lg transition-all;
+  }
+
+  .heading-primary {
+    @apply text-gray-900 dark:text-dark-highlight font-bold;
+  }
+
+  .text-primary {
+    @apply text-gray-900 dark:text-dark-text;
+  }
+
+  .text-secondary {
+    @apply text-gray-600 dark:text-dark-text/80;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .animate-slide-up {
+    animation: slide-up 0.3s ease-out;
+  }
+}
