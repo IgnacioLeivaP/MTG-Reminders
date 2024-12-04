@@ -38,7 +38,6 @@ export function Reset() {
               <li>Active emblems and helper cards</li>
               <li>Game phase reminders</li>
               <li>Counter values</li>
-              <li>Theme and language preferences</li>
             </ul>
             <div className="pt-4">
               <p className="text-red-600 dark:text-red-400 font-medium">

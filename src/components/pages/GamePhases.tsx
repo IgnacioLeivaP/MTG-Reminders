@@ -49,7 +49,7 @@ export function GamePhases() {
         </div>
 
         <div className="lg:sticky lg:top-4 space-y-6">
-          <div className="bg-white rounded-lg shadow-md p-4">
+          <div className="bg-dark-bg rounded-lg shadow-md p-4">
             <h3 className="text-xl font-semibold mb-4">Add Reminder</h3>
             <ReminderForm />
           </div>
