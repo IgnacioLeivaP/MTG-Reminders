@@ -14,7 +14,7 @@ export function GamePhases() {
 
   // Check for radiation counters and manage reminder
   useEffect(() => {
-    const radiationCount = counters['18'] || 0; // ID 18 is Radiation Counter
+    const radiationCount = counters['18'] || 0;
     const radiationReminderId = 'radiation-reminder';
     const hasRadiationReminder = hasReminder(radiationReminderId);
     
@@ -37,6 +37,15 @@ export function GamePhases() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-[2fr,1fr] gap-8">
+        {/* Mobile: Reminder Form appears first */}
+        <div className="block lg:hidden space-y-6">
+          <div className="bg-dark-bg rounded-lg shadow-md p-4">
+            <h3 className="text-xl font-semibold mb-4">Add Reminder</h3>
+            <ReminderForm />
+          </div>
+        </div>
+
+        {/* Phases List */}
         <div className="space-y-4">
           {phases.map(phase => (
             <PhaseCard
@@ -48,7 +57,8 @@ export function GamePhases() {
           ))}
         </div>
 
-        <div className="lg:sticky lg:top-4 space-y-6">
+        {/* Desktop: Reminder Form on the side */}
+        <div className="hidden lg:block lg:sticky lg:top-4 space-y-6">
           <div className="bg-dark-bg rounded-lg shadow-md p-4">
             <h3 className="text-xl font-semibold mb-4">Add Reminder</h3>
             <ReminderForm />

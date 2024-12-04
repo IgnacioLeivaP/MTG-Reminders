@@ -40,20 +40,22 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-dark-bg transition-colors">
-      <header className="bg-purple-600 dark:bg-dark-accent text-white py-6 shadow-lg transition-colors">
+    <div className="min-h-screen bg-gray-100 dark:bg-dark-bg transition-colors pb-20 md:pb-0">
+      <header className="bg-gradient-to-br from-purple-500 to-purple-700 dark:from-dark-accent dark:to-purple-900 text-white py-4 md:py-6 shadow-lg transition-colors">
         <div className="container mx-auto px-4">
-          <div className="flex items-center space-x-3">
-            <ScrollText className="w-8 h-8" />
-            <h1 className="text-2xl font-bold">MTG Reminders</h1>
+          <div className="flex items-center">
+            <ScrollText className="w-8 h-8 shrink-0" />
+            <div className="ml-3">
+              <h1 className="text-xl md:text-2xl font-bold">MTG Reminders</h1>
+              <p className="text-sm md:text-base mt-1 text-purple-100 dark:text-dark-highlight/90 italic">
+                {currentTagline}
+              </p>
+            </div>
           </div>
-          <p className="mt-2 text-purple-100 dark:text-dark-highlight/90 italic">
-            {currentTagline}
-          </p>
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-6 md:py-8">
         <div className="grid grid-cols-1 md:grid-cols-[250px,1fr] gap-8">
           <Navigation
             activeSection={activeSection}
