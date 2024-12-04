@@ -10,6 +10,7 @@ import { useCountersStore } from './useCountersStore';
 import { usePhaseStore } from './usePhaseStore';
 import { useLifeCounterStore } from './useLifeCounterStore';
 import { useTaglineStore } from './useTaglineStore';
+import { useDungeonStore } from './useDungeonStore';
 
 interface PersistentState {
   resetAllState: () => void;
@@ -32,6 +33,7 @@ export const usePersistentStore = create<PersistentState>((set) => ({
         { id: 2, name: 'Player 2', life: 20 }
       ]
     });
+    useDungeonStore.getState().resetDungeon();
     useTaglineStore.getState().setRandomTagline();
   },
 }));

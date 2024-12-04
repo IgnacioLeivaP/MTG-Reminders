@@ -39,3 +39,16 @@ export interface Emblem {
   effect: string;
   icon: string;
 }
+
+export interface DungeonRoom {
+  id: string;
+  name: string;
+  effect: string;
+  connections: string[];
+}
+
+export interface Dungeon {
+  id: string;
+  name: string;
+  rooms: DungeonRoom[];
+}
