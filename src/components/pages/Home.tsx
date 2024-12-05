@@ -17,6 +17,7 @@ export function Home() {
   return (
     <div className="space-y-8">
       <div className="flex items-center space-x-3">
+        <HomeIcon className="w-6 h-6 text-purple-600 dark:text-purple-400" />
         <h2 className="text-2xl font-bold dark:text-dark-highlight">Welcome to MTG Reminders</h2>
       </div>
 

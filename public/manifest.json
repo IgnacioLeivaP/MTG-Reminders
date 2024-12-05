@@ -1,0 +1,20 @@
+{
+    "name": "MTG Reminders",
+    "short_name": "MTG Reminders",
+    "icons": [
+      {
+        "src": "/logo-192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/logo-512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "theme_color": "#6B46C1",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "start_url": "/"
+  }
