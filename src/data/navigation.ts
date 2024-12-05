@@ -33,7 +33,7 @@ export const navigationItems: NavItem[] = [
   },
   {
     id: 'configuration',
-    name: 'Configuration',
+    name: 'Settings',
     icon: 'Settings',
     description: 'App settings and preferences'
   }
