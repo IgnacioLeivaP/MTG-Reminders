@@ -11,6 +11,7 @@ import { Reset } from './components/pages/Reset';
 import { useThemeStore } from './store/useThemeStore';
 import { useTaglineStore } from './store/useTaglineStore';
 import { useNavigationStore } from './store/useNavigationStore';
+import logo from './assets/logo.png';
 
 function App() {
   const activeSection = useNavigationStore(state => state.activeSection);
@@ -45,9 +46,9 @@ function App() {
         <div className="container mx-auto px-4">
           <div className="flex items-center">
             <img 
-              src="images/logo.png" 
+              src={logo} 
               alt="MTG Reminders Logo" 
-              className=" w-11 h-12"
+              className="w-11 h-12"
             />
             <div className="ml-3">
               <h1 className="text-xl md:text-2xl font-bold">MTG Reminders</h1>
