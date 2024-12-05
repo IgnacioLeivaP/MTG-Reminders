@@ -44,7 +44,11 @@ function App() {
       <header className="bg-gradient-to-br from-purple-500 to-purple-700 dark:from-dark-accent dark:to-purple-900 text-white py-4 md:py-6 shadow-lg transition-colors">
         <div className="container mx-auto px-4">
           <div className="flex items-center">
-            <ScrollText className="w-8 h-8 shrink-0" />
+            <img 
+              src="images/logo.png" 
+              alt="MTG Reminders Logo" 
+              className=" w-11 h-12"
+            />
             <div className="ml-3">
               <h1 className="text-xl md:text-2xl font-bold">MTG Reminders</h1>
               <p className="text-sm md:text-base mt-1 text-purple-100 dark:text-dark-highlight/90 italic">
