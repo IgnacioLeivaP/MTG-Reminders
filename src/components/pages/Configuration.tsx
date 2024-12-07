@@ -75,10 +75,7 @@ export function Configuration() {
           </div>
           <div className="ml-8 prose prose-purple dark:prose-invert">
             <p className="text-gray-600 dark:text-gray-300">
-              The application is in an advanced state of development, but we continue working on improvements and new features. As new Magic: The Gathering sets are released, we may take some time to implement new mechanics and functionalities.
-            </p>
-            <p className="text-gray-600 dark:text-gray-300 mt-4">
-              The Emblems section is currently being expanded, and we're gradually adding more planeswalker emblems to the collection.
+              This application is in constant development and expansion. The application is in an advanced state, but as a one-person team, updates may take some time. We continue working on improvements and new features, and we're committed to improving your experience. As new Magic: The Gathering sets are released, we may take some time to implement new mechanics and functionalities.
             </p>
           </div>
         </div>
@@ -102,6 +99,14 @@ export function Configuration() {
             <MessageSquare className="w-5 h-5" />
             <span>Send Feedback</span>
           </button>
+        </div>
+
+        {/* Made by Section */}
+        <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow">
+          <div className="flex items-center justify-center space-x-3">
+            <img src="./logo.png" alt="MTG Reminders Logo" className="w-8 h-8" />
+            <p className="text-lg font-semibold dark:text-gray-100">Made by Nispero</p>
+          </div>
         </div>
       </div>
     </div>
