@@ -1,5 +1,4 @@
-export const taglines = {
-  en: [
+export const taglines = [
     "An app for the forgetful wizard",
     "Your complete Magic the Gathering assistant",
     "A grimoire for the wizard of the future",
@@ -35,47 +34,4 @@ export const taglines = {
     "When are they banning that card?",
     "Where is Fblthp now?",
     "Keep your eyes open for that card"
-  ],
-  es: [
-    "Una app para el mago olvidadizo",
-    "Tu asistente completo de Magic the Gathering",
-    "Un grimorio para el mago del futuro",
-    "Juega como un mago, vive como un goblin",
-    "La estrategia es clave, pero la suerte también cuenta",
-    "La magia es un viaje, no un destino",
-    "Quizás la magia son los amigos que hicimos en el camino",
-    "Sigue contrarrestando, sigue perdiendo amigos",
-    "Por fin, la magia se está reuniendo *Comienza a llorar*",
-    "Nadie se había preocupado así antes",
-    "La vida es como un juego de Magic: siempre estás a punto de perder",
-    "La vida es corta, pero un juego de Magic puede ser eterno",
-    "Eres un Planeswalker, Harry",
-    "Compra singles",
-    "La única forma de ganar es no jugar",
-    "La única forma de perder es vender tus cartas",
-    "Algunas cartas son más importantes que los amigos",
-    "Las mejores cartas son las que no tienes",
-    "Compra singles (lo pongo dos veces porque es importante)",
-    "Crees que estás ganando",
-    "Vamos, solo una partida más",
-    "¿Qué haría un mago?",
-    "¿Qué haría Jace?",
-    "¿Qué haría Liliana?",
-    "¿Qué haría Chandra?",
-    "¿Qué haría Voldemort?",
-    "¿Qué haría Karn?",
-    "¿Qué haría Sorin?",
-    "¿Qué haría Nissa?",
-    "¿Qué es eso que fuma Gandalf?",
-    "Porque la memoria es frágil",
-    "No soy supersticioso, pero soy un poco sticioso",
-    "No soy un mago, solo estoy aprendiendo",
-    "Tal vez esta es la línea temporal más oscura",
-    "¿Pagas el 1?",
-    "¿Cuándo van a prohibir esa carta?",
-    "¿Dónde está Fblthp ahora?",
-    "Mantén los ojos abiertos por esa carta"
-  ]
-};
-
-</```rewritten_file>
+];

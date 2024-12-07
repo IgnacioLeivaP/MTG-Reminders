@@ -133,6 +133,18 @@ export function Configuration() {
             </button>
           </div>
         </div>
+
+        {/* Made by Section */}
+        <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow">
+          <div className="flex items-center justify-center space-x-3">
+            <img 
+              src="/logo.png"
+              alt="MTG Reminders Logo" 
+              className="w-8 h-8"
+            />
+            <p className="text-lg font-semibold dark:text-gray-100">Made by Nispero</p>
+          </div>
+        </div>
       </div>
 
       {showToast && (
