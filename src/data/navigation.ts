@@ -4,16 +4,25 @@ export const navigationItems: NavItem[] = [
   {
     id: 'home',
     name: 'Home',
-    icon: 'Home'
+    icon: 'Home',
+    section: 'main'
+  },
+  {
+    id: 'favorites',
+    name: 'Favorites',
+    icon: 'Star',
+    section: 'main'
   },
   {
     id: 'tools',
     name: 'Tools',
-    icon: 'Wrench'
+    icon: 'Sparkles',
+    section: 'main'
   },
   {
     id: 'settings',
     name: 'Settings',
-    icon: 'Settings'
+    icon: 'Settings',
+    section: 'main'
   }
 ];

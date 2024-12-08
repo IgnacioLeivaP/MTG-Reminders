@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Globe, ArrowLeft, Dice6, RotateCcw, ArrowRight, History, BookOpen, AlertCircle } from 'lucide-react';
 import { useNavigationStore } from '../../store/useNavigationStore';
 import { planes } from '../../data/planes';
+import { FavoriteButton } from '../../components/FavoriteButton';
 
 interface PlanarDieResult {
   type: 'blank' | 'chaos' | 'planeswalk';
@@ -107,6 +108,11 @@ export function Planechase() {
           <Globe className="w-6 h-6 text-purple-600 dark:text-purple-400" />
           <h2 className="text-2xl font-bold dark:text-dark-highlight">Planechase</h2>
         </div>
+        <FavoriteButton 
+          toolId="planechase"
+          toolName="Planechase"
+          toolIcon="Globe"
+        />
         <div className="flex space-x-2">
           <button
             onClick={() => setShowHistory(!showHistory)}

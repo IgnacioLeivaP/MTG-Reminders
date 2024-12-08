@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Wrench, Search } from 'lucide-react';
+import { Sparkles, Search } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 import { useNavigationStore } from '../../store/useNavigationStore';
 import { GamePhases } from './GamePhases';
@@ -149,7 +149,7 @@ export function Tools() {
   return (
     <div className="space-y-6">
       <div className="flex items-center space-x-3">
-        <Wrench className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+        <Sparkles className="w-6 h-6 text-purple-600 dark:text-purple-400" />
         <h2 className="text-2xl font-bold dark:text-dark-highlight">Tools</h2>
       </div>
 

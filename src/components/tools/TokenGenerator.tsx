@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Copy, ArrowLeft, Plus, Trash2 } from 'lucide-react';
 import { useNavigationStore } from '../../store/useNavigationStore';
+import { useTokenStore } from '../../store/useTokenStore';
+import { FavoriteButton } from '../../components/FavoriteButton';
 
 interface Token {
   id: string;
@@ -28,7 +30,8 @@ const colors = [
 
 export function TokenGenerator() {
   const setActiveSection = useNavigationStore(state => state.setActiveSection);
-  const [tokens, setTokens] = useState<Token[]>([]);
+  const { tokens, addToken, removeToken, updateTokenQuantity } = useTokenStore();
+  
   const [newToken, setNewToken] = useState<Token>({
     id: '',
     name: '',
@@ -42,7 +45,7 @@ export function TokenGenerator() {
 
   const handleAddToken = () => {
     if (newToken.name) {
-      setTokens([...tokens, { ...newToken, id: Date.now().toString() }]);
+      addToken({ ...newToken, id: Date.now().toString() });
       setNewToken({
         id: '',
         name: '',
@@ -56,15 +59,11 @@ export function TokenGenerator() {
   };
 
   const handleRemoveToken = (id: string) => {
-    setTokens(tokens.filter(token => token.id !== id));
+    removeToken(id);
   };
 
   const handleQuantityChange = (id: string, change: number) => {
-    setTokens(tokens.map(token => 
-      token.id === id 
-        ? { ...token, quantity: Math.max(1, token.quantity + change) }
-        : token
-    ));
+    updateTokenQuantity(id, change);
   };
 
   const handleAbilityToggle = (ability: string) => {
@@ -93,15 +92,22 @@ export function TokenGenerator() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center space-x-3">
-        <button
-          onClick={() => setActiveSection('tools')}
-          className="p-2 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-lg transition-colors"
-        >
-          <ArrowLeft className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-        </button>
-        <Copy className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-        <h2 className="text-2xl font-bold dark:text-dark-highlight">Token Generator</h2>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center space-x-3">
+          <button
+            onClick={() => setActiveSection('tools')}
+            className="p-2 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-lg transition-colors"
+          >
+            <ArrowLeft className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+          </button>
+          <Copy className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+          <h2 className="text-2xl font-bold dark:text-dark-highlight">Token Generator</h2>
+        </div>
+        <FavoriteButton 
+          toolId="token-generator"
+          toolName="Token Generator"
+          toolIcon="Copy"
+        />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

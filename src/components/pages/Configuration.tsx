@@ -1,5 +1,5 @@
-import React from 'react';
-import { Settings, Palette, Languages, FileText, Coffee, MessageSquare, Sun, Moon, Globe } from 'lucide-react';
+import React, { useState } from 'react';
+import { Settings, Palette, Languages, FileText, Coffee, MessageSquare, Sun, Moon, Globe, Smartphone } from 'lucide-react';
 import { useThemeStore } from '../../store/useThemeStore';
 import { useLanguageStore } from '../../store/useLanguageStore';
 
@@ -56,22 +56,25 @@ export function Configuration() {
                 Select your preferred language
               </p>
             </div>
-            <select
-              value={language}
-              onChange={(e) => setLanguage(e.target.value)}
-              className="rounded-lg border-gray-300 dark:border-dark-accent dark:bg-dark-card dark:text-gray-100 focus:border-purple-500 focus:ring-purple-500"
-            >
-              <option value="en">English</option>
-              <option value="es">Español</option>
-            </select>
+            <div className="flex flex-col items-center space-y-2">
+              <button
+                disabled
+                className="px-4 py-2 bg-gray-100 dark:bg-dark-accent text-gray-900 dark:text-gray-100 rounded-lg font-medium"
+              >
+                English
+              </button>
+              <span className="text-xs font-medium px-2 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-400 rounded-full text-center">
+                More languages coming soon
+              </span>
+            </div>
           </div>
         </div>
 
-        {/* Changelog */}
+        {/* Development Status */}
         <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow">
           <div className="flex items-center space-x-3 mb-4">
             <FileText className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-            <h3 className="text-lg font-semibold dark:text-gray-100">Changelog</h3>
+            <h3 className="text-lg font-semibold dark:text-gray-100">Development Status</h3>
           </div>
           <div className="ml-8 prose prose-purple dark:prose-invert">
             <p className="text-gray-600 dark:text-gray-300">
@@ -99,6 +102,49 @@ export function Configuration() {
             <MessageSquare className="w-5 h-5" />
             <span>Send Feedback</span>
           </button>
+        </div>
+
+        {/* PWA Instructions */}
+        <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+          <div className="space-y-4">
+            <div className="flex items-center space-x-3">
+              <Smartphone className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+              <h3 className="text-lg font-semibold dark:text-gray-100">Use as App</h3>
+            </div>
+            
+            <div className="ml-8 space-y-6">
+              {/* Android Instructions */}
+              <div className="space-y-2">
+                <h4 className="font-medium text-gray-900 dark:text-gray-100">
+                  Install on Android
+                </h4>
+                <ol className="list-decimal list-inside space-y-1 text-gray-600 dark:text-gray-300">
+                  <li>Open Chrome and visit this website</li>
+                  <li>Tap the menu button (three dots) in the top right</li>
+                  <li>Tap "Add to Home Screen" and follow the prompts</li>
+                </ol>
+              </div>
+
+              {/* iOS Instructions */}
+              <div className="space-y-2">
+                <h4 className="font-medium text-gray-900 dark:text-gray-100">
+                  Install on iOS
+                </h4>
+                <ol className="list-decimal list-inside space-y-1 text-gray-600 dark:text-gray-300">
+                  <li>Open Safari and visit this website</li>
+                  <li>Tap the Share button at the bottom</li>
+                  <li>Scroll down and tap "Add to Home Screen"</li>
+                </ol>
+              </div>
+
+              {/* Benefits */}
+              <div className="bg-purple-50 dark:bg-dark-accent/30 p-4 rounded-lg">
+                <p className="text-purple-700 dark:text-purple-300 text-sm">
+                  Installing as an app gives you faster access, offline support, and a better fullscreen experience.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Made by Section */}

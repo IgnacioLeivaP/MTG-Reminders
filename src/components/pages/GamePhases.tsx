@@ -6,6 +6,7 @@ import { ReminderForm } from '../ReminderForm';
 import { usePhaseStore } from '../../store/usePhaseStore';
 import { useCountersStore } from '../../store/useCountersStore';
 import { useRemindersStore } from '../../store/useRemindersStore';
+import { FavoriteButton } from '../FavoriteButton';
 
 export function GamePhases() {
   const { activePhase, setActivePhase } = usePhaseStore();
@@ -32,9 +33,16 @@ export function GamePhases() {
   return (
     <div className="space-y-6">
       <div className="space-y-2">
-        <div className="flex items-center space-x-3">
-          <Clock className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-          <h2 className="text-2xl font-bold dark:text-dark-highlight">Game Phases</h2>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <Clock className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+            <h2 className="text-2xl font-bold dark:text-dark-highlight">Game Phases</h2>
+          </div>
+          <FavoriteButton 
+            toolId="game-phases"
+            toolName="Game Phases"
+            toolIcon="Clock"
+          />
         </div>
         <p className="text-gray-600 dark:text-dark-text">
           Track the current phase of your turn and understand what actions can be taken during each step.

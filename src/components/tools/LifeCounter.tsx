@@ -2,6 +2,7 @@ import React from 'react';
 import { Heart, Plus, Minus, Crown, Skull, Radiation } from 'lucide-react';
 import { useLifeCounterStore } from '../../store/useLifeCounterStore';
 import { GameModeSelector } from '../GameModeSelector';
+import { FavoriteButton } from '../FavoriteButton';
 
 interface PlayerLifeProps {
   name: string;
@@ -151,9 +152,16 @@ export function LifeCounter() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center space-x-3">
-        <Heart className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-        <h2 className="text-2xl font-bold dark:text-dark-highlight">Life Counter</h2>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center space-x-3">
+          <Heart className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+          <h2 className="text-2xl font-bold dark:text-dark-highlight">Life Counter</h2>
+        </div>
+        <FavoriteButton 
+          toolId="life-counter"
+          toolName="Life Counter"
+          toolIcon="Heart"
+        />
       </div>
 
       <GameModeSelector />

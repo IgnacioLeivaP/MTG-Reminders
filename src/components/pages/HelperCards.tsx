@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BookOpen, Search } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 import { helperCards } from '../../data/helperCards';
@@ -12,10 +12,14 @@ import { useDayNightStore } from '../../store/useDayNightStore';
 import { useMonarchStore } from '../../store/useMonarchStore';
 import { useCitysBlessingStore } from '../../store/useCitysBlessingStore';
 import { RingTimeline } from '../RingTimeline';
+import { FavoriteButton } from '../FavoriteButton';
+import { useNavigationStore } from '../../store/useNavigationStore';
 
 export function HelperCards() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCard, setSelectedCard] = useState<HelperCard | null>(null);
+  const selectedHelperId = useNavigationStore(state => state.selectedHelperId);
+  const setSelectedHelperId = useNavigationStore(state => state.setSelectedHelperId);
   const isDarkMode = useThemeStore(state => state.isDarkMode);
   const { counters, setCounter } = useCountersStore();
   const { isDay } = useDayNightStore();
@@ -105,11 +109,36 @@ export function HelperCards() {
     return 'bg-gray-50 dark:bg-dark-accent/30';
   };
 
+  // Efecto para abrir el modal cuando se navega desde favoritos
+  useEffect(() => {
+    if (selectedHelperId) {
+      const card = helperCards.find(card => card.id === selectedHelperId);
+      if (card) {
+        setSelectedCard(card);
+      }
+      setSelectedHelperId(undefined); // Limpiamos el ID después de usarlo
+    }
+  }, [selectedHelperId, setSelectedHelperId]);
+
   return (
     <div className="space-y-6">
-      <div className="flex items-center space-x-3">
-        <BookOpen className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-        <h2 className="text-2xl font-bold dark:text-dark-highlight">Helper Cards</h2>
+      <div>
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center space-x-3">
+            <BookOpen className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+            <h2 className="text-2xl font-bold dark:text-dark-highlight">Helper Cards</h2>
+          </div>
+          <FavoriteButton 
+            toolId="helper-cards"
+            toolName="Helper Cards"
+            toolIcon="BookOpen"
+          />
+        </div>
+        <p className="text-gray-600 dark:text-dark-text leading-relaxed">
+          Helper Cards are cards that don't go in your deck but are used as tools to assist with gameplay. 
+          They include markers to track special designations like Day/Night, The Monarch, City's Blessing, and The Ring. 
+          While tokens and emblems are also part of this category, we've separated them into dedicated sections for easier use.
+        </p>
       </div>
 
       <div className="relative">
@@ -143,16 +172,33 @@ export function HelperCards() {
               className={`${getCardClasses(card)} rounded-lg shadow-md hover:shadow-lg transition-all cursor-pointer`}
             >
               <div className="p-4">
-                <div className="flex items-center space-x-3 mb-3">
-                  <div className={`p-2 ${getIconBgClasses(card)} rounded-lg ${getIconClasses(card)}`}>
-                    {card.name === 'Day/Night' 
-                      ? renderIcon(isDay ? card.icon : card.nightIcon!)
-                      : renderIcon(card.icon)
-                    }
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center space-x-3">
+                    <div className={`p-2 ${getIconBgClasses(card)} rounded-lg ${getIconClasses(card)}`}>
+                      {card.name === 'Day/Night' 
+                        ? renderIcon(isDay ? card.icon : card.nightIcon!)
+                        : renderIcon(card.icon)
+                      }
+                    </div>
+                    <h3 className={`text-lg font-semibold ${getTitleClasses(card)}`}>
+                      {card.name}
+                    </h3>
                   </div>
-                  <h3 className={`text-lg font-semibold ${getTitleClasses(card)}`}>
-                    {card.name}
-                  </h3>
+                  {(card.name === 'Day/Night' || 
+                    card.name === 'Monarch' || 
+                    card.name === "City's Blessing" ||
+                    card.name === 'The Ring') && (
+                    <div onClick={e => e.stopPropagation()}>
+                      <FavoriteButton 
+                        toolId={`helper-${card.id}`}
+                        toolName={card.name}
+                        toolIcon={card.name === 'Day/Night' 
+                          ? (isDay ? card.icon : card.nightIcon!) 
+                          : card.icon
+                        }
+                      />
+                    </div>
+                  )}
                 </div>
                 
                 <p className={`mb-4 ${getTextClasses(card)}`}>
@@ -201,7 +247,10 @@ export function HelperCards() {
       {selectedCard && (
         <HelperCardModal
           card={selectedCard}
-          onClose={() => setSelectedCard(null)}
+          onClose={() => {
+            setSelectedCard(null);
+            setSelectedHelperId(undefined);
+          }}
         />
       )}
     </div>

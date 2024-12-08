@@ -255,6 +255,17 @@ export function Home() {
           onClose={() => setShowToast(false)}
         />
       )}
+
+      <div className="mt-8 p-4 bg-gray-100 dark:bg-dark-card rounded-lg">
+        <h3 className="text-lg font-semibold text-purple-600 dark:text-purple-400 mb-2">Debug Section</h3>
+        <button
+          onClick={() => setActiveSection('favorites')}
+          className="px-4 py-2 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-400 
+            rounded-lg hover:bg-yellow-200 dark:hover:bg-yellow-900/50 transition-colors"
+        >
+          Go to Favorites
+        </button>
+      </div>
     </div>
   );
 }

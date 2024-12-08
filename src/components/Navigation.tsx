@@ -1,16 +1,28 @@
 import React from 'react';
 import * as LucideIcons from 'lucide-react';
 import { navigationItems } from '../data/navigation';
+import { useNavigationStore } from '../store/useNavigationStore';
 
 interface NavigationProps {
   activeSection: string;
   onNavigate: (id: string) => void;
+  setSelectedHelperId: (id?: string) => void;
 }
 
-export function Navigation({ activeSection, onNavigate }: NavigationProps) {
+export function Navigation({ activeSection, onNavigate, setSelectedHelperId }: NavigationProps) {
   const renderIcon = (iconName: string) => {
     const Icon = LucideIcons[iconName as keyof typeof LucideIcons];
     return Icon ? <Icon className="w-6 h-6 md:w-5 md:h-5" /> : null;
+  };
+
+  const handleFavoriteClick = (favorite: Favorite) => {
+    if (favorite.toolId.startsWith('helper-')) {
+      const helperId = favorite.toolId.replace('helper-', '');
+      onNavigate('helper-cards');
+      setSelectedHelperId(helperId);
+    } else {
+      onNavigate(favorite.toolId);
+    }
   };
 
   return (

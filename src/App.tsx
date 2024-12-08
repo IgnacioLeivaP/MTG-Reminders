@@ -25,6 +25,7 @@ import { Planechase } from './components/tools/Planechase';
 import { Archenemy } from './components/tools/Archenemy';
 import { SpecialModes } from './components/tools/SpecialModes';
 import { useEffect } from 'react';
+import { Favorites } from './components/pages/Favorites';
 
 function App() {
   const activeSection = useNavigationStore(state => state.activeSection);
@@ -40,6 +41,8 @@ function App() {
     switch (activeSection) {
       case 'home':
         return <Home />;
+      case 'favorites':
+        return <Favorites />;
       case 'tools':
         return <Tools />;
       case 'helper-cards':
@@ -76,6 +79,8 @@ function App() {
         return <Archenemy />;
       case 'special-modes':
         return <SpecialModes />;
+      case 'trigger-tracker':
+        return <TriggerTracker />;
       default:
         return <Home />;
     }

@@ -3,6 +3,7 @@ import { Badge, Search } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 import { emblems } from '../../data/emblems';
 import { useEmblemsStore } from '../../store/useEmblemsStore';
+import { FavoriteButton } from '../../components/FavoriteButton';
 
 export function Emblems() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -31,9 +32,16 @@ export function Emblems() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center space-x-3">
-        <Badge className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-        <h2 className="text-2xl font-bold dark:text-dark-highlight">Emblems</h2>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center space-x-3">
+          <Badge className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+          <h2 className="text-2xl font-bold dark:text-dark-highlight">Emblems</h2>
+        </div>
+        <FavoriteButton 
+          toolId="emblems"
+          toolName="Emblems"
+          toolIcon="Badge"
+        />
       </div>
 
       <div className="relative">

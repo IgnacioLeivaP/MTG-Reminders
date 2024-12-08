@@ -1,11 +1,15 @@
 import { create } from 'zustand';
 
-interface NavigationState {
+interface NavigationStore {
   activeSection: string;
+  selectedHelperId?: string;
   setActiveSection: (section: string) => void;
+  setSelectedHelperId: (id?: string) => void;
 }
 
-export const useNavigationStore = create<NavigationState>((set) => ({
+export const useNavigationStore = create<NavigationStore>((set) => ({
   activeSection: 'home',
-  setActiveSection: (section) => set({ activeSection: section })
+  selectedHelperId: undefined,
+  setActiveSection: (section) => set({ activeSection: section }),
+  setSelectedHelperId: (id) => set({ selectedHelperId: id })
 }));

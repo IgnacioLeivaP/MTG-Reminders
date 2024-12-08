@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Dice6, ArrowLeft, Coins } from 'lucide-react';
 import { useNavigationStore } from '../../store/useNavigationStore';
+import { FavoriteButton } from '../../components/FavoriteButton';
 
 interface DiceResult {
   type: string;
@@ -44,15 +45,22 @@ export function DiceRoller() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center space-x-3">
-        <button
-          onClick={() => setActiveSection('tools')}
-          className="p-2 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-lg transition-colors"
-        >
-          <ArrowLeft className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-        </button>
-        <Dice6 className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-        <h2 className="text-2xl font-bold dark:text-dark-highlight">Dice Roller</h2>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center space-x-3">
+          <button
+            onClick={() => setActiveSection('tools')}
+            className="p-2 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-lg transition-colors"
+          >
+            <ArrowLeft className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+          </button>
+          <Dice6 className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+          <h2 className="text-2xl font-bold dark:text-dark-highlight">Dice Roller</h2>
+        </div>
+        <FavoriteButton 
+          toolId="dice-roller"
+          toolName="Dice Roller"
+          toolIcon="Dice6"
+        />
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

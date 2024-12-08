@@ -1,11 +1,22 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="bg-gray-900">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MTG Reminders</title>
+
+    <!-- Color de fondo inicial -->
+    <style>
+      body {
+        background-color: #111827; /* Equivalente a bg-gray-900 */
+        margin: 0;
+      }
+      #root {
+        min-height: 100vh;
+      }
+    </style>
 
     <!-- Meta tags para iOS -->
     <link rel="apple-touch-icon" href="/logo.png">
@@ -21,7 +32,6 @@
 
     <!-- Splash screen para iOS (opcional) -->
     <link rel="apple-touch-startup-image" href="/splash.png">
-
   </head>
   <body>
     <div id="root"></div>

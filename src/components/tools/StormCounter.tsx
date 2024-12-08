@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Cloud, ArrowLeft, Plus, RotateCcw, History } from 'lucide-react';
 import { useNavigationStore } from '../../store/useNavigationStore';
+import { FavoriteButton } from '../../components/FavoriteButton';
 
 interface Spell {
   id: string;
@@ -79,15 +80,22 @@ export function StormCounter() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center space-x-3">
-        <button
-          onClick={() => setActiveSection('tools')}
-          className="p-2 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-lg transition-colors"
-        >
-          <ArrowLeft className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-        </button>
-        <Cloud className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-        <h2 className="text-2xl font-bold dark:text-dark-highlight">Storm Counter</h2>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center space-x-3">
+          <button
+            onClick={() => setActiveSection('tools')}
+            className="p-2 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-lg transition-colors"
+          >
+            <ArrowLeft className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+          </button>
+          <Cloud className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+          <h2 className="text-2xl font-bold dark:text-dark-highlight">Storm Counter</h2>
+        </div>
+        <FavoriteButton 
+          toolId="storm-counter"
+          toolName="Storm Counter"
+          toolIcon="Cloud"
+        />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
