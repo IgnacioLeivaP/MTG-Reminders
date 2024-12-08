@@ -5,13 +5,26 @@ import { Home } from './components/pages/Home';
 import { HelperCards } from './components/pages/HelperCards';
 import { Emblems } from './components/pages/Emblems';
 import { GamePhases } from './components/pages/GamePhases';
-import { LifeCounter } from './components/pages/LifeCounter';
+import { LifeCounter } from './components/tools/LifeCounter';
 import { Configuration } from './components/pages/Configuration';
 import { Reset } from './components/pages/Reset';
+import { Tools } from './components/pages/Tools';
+import { DiceRoller } from './components/tools/DiceRoller';
+import { CascadeHelper } from './components/tools/CascadeHelper';
 import { useThemeStore } from './store/useThemeStore';
 import { useTaglineStore } from './store/useTaglineStore';
 import { useNavigationStore } from './store/useNavigationStore';
 import logo from './assets/logo.png';
+import { ManaCalculator } from './components/tools/ManaCalculator';
+import { TokenGenerator } from './components/tools/TokenGenerator';
+import { StormCounter } from './components/tools/StormCounter';
+import { DamageTracker } from './components/tools/DamageTracker';
+import { ManaPool } from './components/tools/ManaPool';
+import { DeckBuilder } from './components/tools/DeckBuilder';
+import { Planechase } from './components/tools/Planechase';
+import { Archenemy } from './components/tools/Archenemy';
+import { SpecialModes } from './components/tools/SpecialModes';
+import { useEffect } from 'react';
 
 function App() {
   const activeSection = useNavigationStore(state => state.activeSection);
@@ -19,22 +32,50 @@ function App() {
   const isDarkMode = useThemeStore(state => state.isDarkMode);
   const currentTagline = useTaglineStore(state => state.currentTagline);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [activeSection]);
+
   const renderContent = () => {
     switch (activeSection) {
       case 'home':
         return <Home />;
+      case 'tools':
+        return <Tools />;
       case 'helper-cards':
         return <HelperCards />;
       case 'emblems':
         return <Emblems />;
-      case 'game-phases':
-        return <GamePhases />;
+      case 'settings':
+        return <Configuration />;
       case 'life-counter':
         return <LifeCounter />;
-      case 'configuration':
-        return <Configuration />;
+      case 'game-phases':
+        return <GamePhases />;
+      case 'dice-roller':
+        return <DiceRoller />;
+      case 'cascade-helper':
+        return <CascadeHelper />;
       case 'reset':
         return <Reset />;
+      case 'mana-calculator':
+        return <ManaCalculator />;
+      case 'token-generator':
+        return <TokenGenerator />;
+      case 'storm-counter':
+        return <StormCounter />;
+      case 'damage-tracker':
+        return <DamageTracker />;
+      case 'mana-pool':
+        return <ManaPool />;
+      case 'deck-builder':
+        return <DeckBuilder />;
+      case 'planechase':
+        return <Planechase />;
+      case 'archenemy':
+        return <Archenemy />;
+      case 'special-modes':
+        return <SpecialModes />;
       default:
         return <Home />;
     }

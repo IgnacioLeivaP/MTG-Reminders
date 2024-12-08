@@ -29,7 +29,8 @@ export function ReminderForm() {
             value={text}
             onChange={(e) => setText(e.target.value)}
             className="mt-1 block w-full rounded-md border-gray-300 dark:border-dark-accent dark:bg-dark-bg dark:text-dark-text
-              shadow-sm focus:border-purple-500 dark:focus:border-dark-accent focus:ring-purple-500 dark:focus:ring-dark-accent"
+              shadow-sm focus:border-purple-500 dark:focus:border-dark-accent focus:ring-purple-500 dark:focus:ring-dark-accent
+              px-3 py-2"
             placeholder="Enter your reminder..."
           />
         </div>
@@ -43,7 +44,8 @@ export function ReminderForm() {
             value={phase}
             onChange={(e) => setPhase(e.target.value)}
             className="mt-1 block w-full rounded-md border-gray-300 dark:border-dark-accent dark:bg-dark-bg dark:text-dark-text
-              shadow-sm focus:border-purple-500 dark:focus:border-dark-accent focus:ring-purple-500 dark:focus:ring-dark-accent"
+              shadow-sm focus:border-purple-500 dark:focus:border-dark-accent focus:ring-purple-500 dark:focus:ring-dark-accent
+              px-3 py-2"
           >
             {phases.map(p => (
               <option key={p.id} value={p.id}>

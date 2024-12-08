@@ -5,42 +5,83 @@ interface Player {
   id: number;
   name: string;
   life: number;
+  radiation: number;
+  poison: number;
+  isMonarch: boolean;
 }
 
 interface LifeCounterState {
   players: Player[];
   updateLife: (playerId: number, amount: number) => void;
-  resetLife: () => void;
-  setGameMode: (mode: string, numPlayers: number, startingLife: number) => void;
+  updateRadiation: (playerId: number, amount: number) => void;
+  updatePoison: (playerId: number, amount: number) => void;
+  toggleMonarch: (playerId: number) => void;
+  setPlayerCount: (count: number) => void;
+  resetPlayers: () => void;
 }
 
-const DEFAULT_PLAYERS: Player[] = [
-  { id: 1, name: 'Player 1', life: 20 },
-  { id: 2, name: 'Player 2', life: 20 }
-];
+const createDefaultPlayer = (id: number): Player => ({
+  id,
+  name: `Player ${id}`,
+  life: 20,
+  radiation: 0,
+  poison: 0,
+  isMonarch: false,
+});
 
-export const useLifeCounterStore = create<LifeCounterState>()(
-  persist(
-    (set) => ({
-      players: DEFAULT_PLAYERS,
-      updateLife: (playerId, amount) => set((state) => ({
-        players: state.players.map(player =>
-          player.id === playerId
-            ? { ...player, life: player.life + amount }
-            : player
-        )
-      })),
-      resetLife: () => set({ players: DEFAULT_PLAYERS }),
-      setGameMode: (mode, numPlayers, startingLife) => set(() => ({
-        players: Array.from({ length: numPlayers }, (_, i) => ({
-          id: i + 1,
-          name: `Player ${i + 1}`,
-          life: startingLife
-        }))
-      }))
+export const useLifeCounterStore = create<LifeCounterState>((set) => ({
+  players: [createDefaultPlayer(1), createDefaultPlayer(2)],
+  
+  updateLife: (playerId, amount) =>
+    set((state) => ({
+      players: state.players.map((p) =>
+        p.id === playerId ? { ...p, life: p.life + amount } : p
+      ),
+    })),
+
+  updateRadiation: (playerId, amount) =>
+    set((state) => ({
+      players: state.players.map((p) =>
+        p.id === playerId ? { ...p, radiation: Math.max(0, p.radiation + amount) } : p
+      ),
+    })),
+
+  updatePoison: (playerId, amount) =>
+    set((state) => ({
+      players: state.players.map((p) =>
+        p.id === playerId ? { ...p, poison: Math.max(0, p.poison + amount) } : p
+      ),
+    })),
+
+  toggleMonarch: (playerId) =>
+    set((state) => ({
+      players: state.players.map((p) =>
+        p.id === playerId ? { ...p, isMonarch: true } : { ...p, isMonarch: false }
+      ),
+    })),
+
+  setPlayerCount: (count) =>
+    set((state) => {
+      const newPlayers: Player[] = [];
+      for (let i = 1; i <= count; i++) {
+        const existingPlayer = state.players.find(p => p.id === i);
+        if (existingPlayer) {
+          newPlayers.push(existingPlayer);
+        } else {
+          newPlayers.push(createDefaultPlayer(i));
+        }
+      }
+      return { players: newPlayers };
     }),
-    {
-      name: 'mtg-life-storage'
-    }
-  )
-);
+
+  resetPlayers: () =>
+    set((state) => ({
+      players: state.players.map((p) => ({
+        ...p,
+        life: 20,
+        radiation: 0,
+        poison: 0,
+        isMonarch: false,
+      })),
+    })),
+}));

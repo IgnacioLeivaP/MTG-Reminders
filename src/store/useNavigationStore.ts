@@ -7,5 +7,5 @@ interface NavigationState {
 
 export const useNavigationStore = create<NavigationState>((set) => ({
   activeSection: 'home',
-  setActiveSection: (section) => set({ activeSection: section }),
+  setActiveSection: (section) => set({ activeSection: section })
 }));

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Settings, Palette, Languages, FileText, Coffee, MessageSquare, Sun, Moon } from 'lucide-react';
+import { Settings, Palette, FileText, Coffee, MessageSquare, Sun, Moon } from 'lucide-react';
 import { useThemeStore } from '../store/useThemeStore';
-import { useLanguageStore } from '../store/useLanguageStore';
 import { usePersistentStore } from '../store/usePersistentStore';
 import { Toast } from './Toast';
 
@@ -9,7 +8,6 @@ export function Configuration() {
   const resetAllState = usePersistentStore(state => state.resetAllState);
   const [showToast, setShowToast] = useState(false);
   const { isDarkMode, toggleTheme } = useThemeStore();
-  const { language, setLanguage } = useLanguageStore();
 
   const handleReset = () => {
     resetAllState();
@@ -58,37 +56,24 @@ export function Configuration() {
           <div className="flex items-center justify-between">
             <div>
               <div className="flex items-center space-x-3">
-                <Languages className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                <FileText className="w-5 h-5 text-purple-600 dark:text-purple-400" />
                 <h3 className="text-lg font-semibold dark:text-gray-100">Language</h3>
               </div>
               <p className="mt-2 text-gray-600 dark:text-gray-300 ml-8">
                 Select your preferred language
               </p>
             </div>
-            <select
-              value={language}
-              onChange={(e) => setLanguage(e.target.value)}
-              className="rounded-lg border-gray-300 dark:border-dark-accent dark:bg-dark-card dark:text-gray-100 focus:border-purple-500 focus:ring-purple-500"
-            >
-              <option value="en">English</option>
-              <option value="es">Español</option>
-            </select>
-          </div>
-        </div>
-
-        {/* Changelog */}
-        <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow">
-          <div className="flex items-center space-x-3 mb-4">
-            <FileText className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-            <h3 className="text-lg font-semibold dark:text-gray-100">Changelog</h3>
-          </div>
-          <div className="ml-8 prose prose-purple dark:prose-invert">
-            <p className="text-gray-600 dark:text-gray-300">
-              The application is in an advanced state of development, but we continue working on improvements and new features. As new Magic: The Gathering sets are released, we may take some time to implement new mechanics and functionalities.
-            </p>
-            <p className="text-gray-600 dark:text-gray-300 mt-4">
-              The Emblems section is currently being expanded, and we're gradually adding more planeswalker emblems to the collection.
-            </p>
+            <div className="flex items-center space-x-2">
+              <button
+                disabled
+                className="px-4 py-2 bg-gray-100 dark:bg-dark-accent text-gray-900 dark:text-gray-100 rounded-lg font-medium"
+              >
+                English
+              </button>
+              <span className="text-xs font-medium px-2 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-400 rounded-full">
+                More languages coming soon
+              </span>
+            </div>
           </div>
         </div>
 

@@ -363,7 +363,7 @@ export const emblems: Emblem[] = [
   id: '54',
   name: 'Teferi, Who Slows the Sunset Emblem',
   planeswalker: 'Teferi, Who Slows the Sunset',
-  effect: 'Untap all permanents you control during each opponent’s untap step. You draw a card during each opponent’s draw step.',
+effect: 'Untap all permanents you control during each opponent\'s untap step. You draw a card during each opponent\'s draw step.',
   icon: 'Hourglass'
 },
 {
@@ -391,7 +391,7 @@ export const emblems: Emblem[] = [
   id: '58',
   name: 'Ellywick Tumblestrum Emblem',
   planeswalker: 'Ellywick Tumblestrum',
-  effect: 'Creatures you control have trample and haste and get +2/+2 for each differently named dungeon you’ve completed.',
+  effect: 'Creatures you control have trample and haste and get +2/+2 for each differently named dungeon you\'ve completed.',
   icon: 'guitar'
 },
 {
@@ -402,6 +402,13 @@ export const emblems: Emblem[] = [
   icon: 'zap'
 },
 
+{
+  id: '60',
+  name: 'Rowan, Scholar of Sparks Emblem',
+  planeswalker: 'Rowan, Scholar of Sparks',
+  effect: 'Whenever you cast an instant or sorcery spell, you may pay {2}. If you do, copy that spell. You may choose new targets for the copy.',
+  icon: 'zap'
+},
 {
   id: '61',
   name: 'Liliana, Waker of the Dead Emblem',
@@ -429,7 +436,7 @@ export const emblems: Emblem[] = [
   id: '64',
   name: 'Mu Yanling, Sky Dancer Emblem',
   planeswalker: 'Mu Yanling',
-  effect: 'Islands you control have “{T}: Draw a card.”',
+  effect: 'Islands you control have "{T}: Draw a card."',
   icon: 'Water'
 },
 {
@@ -448,6 +455,13 @@ export const emblems: Emblem[] = [
 },
 {
   id: '67',
+  name: 'Domri, Chaos Bringer Emblem',
+  planeswalker: 'Domri, Chaos Bringer',
+  effect: 'At the beginning of each end step, create a 4/4 red and green Beast creature token with trample.',
+  icon: 'Elephant'
+},
+{
+  id: '68',
   name: 'Domri, Chaos Bringer Emblem',
   planeswalker: 'Domri, Chaos Bringer',
   effect: 'At the beginning of each end step, create a 4/4 red and green Beast creature token with trample.',
@@ -489,18 +503,12 @@ export const emblems: Emblem[] = [
   effect: 'At the beginning of your end step, search your library for a permanent card, put it onto the battlefield, then shuffle your library.',
   icon: 'Cog'
 },
-{
-  id: '73',
-  name: 'Ajani, Adversary of Tyrants Emblem',
-  planeswalker: 'Ajani, Adversary of Tyrants',
-  effect: 'At the beginning of your end step, create three 1/1 white Cat creature tokens with lifelink.',
-  icon: 'Lion'
-},
+
 {
   id: '74',
   name: 'Gideon of the Trials Emblem',
   planeswalker: 'Gideon of the Trials',
-  effect: 'As long as you control a Gideon planeswalker, you can’t lose the game and your opponents can’t win the game.',
+  effect: 'As long as you control a Gideon planeswalker, you can\'t lose the game and your opponents can\'t win the game.',
   icon: 'Shield'
 },
 {
@@ -510,11 +518,12 @@ export const emblems: Emblem[] = [
   effect: 'At the beginning of combat on your turn, target artifact you control becomes an artifact creature with base power and toughness 5/5.',
   icon: 'Cog'
 },
+
 {
-  id: '76',
+  id: '77',
   name: 'Dovin Baan Emblem',
   planeswalker: 'Dovin Baan',
-  effect: 'Your opponents can’t untap more than two permanents during their untap steps.',
+  effect: 'Your opponents can\'t untap more than two permanents during their untap steps.',
   icon: 'Brain'
 },
 {
@@ -528,7 +537,7 @@ export const emblems: Emblem[] = [
   id: '79',
   name: 'Arlinn Kord Emblem',
   planeswalker: 'Arlinn Kord',
-  effect: 'Creatures you control have haste and “{T}: This creature deals damage equal to its power to any target.”',
+  effect: 'Creatures you control have haste and "{T}: This creature deals damage equal to its power to any target."',
   icon: 'Wolf'
 },
 {
@@ -560,10 +569,24 @@ export const emblems: Emblem[] = [
   icon: 'Skull'
 },
 {
+  id: '84',
+  name: 'Liliana, Defiant Necromancer Emblem',
+  planeswalker: 'Liliana, Defiant Necromancer',
+  effect: 'Whenever a creature dies, return it to the battlefield under your control at the beginning of the next end step.',
+  icon: 'Skull'
+},
+{
   id: '85',
   name: 'Sorin, Solemn Visitor Emblem',
   planeswalker: 'Sorin, Solemn Visitor',
-  effect: 'At the beginning of each opponent’s upkeep, that player sacrifices a creature.',
+  effect: 'At the beginning of each opponent\'s upkeep, that player sacrifices a creature.',
+  icon: 'Skull'
+},
+{
+  id: '86',
+  name: 'Sorin, Grim Nemesis Emblem',
+  planeswalker: 'Sorin, Grim Nemesis',
+  effect: 'At the beginning of each opponent\'s upkeep, that player loses X life, where X is the number of cards in your hand.',
   icon: 'Skull'
 },
 {
@@ -580,5 +603,11 @@ export const emblems: Emblem[] = [
   effect: 'Whenever you cast a spell, exile target permanent.',
   icon: 'Vanish'
 },
-
+{
+  id: '89',
+  name: 'Ajani, Adversary of Tyrants Emblem',
+  planeswalker: 'Ajani, Adversary of Tyrants',
+  effect: 'At the beginning of your end step, create three 1/1 white Cat creature tokens with lifelink.',
+  icon: 'Lion'
+}
 ];
