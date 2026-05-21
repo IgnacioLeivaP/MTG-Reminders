@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Cloud, ArrowLeft, Plus, RotateCcw, History } from 'lucide-react';
 import { useNavigationStore } from '../../store/useNavigationStore';
 import { FavoriteButton } from '../../components/FavoriteButton';
+import { useTranslation } from '../../i18n/useTranslation';
 
 interface Spell {
   id: string;
@@ -29,6 +30,8 @@ const spellTypes = [
   'Planeswalker'
 ];
 
+const spellTypeKeys = ['instant', 'sorcery', 'creature', 'artifact', 'enchantment', 'planeswalker'];
+
 export function StormCounter() {
   const setActiveSection = useNavigationStore(state => state.setActiveSection);
   const [spells, setSpells] = useState<Spell[]>([]);
@@ -37,6 +40,12 @@ export function StormCounter() {
     type: 'Instant'
   });
   const [showHistory, setShowHistory] = useState(false);
+  const t = useTranslation();
+
+  const getTypeLabel = (type: string) => {
+    const idx = spellTypes.indexOf(type);
+    return idx >= 0 ? t.stormCounter.typesList[idx] : type;
+  };
 
   const getStormCount = (): StormCount => {
     return spells.reduce((count, spell) => ({
@@ -89,7 +98,7 @@ export function StormCounter() {
             <ArrowLeft className="w-6 h-6 text-purple-600 dark:text-purple-400" />
           </button>
           <Cloud className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-          <h2 className="text-2xl font-bold dark:text-dark-highlight">Storm Counter</h2>
+          <h2 className="text-2xl font-bold dark:text-dark-highlight">{t.stormCounter.title}</h2>
         </div>
         <FavoriteButton 
           toolId="storm-counter"
@@ -102,7 +111,7 @@ export function StormCounter() {
         {/* Panel de conteo */}
         <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-4">
           <div className="flex justify-between items-center mb-6">
-            <h3 className="text-lg font-semibold">Storm Count</h3>
+            <h3 className="text-lg font-semibold">{t.stormCounter.stormCount}</h3>
             <div className="flex gap-2">
               <button
                 onClick={() => setShowHistory(!showHistory)}
@@ -123,7 +132,7 @@ export function StormCounter() {
             <div className="text-6xl font-bold text-purple-600 dark:text-purple-400">
               {stormCount.total}
             </div>
-            <p className="text-gray-600 dark:text-dark-text">Total Spells Cast</p>
+            <p className="text-gray-600 dark:text-dark-text">{t.stormCounter.totalSpells}</p>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
@@ -138,7 +147,7 @@ export function StormCounter() {
                     {value}
                   </div>
                   <div className="text-sm text-gray-600 dark:text-dark-text capitalize">
-                    {key}
+                    {getTypeLabel(spellTypes[spellTypeKeys.indexOf(key)] ?? key)}
                   </div>
                 </div>
               );
@@ -148,17 +157,17 @@ export function StormCounter() {
 
         {/* Panel de entrada */}
         <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-4">
-          <h3 className="text-lg font-semibold mb-4">Add Spell</h3>
-          
+          <h3 className="text-lg font-semibold mb-4">{t.stormCounter.addSpell}</h3>
+
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">Spell Name</label>
+              <label className="block text-sm font-medium mb-1">{t.stormCounter.spellName}</label>
               <input
                 type="text"
                 value={newSpell.name}
                 onChange={(e) => setNewSpell({ ...newSpell, name: e.target.value })}
                 className="w-full p-2 border rounded-lg dark:bg-dark-accent dark:border-dark-accent"
-                placeholder="Lightning Bolt, Dark Ritual, etc."
+                placeholder={t.stormCounter.spellNamePlaceholder}
                 onKeyPress={(e) => {
                   if (e.key === 'Enter' && newSpell.name) {
                     handleAddSpell();
@@ -168,15 +177,15 @@ export function StormCounter() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">Spell Type</label>
+              <label className="block text-sm font-medium mb-1">{t.stormCounter.spellType}</label>
               <select
                 value={newSpell.type}
                 onChange={(e) => setNewSpell({ ...newSpell, type: e.target.value })}
                 className="w-full p-2 border rounded-lg dark:bg-dark-accent dark:border-dark-accent"
               >
-                {spellTypes.map(type => (
+                {spellTypes.map((type, i) => (
                   <option key={type} value={type}>
-                    {type}
+                    {t.stormCounter.typesList[i] ?? type}
                   </option>
                 ))}
               </select>
@@ -185,11 +194,11 @@ export function StormCounter() {
             <button
               onClick={handleAddSpell}
               disabled={!newSpell.name}
-              className="w-full px-4 py-2 bg-purple-600 text-white rounded-lg 
-                hover:bg-purple-700 dark:bg-dark-accent dark:hover:bg-dark-highlight 
+              className="w-full px-4 py-2 bg-purple-600 text-white rounded-lg
+                hover:bg-purple-700 dark:bg-dark-accent dark:hover:bg-dark-highlight
                 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Add Spell
+              {t.stormCounter.addSpell}
             </button>
           </div>
         </div>
@@ -198,11 +207,11 @@ export function StormCounter() {
       {/* Historial de hechizos */}
       {showHistory && (
         <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-4">
-          <h3 className="text-lg font-semibold mb-4">Spell History</h3>
-          
+          <h3 className="text-lg font-semibold mb-4">{t.stormCounter.spellHistory}</h3>
+
           {spells.length === 0 ? (
             <p className="text-center py-8 text-gray-500 dark:text-dark-text/60">
-              No spells cast yet
+              {t.stormCounter.noSpells}
             </p>
           ) : (
             <div className="space-y-2">
@@ -215,7 +224,7 @@ export function StormCounter() {
                   <div>
                     <span className="font-medium">{spell.name}</span>
                     <span className="text-sm text-gray-600 dark:text-dark-text ml-2">
-                      ({spell.type})
+                      ({getTypeLabel(spell.type)})
                     </span>
                   </div>
                   <span className="text-sm text-gray-500 dark:text-dark-text/60">

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Sword, ArrowLeft, Shuffle, RotateCcw, History, Play, X } from 'lucide-react';
 import { useNavigationStore } from '../../store/useNavigationStore';
+import { useTranslation } from '../../i18n/useTranslation';
 
 interface Scheme {
   id: number;
@@ -69,6 +70,7 @@ export function Archenemy() {
   const [activeSchemes, setActiveSchemes] = useState<Scheme[]>([]);
   const [usedSchemes, setUsedSchemes] = useState<Scheme[]>([]);
   const [showHistory, setShowHistory] = useState(false);
+  const t = useTranslation();
 
   const shuffleDeck = () => {
     setSchemeDeck(prev => {
@@ -124,7 +126,7 @@ export function Archenemy() {
             <ArrowLeft className="w-6 h-6 text-purple-600 dark:text-purple-400" />
           </button>
           <Sword className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-          <h2 className="text-2xl font-bold dark:text-dark-highlight">Archenemy</h2>
+          <h2 className="text-2xl font-bold dark:text-dark-highlight">{t.archenemy.title}</h2>
         </div>
         <div className="flex space-x-2">
           <button
@@ -152,23 +154,23 @@ export function Archenemy() {
         <div className="card-base p-6">
           <div className="flex flex-col items-center space-y-4">
             <h3 className="text-xl font-bold text-purple-700 dark:text-purple-400">
-              Scheme Deck ({schemeDeck.length} remaining)
+              {t.archenemy.schemeDeck} ({schemeDeck.length} {t.archenemy.remaining})
             </h3>
             <button
               onClick={drawScheme}
               disabled={schemeDeck.length === 0}
-              className="w-full p-4 bg-purple-600 hover:bg-purple-700 disabled:bg-gray-400 
+              className="w-full p-4 bg-purple-600 hover:bg-purple-700 disabled:bg-gray-400
                 text-white rounded-lg transition-colors flex items-center justify-center space-x-2"
             >
               <Play className="w-5 h-5" />
-              <span>Set Next Scheme in Motion</span>
+              <span>{t.archenemy.setNextScheme}</span>
             </button>
           </div>
         </div>
 
         <div className="card-base p-6">
           <h3 className="text-xl font-bold mb-4 text-purple-700 dark:text-purple-400">
-            Active Ongoing Schemes ({activeSchemes.length})
+            {t.archenemy.activeSchemes} ({activeSchemes.length})
           </h3>
           <div className="space-y-4">
             {activeSchemes.map(scheme => (
@@ -193,7 +195,7 @@ export function Archenemy() {
       {showHistory && usedSchemes.length > 0 && (
         <div className="card-base p-6">
           <h3 className="text-xl font-bold mb-4 text-purple-700 dark:text-purple-400">
-            Completed Schemes
+            {t.archenemy.completedSchemes}
           </h3>
           <div className="space-y-4">
             {usedSchemes.map((scheme, index) => (

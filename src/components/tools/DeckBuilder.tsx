@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Library, ArrowLeft, ArrowRight, AlertTriangle, Info } from 'lucide-react';
 import { useNavigationStore } from '../../store/useNavigationStore';
+import { useTranslation } from '../../i18n/useTranslation';
 
 interface Format {
   id: string;
@@ -159,6 +160,7 @@ const formats: Format[] = [
 export function DeckBuilder() {
   const setActiveSection = useNavigationStore(state => state.setActiveSection);
   const [selectedFormat, setSelectedFormat] = useState<Format | null>(null);
+  const t = useTranslation();
 
   return (
     <div className="space-y-6">
@@ -170,7 +172,7 @@ export function DeckBuilder() {
           <ArrowLeft className="w-6 h-6 text-purple-600 dark:text-purple-400" />
         </button>
         <Library className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-        <h2 className="text-2xl font-bold dark:text-dark-highlight">Deck Builder</h2>
+        <h2 className="text-2xl font-bold dark:text-dark-highlight">{t.deckBuilder.title}</h2>
       </div>
 
       {!selectedFormat ? (
@@ -198,7 +200,7 @@ export function DeckBuilder() {
               dark:hover:text-purple-300 font-medium inline-flex items-center"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to formats
+            {t.deckBuilder.backToFormats}
           </button>
 
           <div className="card-base p-6">
@@ -213,13 +215,13 @@ export function DeckBuilder() {
               <div className="flex items-center space-x-2 mb-2">
                 <Info className="w-5 h-5 text-purple-600 dark:text-purple-400" />
                 <span className="font-medium text-purple-700 dark:text-purple-300">
-                  Deck Size: {selectedFormat.deckSize}
+                  {t.deckBuilder.deckSizeLabel} {selectedFormat.deckSize}
                 </span>
               </div>
             </div>
 
             <h4 className="text-lg font-semibold mb-3 text-gray-900 dark:text-dark-highlight">
-              Format Rules
+              {t.deckBuilder.formatRules}
             </h4>
             <ul className="space-y-2 mb-6">
               {selectedFormat.rules.map((rule, index) => (
@@ -238,7 +240,7 @@ export function DeckBuilder() {
                 className="text-purple-600 dark:text-purple-400 hover:text-purple-700 
                   dark:hover:text-purple-300 inline-flex items-center"
               >
-                View Banned Cards List
+                {t.deckBuilder.viewBannedList}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </a>
               
@@ -250,7 +252,7 @@ export function DeckBuilder() {
                   className="text-purple-600 dark:text-purple-400 hover:text-purple-700 
                     dark:hover:text-purple-300 inline-flex items-center"
                 >
-                  Check Current Sets in Format
+                  {t.deckBuilder.checkSets}
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </a>
               )}
@@ -259,7 +261,7 @@ export function DeckBuilder() {
 
           <div className="card-base p-6 bg-purple-50 dark:bg-purple-900/30 rounded-lg mb-6">
             <h4 className="text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
-              Suggested Mana Base
+              {t.deckBuilder.suggestedManaBase}
             </h4>
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
@@ -272,7 +274,7 @@ export function DeckBuilder() {
               {selectedFormat.landSuggestions.breakdown && (
                 <div className="space-y-2">
                   <h5 className="font-medium text-purple-700 dark:text-purple-300">
-                    Suggested Breakdown:
+                    {t.deckBuilder.suggestedBreakdown}
                   </h5>
                   <ul className="space-y-1">
                     {selectedFormat.landSuggestions.breakdown.map((item, index) => (
@@ -288,7 +290,7 @@ export function DeckBuilder() {
               {selectedFormat.landSuggestions.notes && (
                 <div className="space-y-2">
                   <h5 className="font-medium text-purple-700 dark:text-purple-300">
-                    Notes:
+                    {t.deckBuilder.notes}
                   </h5>
                   <ul className="space-y-1">
                     {selectedFormat.landSuggestions.notes.map((note, index) => (
@@ -303,14 +305,14 @@ export function DeckBuilder() {
 
               <div className="mt-4 p-4 bg-purple-100 dark:bg-purple-900/50 rounded-lg">
                 <p className="text-purple-800 dark:text-purple-300 mb-2">
-                  Want to calculate the exact number of lands and mana sources for your deck?
+                  {t.deckBuilder.tryManaCalculator}
                 </p>
                 <button
                   onClick={() => setActiveSection('mana-calculator')}
-                  className="text-purple-700 dark:text-purple-400 hover:text-purple-800 
+                  className="text-purple-700 dark:text-purple-400 hover:text-purple-800
                     dark:hover:text-purple-300 font-medium inline-flex items-center"
                 >
-                  Try our Mana Calculator
+                  {t.deckBuilder.tryManaCalculatorBtn}
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </button>
               </div>

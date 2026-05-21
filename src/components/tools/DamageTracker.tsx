@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Swords, ArrowLeft, Plus, Trash2, Shield, Heart, HelpCircle } from 'lucide-react';
 import { useNavigationStore } from '../../store/useNavigationStore';
+import { useTranslation } from '../../i18n/useTranslation';
 
 interface Creature {
   id: string;
@@ -25,6 +26,7 @@ export function DamageTracker() {
   });
   const [lifeTotalChange, setLifeTotalChange] = useState(20);
   const [showHelp, setShowHelp] = useState(false);
+  const t = useTranslation();
 
   const handleAddCreature = () => {
     if (newCreature.name) {
@@ -101,7 +103,7 @@ export function DamageTracker() {
             <ArrowLeft className="w-6 h-6 text-purple-600 dark:text-purple-400" />
           </button>
           <Swords className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-          <h2 className="text-2xl font-bold dark:text-dark-highlight">Damage Tracker</h2>
+          <h2 className="text-2xl font-bold dark:text-dark-highlight">{t.damageTracker.title}</h2>
         </div>
         
         <button
@@ -115,23 +117,23 @@ export function DamageTracker() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Panel de creación de criaturas */}
         <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-4">
-          <h3 className="text-lg font-semibold mb-4">Add Creature</h3>
-          
+          <h3 className="text-lg font-semibold mb-4">{t.damageTracker.addCreature}</h3>
+
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">Name</label>
+              <label className="block text-sm font-medium mb-1">{t.damageTracker.name}</label>
               <input
                 type="text"
                 value={newCreature.name}
                 onChange={(e) => setNewCreature({ ...newCreature, name: e.target.value })}
                 className="w-full p-2 border rounded-lg dark:bg-dark-accent dark:border-dark-accent"
-                placeholder="Creature name..."
+                placeholder={t.damageTracker.creatureName}
               />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">Power</label>
+                <label className="block text-sm font-medium mb-1">{t.damageTracker.power}</label>
                 <input
                   type="number"
                   value={newCreature.power}
@@ -140,7 +142,7 @@ export function DamageTracker() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Toughness</label>
+                <label className="block text-sm font-medium mb-1">{t.damageTracker.toughness}</label>
                 <input
                   type="number"
                   value={newCreature.toughness}
@@ -159,29 +161,29 @@ export function DamageTracker() {
                 className="mr-2"
               />
               <label htmlFor="lifelink" className="text-sm font-medium">
-                Has Lifelink
+                {t.damageTracker.hasLifelink}
               </label>
             </div>
 
             <button
               onClick={handleAddCreature}
               disabled={!newCreature.name}
-              className="w-full px-4 py-2 bg-purple-600 text-white rounded-lg 
-                hover:bg-purple-700 dark:bg-dark-accent dark:hover:bg-dark-highlight 
+              className="w-full px-4 py-2 bg-purple-600 text-white rounded-lg
+                hover:bg-purple-700 dark:bg-dark-accent dark:hover:bg-dark-highlight
                 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Add Creature
+              {t.damageTracker.addCreature}
             </button>
           </div>
         </div>
 
         {/* Panel de criaturas activas */}
         <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-4">
-          <h3 className="text-lg font-semibold mb-4">Active Creatures</h3>
-          
+          <h3 className="text-lg font-semibold mb-4">{t.damageTracker.activeCreatures}</h3>
+
           {creatures.length === 0 ? (
             <p className="text-center py-8 text-gray-500 dark:text-dark-text/60">
-              No creatures added yet
+              {t.damageTracker.noCreatures}
             </p>
           ) : (
             <div className="space-y-4">
@@ -222,7 +224,7 @@ export function DamageTracker() {
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
                       <span className="text-sm font-medium">
-                        Damage: {creature.damage}
+                        {t.damageTracker.damage}: {creature.damage}
                       </span>
                       <div className="flex gap-2">
                         <button
@@ -243,7 +245,7 @@ export function DamageTracker() {
                     </div>
 
                     <div className="flex items-center justify-between">
-                      <span className="text-sm font-medium">Shield</span>
+                      <span className="text-sm font-medium">{t.damageTracker.shield}</span>
                       <div className="flex gap-2">
                         <button
                           onClick={() => handleAddShield(creature.id, 1)}
@@ -265,7 +267,7 @@ export function DamageTracker() {
 
                   {isCreatureDead(creature) && (
                     <p className="mt-2 text-sm text-red-600 dark:text-red-400">
-                      This creature has lethal damage
+                      {t.damageTracker.lethalDamage}
                     </p>
                   )}
                 </div>
@@ -278,51 +280,26 @@ export function DamageTracker() {
       {showHelp && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
           <div className="bg-white dark:bg-dark-card rounded-lg shadow-xl p-6 max-w-2xl w-full">
-            <h3 className="text-xl font-bold mb-4">How to Use the Damage Tracker</h3>
-            
+            <h3 className="text-xl font-bold mb-4">{t.damageTracker.helpTitle}</h3>
+
             <div className="space-y-4">
-              <section>
-                <h4 className="font-medium mb-2">1. Adding Creatures</h4>
-                <ul className="list-disc pl-5 space-y-1 text-gray-600 dark:text-dark-text">
-                  <li>Enter the creature's name, power, and toughness</li>
-                  <li>Check "Has Lifelink" if the creature has lifelink ability</li>
-                  <li>Click "Add Creature" to add it to the tracker</li>
-                </ul>
-              </section>
-
-              <section>
-                <h4 className="font-medium mb-2">2. Tracking Damage</h4>
-                <ul className="list-disc pl-5 space-y-1 text-gray-600 dark:text-dark-text">
-                  <li>Use +1/-1 buttons to add or remove damage</li>
-                  <li>Creatures with lethal damage will be highlighted in red</li>
-                  <li>Damage persists until healed or the creature is removed</li>
-                </ul>
-              </section>
-
-              <section>
-                <h4 className="font-medium mb-2">3. Shield/Prevention</h4>
-                <ul className="list-disc pl-5 space-y-1 text-gray-600 dark:text-dark-text">
-                  <li>Use shield buttons to add damage prevention</li>
-                  <li>Shields absorb damage before it affects the creature</li>
-                  <li>Remaining shield value is shown in blue</li>
-                </ul>
-              </section>
-
-              <section>
-                <h4 className="font-medium mb-2">4. Special Features</h4>
-                <ul className="list-disc pl-5 space-y-1 text-gray-600 dark:text-dark-text">
-                  <li>Lifelink creatures are marked with a heart icon</li>
-                  <li>Remove creatures using the trash icon</li>
-                  <li>Damage and shields can be adjusted at any time</li>
-                </ul>
-              </section>
+              {t.damageTracker.helpSections.map((section) => (
+                <section key={section.title}>
+                  <h4 className="font-medium mb-2">{section.title}</h4>
+                  <ul className="list-disc pl-5 space-y-1 text-gray-600 dark:text-dark-text">
+                    {section.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </section>
+              ))}
 
               <button
                 onClick={() => setShowHelp(false)}
-                className="w-full mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg 
+                className="w-full mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg
                   hover:bg-purple-700 dark:bg-dark-accent dark:hover:bg-dark-highlight transition-colors"
               >
-                Got it
+                {t.damageTracker.gotIt}
               </button>
             </div>
           </div>

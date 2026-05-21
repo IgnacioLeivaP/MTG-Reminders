@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Sparkles, ArrowLeft, ArrowRight, Search } from 'lucide-react';
 import { useNavigationStore } from '../../store/useNavigationStore';
+import { useTranslation } from '../../i18n/useTranslation';
 
 interface GameMode {
   id: string;
@@ -252,6 +253,7 @@ export function SpecialModes() {
   const setActiveSection = useNavigationStore(state => state.setActiveSection);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedMode, setSelectedMode] = useState<GameMode | null>(null);
+  const t = useTranslation();
 
   const filteredModes = gameModes.filter(mode =>
     mode.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -268,13 +270,13 @@ export function SpecialModes() {
           <ArrowLeft className="w-6 h-6 text-purple-600 dark:text-purple-400" />
         </button>
         <Sparkles className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-        <h2 className="text-2xl font-bold dark:text-dark-highlight">Special Modes</h2>
+        <h2 className="text-2xl font-bold dark:text-dark-highlight">{t.specialModes.title}</h2>
       </div>
 
       <div className="relative">
         <input
           type="text"
-          placeholder="Search game modes..."
+          placeholder={t.specialModes.search}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="w-full p-4 pl-12 rounded-lg border border-gray-200 dark:border-gray-700 
@@ -297,15 +299,15 @@ export function SpecialModes() {
               </h3>
               <div className="flex gap-2">
                 {mode.officialFormat && (
-                  <span className="px-2 py-1 text-xs bg-purple-100 dark:bg-purple-900/30 
+                  <span className="px-2 py-1 text-xs bg-purple-100 dark:bg-purple-900/30
                     text-purple-600 dark:text-purple-400 rounded-full">
-                    Official
+                    {t.specialModes.official}
                   </span>
                 )}
                 {mode.comingSoon && (
-                  <span className="px-2 py-1 text-xs bg-yellow-100 dark:bg-yellow-900/30 
+                  <span className="px-2 py-1 text-xs bg-yellow-100 dark:bg-yellow-900/30
                     text-yellow-600 dark:text-yellow-400 rounded-full">
-                    Coming Soon
+                    {t.specialModes.comingSoon}
                   </span>
                 )}
               </div>
@@ -315,7 +317,7 @@ export function SpecialModes() {
             </p>
             {mode.playerCount && (
               <div className="text-sm text-gray-500 dark:text-gray-400">
-                Players: {mode.playerCount}
+                {t.specialModes.players} {mode.playerCount}
               </div>
             )}
             {mode.hasOwnTool && !mode.comingSoon && (
@@ -324,10 +326,10 @@ export function SpecialModes() {
                   e.stopPropagation();
                   setActiveSection(mode.toolId!);
                 }}
-                className="mt-4 text-purple-600 dark:text-purple-400 hover:text-purple-700 
+                className="mt-4 text-purple-600 dark:text-purple-400 hover:text-purple-700
                   dark:hover:text-purple-300 font-medium inline-flex items-center"
               >
-                Try our {mode.name} tool
+                {t.specialModes.tryTool.replace('{name}', mode.name)}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </button>
             )}
@@ -354,7 +356,7 @@ export function SpecialModes() {
             </p>
             {selectedMode.playerCount && (
               <div className="text-gray-500 dark:text-gray-400 mb-4">
-                Recommended players: {selectedMode.playerCount}
+                {t.specialModes.recommendedPlayers} {selectedMode.playerCount}
               </div>
             )}
             {selectedMode.hasOwnTool && (
@@ -363,10 +365,10 @@ export function SpecialModes() {
                   setSelectedMode(null);
                   setActiveSection(selectedMode.toolId!);
                 }}
-                className="w-full p-4 bg-purple-600 hover:bg-purple-700 text-white rounded-lg 
+                className="w-full p-4 bg-purple-600 hover:bg-purple-700 text-white rounded-lg
                   transition-colors flex items-center justify-center space-x-2"
               >
-                <span>Try our {selectedMode.name} tool</span>
+                <span>{t.specialModes.tryTool.replace('{name}', selectedMode.name)}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             )}

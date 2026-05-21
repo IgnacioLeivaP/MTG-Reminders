@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ArrowDownAZ, ArrowLeft } from 'lucide-react';
 import { useNavigationStore } from '../../store/useNavigationStore';
 import { FavoriteButton } from '../../components/FavoriteButton';
+import { useTranslation } from '../../i18n/useTranslation';
 
 interface CascadeCard {
   id: string;
@@ -15,6 +16,7 @@ export function CascadeHelper() {
   const [cascadeStack, setCascadeStack] = useState<CascadeCard[]>([]);
   const [newCardName, setNewCardName] = useState('');
   const [newCardCost, setNewCardCost] = useState('');
+  const t = useTranslation();
 
   const addCascadeCard = () => {
     if (newCardName && newCardCost) {
@@ -44,7 +46,7 @@ export function CascadeHelper() {
             <ArrowLeft className="w-6 h-6 text-purple-600 dark:text-purple-400" />
           </button>
           <ArrowDownAZ className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-          <h2 className="text-2xl font-bold dark:text-dark-highlight">Cascade Helper</h2>
+          <h2 className="text-2xl font-bold dark:text-dark-highlight">{t.cascadeHelper.title}</h2>
         </div>
         <FavoriteButton 
           toolId="cascade-helper"
@@ -57,24 +59,24 @@ export function CascadeHelper() {
         <div className="flex gap-4 mb-4">
           <input
             type="text"
-            placeholder="Card Name"
+            placeholder={t.cascadeHelper.cardName}
             value={newCardName}
             onChange={(e) => setNewCardName(e.target.value)}
             className="flex-1 p-2 border rounded-lg dark:bg-dark-accent dark:border-dark-accent"
           />
           <input
             type="number"
-            placeholder="Mana Cost"
+            placeholder={t.cascadeHelper.manaCost}
             value={newCardCost}
             onChange={(e) => setNewCardCost(e.target.value)}
             className="w-24 p-2 border rounded-lg dark:bg-dark-accent dark:border-dark-accent"
           />
           <button
             onClick={addCascadeCard}
-            className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 
+            className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700
               dark:bg-dark-accent dark:hover:bg-dark-highlight transition-colors"
           >
-            Add Card
+            {t.cascadeHelper.addCard}
           </button>
         </div>
 
@@ -94,7 +96,7 @@ export function CascadeHelper() {
                 onClick={() => removeCascadeCard(card.id)}
                 className="text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
               >
-                Remove
+                {t.cascadeHelper.remove}
               </button>
             </div>
           ))}
@@ -102,7 +104,7 @@ export function CascadeHelper() {
 
         {cascadeStack.length === 0 && (
           <div className="text-center py-8 text-gray-500 dark:text-dark-text/60">
-            Add cards with cascade to track their resolution
+            {t.cascadeHelper.empty}
           </div>
         )}
       </div>

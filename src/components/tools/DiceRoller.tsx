@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Dice6, ArrowLeft, Coins } from 'lucide-react';
 import { useNavigationStore } from '../../store/useNavigationStore';
 import { FavoriteButton } from '../../components/FavoriteButton';
+import { useTranslation } from '../../i18n/useTranslation';
 
 interface DiceResult {
-  type: string;
+  label: string;
   result: number | string;
   timestamp: number;
 }
@@ -12,35 +13,36 @@ interface DiceResult {
 export function DiceRoller() {
   const setActiveSection = useNavigationStore(state => state.setActiveSection);
   const [results, setResults] = useState<DiceResult[]>([]);
+  const t = useTranslation();
 
   const diceTypes = [
-    { name: 'Coin', sides: 2, icon: 'Coins', display: 'Flip a Coin' },
-    { name: 'D4', sides: 4, icon: 'Square', display: 'Roll d4' },
-    { name: 'D6', sides: 6, icon: 'Dice6', display: 'Roll d6' },
-    { name: 'D8', sides: 8, icon: 'Octagon', display: 'Roll d8' },
-    { name: 'D10', sides: 10, icon: 'Pentagon', display: 'Roll d10' },
-    { name: 'D12', sides: 12, icon: 'Hexagon', display: 'Roll d12' },
-    { name: 'D20', sides: 20, icon: 'Circle', display: 'Roll d20' },
-    { name: 'Planar', sides: 6, icon: 'Globe', display: 'Roll Planar Die' }
+    { key: 'Coin', sides: 2, icon: 'Coins', name: t.diceRoller.coin.name, display: t.diceRoller.coin.display },
+    { key: 'D4', sides: 4, icon: 'Square', name: t.diceRoller.d4.name, display: t.diceRoller.d4.display },
+    { key: 'D6', sides: 6, icon: 'Dice6', name: t.diceRoller.d6.name, display: t.diceRoller.d6.display },
+    { key: 'D8', sides: 8, icon: 'Octagon', name: t.diceRoller.d8.name, display: t.diceRoller.d8.display },
+    { key: 'D10', sides: 10, icon: 'Pentagon', name: t.diceRoller.d10.name, display: t.diceRoller.d10.display },
+    { key: 'D12', sides: 12, icon: 'Hexagon', name: t.diceRoller.d12.name, display: t.diceRoller.d12.display },
+    { key: 'D20', sides: 20, icon: 'Circle', name: t.diceRoller.d20.name, display: t.diceRoller.d20.display },
+    { key: 'Planar', sides: 6, icon: 'Globe', name: t.diceRoller.planar.name, display: t.diceRoller.planar.display },
   ];
 
-  const rollDice = (sides: number, type: string) => {
+  const rollDice = (sides: number, key: string, label: string) => {
     let result: number | string;
-    
-    if (type === 'Coin') {
-      result = Math.random() < 0.5 ? 'Heads' : 'Tails';
-    } else if (type === 'Planar') {
+
+    if (key === 'Coin') {
+      result = Math.random() < 0.5 ? t.diceRoller.heads : t.diceRoller.tails;
+    } else if (key === 'Planar') {
       const roll = Math.floor(Math.random() * 6) + 1;
-      result = roll === 1 ? 'Chaos' : roll === 6 ? 'Planeswalk' : 'Blank';
+      result = roll === 1 ? t.diceRoller.chaos : roll === 6 ? t.diceRoller.planeswalk : t.diceRoller.blank;
     } else {
       result = Math.floor(Math.random() * sides) + 1;
     }
 
     setResults(prev => [{
-      type,
+      label,
       result,
       timestamp: Date.now()
-    }, ...prev].slice(0, 10)); // Mantener solo los últimos 10 resultados
+    }, ...prev].slice(0, 10));
   };
 
   return (
@@ -54,7 +56,7 @@ export function DiceRoller() {
             <ArrowLeft className="w-6 h-6 text-purple-600 dark:text-purple-400" />
           </button>
           <Dice6 className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-          <h2 className="text-2xl font-bold dark:text-dark-highlight">Dice Roller</h2>
+          <h2 className="text-2xl font-bold dark:text-dark-highlight">{t.diceRoller.title}</h2>
         </div>
         <FavoriteButton 
           toolId="dice-roller"
@@ -66,13 +68,13 @@ export function DiceRoller() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {diceTypes.map(dice => (
           <button
-            key={dice.name}
-            onClick={() => rollDice(dice.sides, dice.name)}
-            className="p-4 bg-white dark:bg-dark-card rounded-lg shadow-md hover:shadow-lg 
+            key={dice.key}
+            onClick={() => rollDice(dice.sides, dice.key, dice.name)}
+            className="p-4 bg-white dark:bg-dark-card rounded-lg shadow-md hover:shadow-lg
               transition-all text-center space-y-2 hover:bg-purple-50 dark:hover:bg-dark-accent/50"
           >
             <div className="flex justify-center">
-              {dice.name === 'Coin' ? (
+              {dice.key === 'Coin' ? (
                 <Coins className="w-8 h-8 text-purple-600 dark:text-purple-400" />
               ) : (
                 <Dice6 className="w-8 h-8 text-purple-600 dark:text-purple-400" />
@@ -88,18 +90,18 @@ export function DiceRoller() {
       {results.length > 0 && (
         <div className="mt-8">
           <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-dark-highlight">
-            Recent Results
+            {t.diceRoller.recentResults}
           </h3>
           <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-4">
             <div className="space-y-2">
               {results.map((result, index) => (
-                <div 
+                <div
                   key={result.timestamp}
                   className={`flex justify-between items-center p-2 rounded-lg
                     ${index === 0 ? 'bg-purple-50 dark:bg-dark-accent/50' : ''}`}
                 >
                   <span className="text-gray-600 dark:text-dark-text">
-                    {result.type}
+                    {result.label}
                   </span>
                   <span className="font-medium text-purple-600 dark:text-purple-400">
                     {result.result}

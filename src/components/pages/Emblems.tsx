@@ -4,10 +4,12 @@ import * as LucideIcons from 'lucide-react';
 import { emblems } from '../../data/emblems';
 import { useEmblemsStore } from '../../store/useEmblemsStore';
 import { FavoriteButton } from '../../components/FavoriteButton';
+import { useTranslation } from '../../i18n/useTranslation';
 
 export function Emblems() {
   const [searchTerm, setSearchTerm] = useState('');
   const { activeEmblems, toggleEmblem } = useEmblemsStore();
+  const t = useTranslation();
 
   const filteredEmblems = emblems.filter(emblem =>
     emblem.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -18,10 +20,8 @@ export function Emblems() {
   const sortedEmblems = [...filteredEmblems].sort((a, b) => {
     const aActive = activeEmblems.includes(a.id);
     const bActive = activeEmblems.includes(b.id);
-    
     if (aActive && !bActive) return -1;
     if (!aActive && bActive) return 1;
-    
     return emblems.findIndex(e => e.id === a.id) - emblems.findIndex(e => e.id === b.id);
   });
 
@@ -35,20 +35,16 @@ export function Emblems() {
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <Badge className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-          <h2 className="text-2xl font-bold dark:text-dark-highlight">Emblems</h2>
+          <h2 className="text-2xl font-bold dark:text-dark-highlight">{t.emblems.title}</h2>
         </div>
-        <FavoriteButton 
-          toolId="emblems"
-          toolName="Emblems"
-          toolIcon="Badge"
-        />
+        <FavoriteButton toolId="emblems" toolName="Emblems" toolIcon="Badge" />
       </div>
 
       <div className="relative">
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-dark-text/60 w-5 h-5" />
         <input
           type="text"
-          placeholder="Search emblems..."
+          placeholder={t.emblems.search}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="pl-10 pr-4 py-2 w-full rounded-lg border-gray-300 dark:border-dark-accent dark:bg-dark-card dark:text-dark-text
@@ -64,42 +60,27 @@ export function Emblems() {
               key={emblem.id}
               onClick={() => toggleEmblem(emblem.id)}
               className={`
-                rounded-lg shadow-md overflow-hidden hover:shadow-lg 
+                rounded-lg shadow-md overflow-hidden hover:shadow-lg
                 transition-all cursor-pointer transform hover:scale-[1.02]
-                ${isActive 
-                  ? 'bg-purple-100 dark:bg-dark-accent border-2 border-purple-500 dark:border-dark-highlight' 
+                ${isActive
+                  ? 'bg-purple-100 dark:bg-dark-accent border-2 border-purple-500 dark:border-dark-highlight'
                   : 'bg-white dark:bg-dark-card hover:bg-gray-50 dark:hover:bg-dark-accent/50'
                 }
               `}
             >
               <div className="p-4">
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className={`p-2 rounded-lg ${
-                    isActive 
-                      ? 'bg-purple-200 dark:bg-dark-accent/80' 
-                      : 'bg-purple-100 dark:bg-dark-accent/50'
-                  }`}>
+                  <div className={`p-2 rounded-lg ${isActive ? 'bg-purple-200 dark:bg-dark-accent/80' : 'bg-purple-100 dark:bg-dark-accent/50'}`}>
                     {renderIcon(emblem.icon)}
                   </div>
                   <div>
-                    <h3 className={`text-lg font-semibold ${
-                      isActive 
-                        ? 'text-purple-900 dark:text-dark-highlight' 
-                        : 'text-gray-900 dark:text-dark-text'
-                    }`}>
+                    <h3 className={`text-lg font-semibold ${isActive ? 'text-purple-900 dark:text-dark-highlight' : 'text-gray-900 dark:text-dark-text'}`}>
                       {emblem.name}
                     </h3>
-                    <span className="text-sm text-purple-600 dark:text-purple-400">
-                      {emblem.planeswalker}
-                    </span>
+                    <span className="text-sm text-purple-600 dark:text-purple-400">{emblem.planeswalker}</span>
                   </div>
                 </div>
-                
-                <p className={`${
-                  isActive 
-                    ? 'text-purple-800 dark:text-dark-highlight' 
-                    : 'text-gray-600 dark:text-dark-text'
-                }`}>
+                <p className={isActive ? 'text-purple-800 dark:text-dark-highlight' : 'text-gray-600 dark:text-dark-text'}>
                   {emblem.effect}
                 </p>
               </div>
@@ -110,9 +91,7 @@ export function Emblems() {
 
       {filteredEmblems.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-gray-500 dark:text-dark-text/60">
-            No emblems found matching your search criteria
-          </p>
+          <p className="text-gray-500 dark:text-dark-text/60">{t.emblems.noResults}</p>
         </div>
       )}
     </div>

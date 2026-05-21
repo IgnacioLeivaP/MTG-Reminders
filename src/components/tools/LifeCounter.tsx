@@ -3,6 +3,7 @@ import { Heart, Plus, Minus, Crown, Skull, Radiation } from 'lucide-react';
 import { useLifeCounterStore } from '../../store/useLifeCounterStore';
 import { GameModeSelector } from '../GameModeSelector';
 import { FavoriteButton } from '../FavoriteButton';
+import { useTranslation } from '../../i18n/useTranslation';
 
 interface PlayerLifeProps {
   name: string;
@@ -14,18 +15,20 @@ interface PlayerLifeProps {
   onRadiationChange: (amount: number) => void;
   onPoisonChange: (amount: number) => void;
   onMonarchToggle: () => void;
+  defeatedLabel: string;
 }
 
-function PlayerLife({ 
-  name, 
-  life, 
+function PlayerLife({
+  name,
+  life,
   onLifeChange,
   radiation,
   poison,
   isMonarch,
   onRadiationChange,
   onPoisonChange,
-  onMonarchToggle 
+  onMonarchToggle,
+  defeatedLabel
 }: PlayerLifeProps) {
   const isDefeated = life <= 0;
 
@@ -140,7 +143,7 @@ function PlayerLife({
 
       {isDefeated && (
         <div className="mt-4 text-center">
-          <span className="text-red-700 dark:text-red-400 font-medium">Defeated</span>
+          <span className="text-red-700 dark:text-red-400 font-medium">{defeatedLabel}</span>
         </div>
       )}
     </div>
@@ -149,15 +152,16 @@ function PlayerLife({
 
 export function LifeCounter() {
   const { players, updateLife, updateRadiation, updatePoison, toggleMonarch } = useLifeCounterStore();
+  const t = useTranslation();
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <Heart className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-          <h2 className="text-2xl font-bold dark:text-dark-highlight">Life Counter</h2>
+          <h2 className="text-2xl font-bold dark:text-dark-highlight">{t.lifeCounter.title}</h2>
         </div>
-        <FavoriteButton 
+        <FavoriteButton
           toolId="life-counter"
           toolName="Life Counter"
           toolIcon="Heart"
@@ -179,6 +183,7 @@ export function LifeCounter() {
             onRadiationChange={(amount) => updateRadiation(player.id, amount)}
             onPoisonChange={(amount) => updatePoison(player.id, amount)}
             onMonarchToggle={() => toggleMonarch(player.id)}
+            defeatedLabel={t.lifeCounter.defeated}
           />
         ))}
       </div>

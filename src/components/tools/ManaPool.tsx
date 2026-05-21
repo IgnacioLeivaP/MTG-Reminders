@@ -3,10 +3,12 @@ import { Droplet, ArrowLeft, Plus, Minus, RotateCcw, Sun, Skull, Flame, TreeDeci
 import { useNavigationStore } from '../../store/useNavigationStore';
 import { useManaPoolStore } from '../../store/useManaPoolStore';
 import { FavoriteButton } from '../FavoriteButton';
+import { useTranslation } from '../../i18n/useTranslation';
 
 export function ManaPool() {
   const setActiveSection = useNavigationStore(state => state.setActiveSection);
   const { manaPool, setMana, resetManaPool } = useManaPoolStore();
+  const t = useTranslation();
 
   const handleManaChange = (color: keyof typeof manaPool, amount: number) => {
     setMana(color, manaPool[color] + amount);
@@ -46,7 +48,7 @@ export function ManaPool() {
             <ArrowLeft className="w-6 h-6 text-purple-600 dark:text-purple-400" />
           </button>
           <Droplet className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-          <h2 className="text-2xl font-bold dark:text-dark-highlight">Mana Pool</h2>
+          <h2 className="text-2xl font-bold dark:text-dark-highlight">{t.manaPool.title}</h2>
         </div>
         <FavoriteButton 
           toolId="mana-pool"
@@ -97,7 +99,7 @@ export function ManaPool() {
             dark:hover:bg-dark-accent/50 rounded-lg transition-colors flex items-center space-x-2"
         >
           <RotateCcw className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-          <span className="text-gray-700 dark:text-dark-text">Reset Mana Pool</span>
+          <span className="text-gray-700 dark:text-dark-text">{t.manaPool.resetManaPool}</span>
         </button>
       </div>
     </div>

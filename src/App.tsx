@@ -14,6 +14,7 @@ import { CascadeHelper } from './components/tools/CascadeHelper';
 import { useThemeStore } from './store/useThemeStore';
 import { useTaglineStore } from './store/useTaglineStore';
 import { useNavigationStore } from './store/useNavigationStore';
+import { useTranslation } from './i18n/useTranslation';
 import logo from './assets/logo.png';
 import { ManaCalculator } from './components/tools/ManaCalculator';
 import { TokenGenerator } from './components/tools/TokenGenerator';
@@ -31,7 +32,9 @@ function App() {
   const activeSection = useNavigationStore(state => state.activeSection);
   const setActiveSection = useNavigationStore(state => state.setActiveSection);
   const isDarkMode = useThemeStore(state => state.isDarkMode);
-  const currentTagline = useTaglineStore(state => state.currentTagline);
+  const taglineIndex = useTaglineStore(state => state.taglineIndex);
+  const t = useTranslation();
+  const currentTagline = t.taglines[taglineIndex] ?? t.taglines[0];
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -79,8 +82,6 @@ function App() {
         return <Archenemy />;
       case 'special-modes':
         return <SpecialModes />;
-      case 'trigger-tracker':
-        return <TriggerTracker />;
       default:
         return <Home />;
     }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Calculator, ArrowLeft, HelpCircle } from 'lucide-react';
 import { useNavigationStore } from '../../store/useNavigationStore';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { useTranslation } from '../../i18n/useTranslation';
 
 interface ManaCurve {
   [key: number]: number;
@@ -41,38 +42,10 @@ const formats: Format[] = [
   }
 ];
 
-const inputHelp: { [key: string]: HelpText } = {
-  deckSize: {
-    title: 'Deck Size',
-    content: 'Enter the total number of cards in your deck.',
-    examples: [
-      'Standard/Modern: Usually 60 cards',
-      'Commander: 100 cards',
-      'Limited: Minimum 40 cards'
-    ]
-  },
-  manaCurve: {
-    title: 'Mana Curve',
-    content: 'Enter the number of cards you have at each converted mana cost (CMC).',
-    examples: [
-      'CMC 1: One-drops like Lightning Bolt',
-      'CMC 2: Two-drops like Counterspell',
-      'CMC 7+: Include all cards that cost 7 or more'
-    ]
-  },
-  colorRequirements: {
-    title: 'Color Requirements',
-    content: 'Enter the number of colored mana symbols in the casting costs of your spells.',
-    examples: [
-      'Lightning Bolt (R): Add 1 to red',
-      'Counterspell (UU): Add 2 to blue',
-      'Niv-Mizzet (UURR): Add 2 to blue, 2 to red'
-    ]
-  }
-};
 
 export function ManaCalculator() {
   const setActiveSection = useNavigationStore(state => state.setActiveSection);
+  const t = useTranslation();
   const [deckSize, setDeckSize] = useState<number>(60);
   const [manaCurve, setManaCurve] = useState<ManaCurve>({
     1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0
@@ -152,36 +125,44 @@ export function ManaCalculator() {
     }));
   };
 
-  const renderHelpModal = (helpKey: string) => (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white dark:bg-dark-card rounded-lg shadow-xl p-6 max-w-md w-full">
-        <h3 className="text-xl font-bold mb-4">{inputHelp[helpKey].title}</h3>
-        
-        <p className="text-gray-600 dark:text-dark-text mb-4">
-          {inputHelp[helpKey].content}
-        </p>
+  const getHelpData = (helpKey: string) => {
+    return t.manaCalculator.help[helpKey as keyof typeof t.manaCalculator.help];
+  };
 
-        <div className="space-y-2">
-          <h4 className="font-medium">Examples:</h4>
-          <ul className="list-disc pl-5 space-y-1">
-            {inputHelp[helpKey].examples.map((example, index) => (
-              <li key={index} className="text-gray-600 dark:text-dark-text">
-                {example}
-              </li>
-            ))}
-          </ul>
+  const renderHelpModal = (helpKey: string) => {
+    const help = getHelpData(helpKey);
+    if (!help) return null;
+    return (
+      <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+        <div className="bg-white dark:bg-dark-card rounded-lg shadow-xl p-6 max-w-md w-full">
+          <h3 className="text-xl font-bold mb-4">{help.title}</h3>
+
+          <p className="text-gray-600 dark:text-dark-text mb-4">
+            {help.content}
+          </p>
+
+          <div className="space-y-2">
+            <h4 className="font-medium">{t.manaCalculator.examples}</h4>
+            <ul className="list-disc pl-5 space-y-1">
+              {help.examples.map((example, index) => (
+                <li key={index} className="text-gray-600 dark:text-dark-text">
+                  {example}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <button
+            onClick={() => setActiveHelp(null)}
+            className="w-full mt-6 px-4 py-2 bg-purple-600 text-white rounded-lg
+              hover:bg-purple-700 dark:bg-dark-accent dark:hover:bg-dark-highlight transition-colors"
+          >
+            {t.manaCalculator.gotIt}
+          </button>
         </div>
-
-        <button
-          onClick={() => setActiveHelp(null)}
-          className="w-full mt-6 px-4 py-2 bg-purple-600 text-white rounded-lg 
-            hover:bg-purple-700 dark:bg-dark-accent dark:hover:bg-dark-highlight transition-colors"
-        >
-          Got it
-        </button>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <div className="space-y-6">
@@ -193,16 +174,16 @@ export function ManaCalculator() {
           <ArrowLeft className="w-6 h-6 text-purple-600 dark:text-purple-400" />
         </button>
         <Calculator className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-        <h2 className="text-2xl font-bold dark:text-dark-highlight">Mana Calculator</h2>
+        <h2 className="text-2xl font-bold dark:text-dark-highlight">{t.manaCalculator.title}</h2>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-4">
-          <h3 className="text-lg font-semibold mb-4">Deck Information</h3>
-          
+          <h3 className="text-lg font-semibold mb-4">{t.manaCalculator.deckInfo}</h3>
+
           <div className="mb-4">
             <div className="flex items-center justify-between mb-2">
-              <label className="block text-sm font-medium">Deck Size</label>
+              <label className="block text-sm font-medium">{t.manaCalculator.deckSize}</label>
               <button
                 onClick={() => setActiveHelp('deckSize')}
                 className="p-1 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-full"
@@ -220,7 +201,7 @@ export function ManaCalculator() {
 
           <div className="mb-4">
             <div className="flex items-center justify-between mb-2">
-              <h4 className="font-medium">Mana Curve</h4>
+              <h4 className="font-medium">{t.manaCalculator.manaCurve}</h4>
               <button
                 onClick={() => setActiveHelp('manaCurve')}
                 className="p-1 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-full"
@@ -245,7 +226,7 @@ export function ManaCalculator() {
 
           <div>
             <div className="flex items-center justify-between mb-2">
-              <h4 className="font-medium">Color Requirements</h4>
+              <h4 className="font-medium">{t.manaCalculator.colorRequirements}</h4>
               <button
                 onClick={() => setActiveHelp('colorRequirements')}
                 className="p-1 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-full"
@@ -269,7 +250,7 @@ export function ManaCalculator() {
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-2">Format</label>
+            <label className="block text-sm font-medium mb-2">{t.manaCalculator.format}</label>
             <select
               value={selectedFormat}
               onChange={(e) => setSelectedFormat(e.target.value)}
@@ -285,39 +266,39 @@ export function ManaCalculator() {
 
           <button
             onClick={calculateManaBase}
-            className="w-full mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg 
+            className="w-full mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg
               hover:bg-purple-700 dark:bg-dark-accent dark:hover:bg-dark-highlight transition-colors"
           >
-            Calculate Mana Base
+            {t.manaCalculator.calculate}
           </button>
         </div>
 
         {result && (
           <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-4">
-            <h3 className="text-lg font-semibold mb-4">Results</h3>
-            
+            <h3 className="text-lg font-semibold mb-4">{t.manaCalculator.results}</h3>
+
             <div className="space-y-4">
               <div>
-                <p className="font-medium">Average CMC</p>
+                <p className="font-medium">{t.manaCalculator.avgCmc}</p>
                 <p className="text-2xl text-purple-600 dark:text-purple-400">
                   {result.avgCmc.toFixed(2)}
                 </p>
               </div>
 
               <div>
-                <p className="font-medium">Recommended Land Count</p>
+                <p className="font-medium">{t.manaCalculator.recommendedLands}</p>
                 <p className="text-2xl text-purple-600 dark:text-purple-400">
-                  {result.totalLands} lands
+                  {result.totalLands} {t.manaCalculator.lands}
                 </p>
               </div>
 
               <div>
-                <p className="font-medium">Color Sources</p>
+                <p className="font-medium">{t.manaCalculator.colorSources}</p>
                 <div className="grid grid-cols-2 gap-2">
                   {Object.entries(result.coloredSources).map(([color, count]) => (
                     <div key={color} className="flex justify-between items-center">
                       <span className="capitalize">{color}</span>
-                      <span className="font-medium">{count} sources</span>
+                      <span className="font-medium">{count} {t.manaCalculator.sources}</span>
                     </div>
                   ))}
                 </div>
@@ -325,7 +306,7 @@ export function ManaCalculator() {
             </div>
 
             <div className="mt-6">
-              <h4 className="font-medium mb-2">Mana Curve</h4>
+              <h4 className="font-medium mb-2">{t.manaCalculator.manaCurve}</h4>
               <div className="h-64">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={getChartData()}>
@@ -341,7 +322,7 @@ export function ManaCalculator() {
         )}
 
         <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-4">
-          <h3 className="text-lg font-semibold mb-4">Format Guidelines</h3>
+          <h3 className="text-lg font-semibold mb-4">{t.manaCalculator.formatGuidelines}</h3>
 
           {formats.map(format => (
             <div
@@ -357,7 +338,7 @@ export function ManaCalculator() {
                 {format.description}
               </p>
               <p className="text-sm font-medium">
-                Recommended lands: {format.minLands}-{format.maxLands}
+                {t.manaCalculator.recommendedLandsLabel} {format.minLands}-{format.maxLands}
               </p>
             </div>
           ))}

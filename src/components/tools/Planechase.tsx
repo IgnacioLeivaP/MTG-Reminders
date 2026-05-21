@@ -3,6 +3,7 @@ import { Globe, ArrowLeft, Dice6, RotateCcw, ArrowRight, History, BookOpen, Aler
 import { useNavigationStore } from '../../store/useNavigationStore';
 import { planes } from '../../data/planes';
 import { FavoriteButton } from '../../components/FavoriteButton';
+import { useTranslation } from '../../i18n/useTranslation';
 
 interface PlanarDieResult {
   type: 'blank' | 'chaos' | 'planeswalk';
@@ -25,17 +26,13 @@ interface PlaneFilter {
   doctorwho: boolean;
 }
 
-const planarDieResults: PlanarDieResult[] = [
-  { type: 'blank', description: 'Nothing happens' },
-  { type: 'blank', description: 'Nothing happens' },
-  { type: 'blank', description: 'Nothing happens' },
-  { type: 'blank', description: 'Nothing happens' },
-  { type: 'chaos', description: 'Trigger the chaos ability' },
-  { type: 'planeswalk', description: 'Move to the next plane' }
+const planarDieResultTypes: Array<'blank' | 'chaos' | 'planeswalk'> = [
+  'blank', 'blank', 'blank', 'blank', 'chaos', 'planeswalk'
 ];
 
 export function Planechase() {
   const setActiveSection = useNavigationStore(state => state.setActiveSection);
+  const t = useTranslation();
   const [currentPlane, setCurrentPlane] = useState<Plane>(planes[0]);
   const [previousPlanes, setPreviousPlanes] = useState<Plane[]>([]);
   const [dieResult, setDieResult] = useState<PlanarDieResult | null>(null);
@@ -49,7 +46,8 @@ export function Planechase() {
   const [showDebugList, setShowDebugList] = useState(false);
 
   const rollPlanarDie = () => {
-    const result = planarDieResults[Math.floor(Math.random() * planarDieResults.length)];
+    const type = planarDieResultTypes[Math.floor(Math.random() * planarDieResultTypes.length)];
+    const result: PlanarDieResult = { type, description: t.planechase.dieResults[type] };
     setDieResult(result);
 
     if (result.type === 'planeswalk') {
@@ -106,7 +104,7 @@ export function Planechase() {
             <ArrowLeft className="w-6 h-6 text-purple-600 dark:text-purple-400" />
           </button>
           <Globe className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-          <h2 className="text-2xl font-bold dark:text-dark-highlight">Planechase</h2>
+          <h2 className="text-2xl font-bold dark:text-dark-highlight">{t.planechase.title}</h2>
         </div>
         <FavoriteButton 
           toolId="planechase"
@@ -138,7 +136,7 @@ export function Planechase() {
               : 'bg-gray-200 text-gray-700 dark:bg-dark-accent dark:text-dark-text'
           }`}
         >
-          In Universe Planes
+          {t.planechase.inUniversePlanes}
         </button>
         <button
           onClick={() => toggleFilter('special')}
@@ -148,7 +146,7 @@ export function Planechase() {
               : 'bg-gray-200 text-gray-700 dark:bg-dark-accent dark:text-dark-text'
           }`}
         >
-          Special
+          {t.planechase.special}
         </button>
         <button
           onClick={() => toggleFilter('doctorwho')}
@@ -172,10 +170,10 @@ export function Planechase() {
           </div>
           <div>
             <h3 className="text-sm font-semibold text-gray-900 dark:text-dark-highlight">
-              Choose a card pool
+              {t.planechase.choosePool}
             </h3>
             <p className="text-xs text-gray-600 dark:text-dark-text">
-              Select at least one set of planes to begin
+              {t.planechase.selectAtLeast}
             </p>
           </div>
         </div>
@@ -187,18 +185,18 @@ export function Planechase() {
           className="text-sm text-purple-600 hover:text-purple-700 dark:text-purple-400 
             dark:hover:text-purple-300 underline"
         >
-          {showDebugList ? 'Hide' : 'Show'} Loaded Planes
+          {showDebugList ? t.planechase.hideLoadedPlanes : t.planechase.showLoadedPlanes}
         </button>
       </div>
 
       {showDebugList && (
         <div className="mt-4 p-4 bg-gray-100 dark:bg-dark-accent/30 rounded-lg">
-          <h3 className="font-bold mb-2">Available Planes ({availablePlanes.length})</h3>
+          <h3 className="font-bold mb-2">{t.planechase.availablePlanes} ({availablePlanes.length})</h3>
           <div className="space-y-2">
             {availablePlanes.map(plane => (
               <div key={plane.id} className="p-2 bg-white dark:bg-dark-card rounded">
                 <p className="font-medium">{plane.name}</p>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Location: {plane.location}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">{t.planechase.location} {plane.location}</p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Type: {plane.type}</p>
                 <p className="text-sm text-gray-500 dark:text-gray-400">Effect: {plane.effect}</p>
                 <p className="text-sm text-gray-500 dark:text-gray-400">Chaos: {plane.chaosEffect}</p>
@@ -211,18 +209,18 @@ export function Planechase() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="card-base p-6">
           <h3 className="text-xl font-bold mb-4 text-purple-700 dark:text-purple-400">
-            Current Plane: {currentPlane.name}
+            {t.planechase.currentPlane} {currentPlane.name}
           </h3>
           <p className="text-sm text-gray-600 dark:text-dark-text mb-4">
-            Location: {currentPlane.location}
+            {t.planechase.location} {currentPlane.location}
           </p>
           <div className="space-y-4">
             <div className="bg-purple-50 dark:bg-purple-900/30 p-4 rounded-lg">
-              <h4 className="font-medium text-purple-700 dark:text-purple-300 mb-2">Effect</h4>
+              <h4 className="font-medium text-purple-700 dark:text-purple-300 mb-2">{t.planechase.effect}</h4>
               <p className="text-gray-600 dark:text-dark-text">{currentPlane.effect}</p>
             </div>
             <div className="bg-purple-50 dark:bg-purple-900/30 p-4 rounded-lg">
-              <h4 className="font-medium text-purple-700 dark:text-purple-300 mb-2">Chaos Effect</h4>
+              <h4 className="font-medium text-purple-700 dark:text-purple-300 mb-2">{t.planechase.chaosEffect}</h4>
               <p className="text-gray-600 dark:text-dark-text">{currentPlane.chaosEffect}</p>
             </div>
           </div>
@@ -236,13 +234,13 @@ export function Planechase() {
                 transition-colors flex items-center justify-center space-x-2"
             >
               <Dice6 className="w-5 h-5" />
-              <span>Roll Planar Die</span>
+              <span>{t.planechase.rollPlanarDie}</span>
             </button>
 
             {dieResult && (
               <div className="w-full p-4 bg-purple-50 dark:bg-purple-900/30 rounded-lg text-center">
                 <h4 className="font-medium text-purple-700 dark:text-purple-300 mb-2">
-                  Roll Result: {dieResult.type}
+                  {t.planechase.rollResult} {dieResult.type}
                 </h4>
                 <p className="text-gray-600 dark:text-dark-text">{dieResult.description}</p>
               </div>
@@ -255,7 +253,7 @@ export function Planechase() {
                 rounded-lg transition-colors flex items-center justify-center space-x-2"
             >
               <ArrowRight className="w-5 h-5" />
-              <span>Planeswalk</span>
+              <span>{t.planechase.planeswalk}</span>
             </button>
           </div>
         </div>
@@ -264,7 +262,7 @@ export function Planechase() {
       {showHistory && previousPlanes.length > 0 && (
         <div className="card-base p-6">
           <h3 className="text-xl font-bold mb-4 text-purple-700 dark:text-purple-400">
-            Previous Planes
+            {t.planechase.previousPlanes}
           </h3>
           <div className="space-y-4">
             {previousPlanes.map((plane, index) => (
@@ -273,7 +271,7 @@ export function Planechase() {
                   {plane.name}
                 </h4>
                 <p className="text-sm text-gray-600 dark:text-dark-text mb-1">
-                  Location: {plane.location}
+                  {t.planechase.location} {plane.location}
                 </p>
                 <p className="text-sm text-gray-600 dark:text-dark-text">{plane.effect}</p>
               </div>

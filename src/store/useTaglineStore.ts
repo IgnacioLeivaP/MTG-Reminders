@@ -2,13 +2,13 @@ import { create } from 'zustand';
 import { taglines } from '../data/taglines';
 
 interface TaglineState {
-  currentTagline: string;
+  taglineIndex: number;
   setRandomTagline: () => void;
 }
 
 export const useTaglineStore = create<TaglineState>((set) => ({
-  currentTagline: taglines[Math.floor(Math.random() * taglines.length)],
+  taglineIndex: Math.floor(Math.random() * taglines.length),
   setRandomTagline: () => set({
-    currentTagline: taglines[Math.floor(Math.random() * taglines.length)]
-  })
+    taglineIndex: Math.floor(Math.random() * taglines.length),
+  }),
 }));

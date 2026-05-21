@@ -3,6 +3,7 @@ import { Copy, ArrowLeft, Plus, Trash2 } from 'lucide-react';
 import { useNavigationStore } from '../../store/useNavigationStore';
 import { useTokenStore } from '../../store/useTokenStore';
 import { FavoriteButton } from '../../components/FavoriteButton';
+import { useTranslation } from '../../i18n/useTranslation';
 
 interface Token {
   id: string;
@@ -14,24 +15,11 @@ interface Token {
   quantity: number;
 }
 
-const defaultAbilities = [
-  'Flying', 'First strike', 'Deathtouch', 'Lifelink', 
-  'Vigilance', 'Trample', 'Haste', 'Menace'
-];
-
-const colors = [
-  { name: 'White', value: 'white' },
-  { name: 'Blue', value: 'blue' },
-  { name: 'Black', value: 'black' },
-  { name: 'Red', value: 'red' },
-  { name: 'Green', value: 'green' },
-  { name: 'Colorless', value: 'colorless' }
-];
-
 export function TokenGenerator() {
   const setActiveSection = useNavigationStore(state => state.setActiveSection);
   const { tokens, addToken, removeToken, updateTokenQuantity } = useTokenStore();
-  
+  const t = useTranslation();
+
   const [newToken, setNewToken] = useState<Token>({
     id: '',
     name: '',
@@ -101,7 +89,7 @@ export function TokenGenerator() {
             <ArrowLeft className="w-6 h-6 text-purple-600 dark:text-purple-400" />
           </button>
           <Copy className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-          <h2 className="text-2xl font-bold dark:text-dark-highlight">Token Generator</h2>
+          <h2 className="text-2xl font-bold dark:text-dark-highlight">{t.tokenGenerator.title}</h2>
         </div>
         <FavoriteButton 
           toolId="token-generator"
@@ -113,23 +101,23 @@ export function TokenGenerator() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Panel de creación de tokens */}
         <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-4">
-          <h3 className="text-lg font-semibold mb-4">Create New Token</h3>
-          
+          <h3 className="text-lg font-semibold mb-4">{t.tokenGenerator.createToken}</h3>
+
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">Name</label>
+              <label className="block text-sm font-medium mb-1">{t.tokenGenerator.name}</label>
               <input
                 type="text"
                 value={newToken.name}
                 onChange={(e) => setNewToken({ ...newToken, name: e.target.value })}
                 className="w-full p-2 border rounded-lg dark:bg-dark-accent dark:border-dark-accent"
-                placeholder="Soldier, Goblin, etc."
+                placeholder={t.tokenGenerator.tokenName}
               />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">Power</label>
+                <label className="block text-sm font-medium mb-1">{t.tokenGenerator.power}</label>
                 <input
                   type="number"
                   value={newToken.power}
@@ -138,7 +126,7 @@ export function TokenGenerator() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Toughness</label>
+                <label className="block text-sm font-medium mb-1">{t.tokenGenerator.toughness}</label>
                 <input
                   type="number"
                   value={newToken.toughness}
@@ -149,13 +137,13 @@ export function TokenGenerator() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">Color</label>
+              <label className="block text-sm font-medium mb-1">{t.tokenGenerator.color}</label>
               <select
                 value={newToken.color}
                 onChange={(e) => setNewToken({ ...newToken, color: e.target.value })}
                 className="w-full p-2 border rounded-lg dark:bg-dark-accent dark:border-dark-accent"
               >
-                {colors.map(color => (
+                {t.tokenGenerator.colorsList.map(color => (
                   <option key={color.value} value={color.value}>
                     {color.name}
                   </option>
@@ -164,11 +152,10 @@ export function TokenGenerator() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Abilities</label>
+              <label className="block text-sm font-medium mb-2">{t.tokenGenerator.abilities}</label>
               <div className="space-y-4">
-                {/* Habilidades predefinidas */}
                 <div className="grid grid-cols-2 gap-2">
-                  {defaultAbilities.map(ability => (
+                  {t.tokenGenerator.abilitiesList.map(ability => (
                     <button
                       key={ability}
                       onClick={() => handleAbilityToggle(ability)}
@@ -183,13 +170,12 @@ export function TokenGenerator() {
                   ))}
                 </div>
 
-                {/* Campo de habilidad personalizada */}
                 <div className="flex gap-2">
                   <input
                     type="text"
                     value={customAbility}
                     onChange={(e) => setCustomAbility(e.target.value)}
-                    placeholder="Enter custom ability..."
+                    placeholder={t.tokenGenerator.customAbility}
                     className="flex-1 p-2 border rounded-lg dark:bg-dark-accent dark:border-dark-accent"
                     onKeyPress={(e) => {
                       if (e.key === 'Enter') {
@@ -200,11 +186,11 @@ export function TokenGenerator() {
                   <button
                     onClick={handleAddCustomAbility}
                     disabled={!customAbility.trim()}
-                    className="px-4 py-2 bg-purple-600 text-white rounded-lg 
-                      hover:bg-purple-700 dark:bg-dark-accent dark:hover:bg-dark-highlight 
+                    className="px-4 py-2 bg-purple-600 text-white rounded-lg
+                      hover:bg-purple-700 dark:bg-dark-accent dark:hover:bg-dark-highlight
                       transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Add
+                    {t.tokenGenerator.addAbility}
                   </button>
                 </div>
 
@@ -235,22 +221,22 @@ export function TokenGenerator() {
             <button
               onClick={handleAddToken}
               disabled={!newToken.name}
-              className="w-full px-4 py-2 bg-purple-600 text-white rounded-lg 
-                hover:bg-purple-700 dark:bg-dark-accent dark:hover:bg-dark-highlight 
+              className="w-full px-4 py-2 bg-purple-600 text-white rounded-lg
+                hover:bg-purple-700 dark:bg-dark-accent dark:hover:bg-dark-highlight
                 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Create Token
+              {t.tokenGenerator.createTokenBtn}
             </button>
           </div>
         </div>
 
         {/* Panel de tokens activos */}
         <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-4">
-          <h3 className="text-lg font-semibold mb-4">Active Tokens</h3>
-          
+          <h3 className="text-lg font-semibold mb-4">{t.tokenGenerator.activeTokens}</h3>
+
           {tokens.length === 0 ? (
             <p className="text-center py-8 text-gray-500 dark:text-dark-text/60">
-              No tokens created yet
+              {t.tokenGenerator.noTokens}
             </p>
           ) : (
             <div className="space-y-4">

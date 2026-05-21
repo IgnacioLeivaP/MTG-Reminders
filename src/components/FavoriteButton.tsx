@@ -1,6 +1,7 @@
 import React from 'react';
 import { Star } from 'lucide-react';
 import { useFavoritesStore } from '../store/useFavoritesStore';
+import { useTranslation } from '../i18n/useTranslation';
 
 interface FavoriteButtonProps {
   toolId: string;
@@ -11,9 +12,10 @@ interface FavoriteButtonProps {
 export function FavoriteButton({ toolId, toolName, toolIcon }: FavoriteButtonProps) {
   const { isFavorite, addFavorite, removeFavorite } = useFavoritesStore();
   const isToolFavorite = isFavorite(toolId);
+  const t = useTranslation();
 
   const handleToggleFavorite = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Evita que el click se propague al contenedor
+    e.stopPropagation();
     if (isToolFavorite) {
       removeFavorite(toolId);
     } else {
@@ -25,15 +27,15 @@ export function FavoriteButton({ toolId, toolName, toolIcon }: FavoriteButtonPro
     <button
       onClick={handleToggleFavorite}
       className={`p-2 rounded-full transition-colors ${
-        isToolFavorite 
-          ? 'text-yellow-500 hover:text-yellow-600' 
+        isToolFavorite
+          ? 'text-yellow-500 hover:text-yellow-600'
           : 'text-gray-400 hover:text-gray-500'
       }`}
-      aria-label={isToolFavorite ? "Remove from favorites" : "Add to favorites"}
+      aria-label={isToolFavorite ? t.favoriteButton.remove : t.favoriteButton.add}
     >
       <Star
         className={`w-5 h-5 ${isToolFavorite ? 'fill-current' : ''}`}
       />
     </button>
   );
-} 
+}
