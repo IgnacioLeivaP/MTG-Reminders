@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Force)",
+      "Bash(Select-Object Name)",
+      "Bash(grep -E \"\\\\.\\(css|scss\\)$\")",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173)",
+      "Bash(npx vite *)",
+      "Bash(npm install *)",
+      "Bash(./node_modules/.bin/vite --port 5173 --host)",
+      "Bash(nohup ./node_modules/.bin/vite --port 5173)",
+      "Bash(echo \"PID: $!\")",
+      "Bash(node -e ' *)",
+      "Bash(npx playwright@latest screenshot --browser chromium http://localhost:5173 /tmp/mtg-home.png)",
+      "Bash(npx playwright *)",
+      "Bash(xargs -I {} basename {})",
+      "Bash(rm \"src/components/pages/home.tsx\")",
+      "Bash(rm \"planes.csv\")",
+      "Bash(git log *)",
+      "Bash(git checkout *)",
+      "Bash(Remove-Item -Recurse -Force \"c:\\\\Users\\\\Usach\\\\Documents\\\\nuevo-proyecto-de-juego\\\\MTG-Reminders\\\\.bolt\")",
+      "Bash(Select-Object -Property Name, Mode)",
+      "Bash(npx tsc *)",
+      "Bash(git add *)",
+      "Bash(git rm *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
+    ]
+  }
+}
