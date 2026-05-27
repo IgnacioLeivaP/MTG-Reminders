@@ -1,37 +1,19 @@
-import { StrictMode, useEffect } from 'react';
+import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
-import { useThemeStore } from './store/useThemeStore';
+import './store/useThemeStore'; // ensure store initializes and applies theme on load
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/service-worker.js')
-      .then(registration => {
-        console.log('Service Worker registrado correctamente');
-      })
-      .catch(error => {
-        console.error('Error al registrar el Service Worker:', error);
-      });
+      .then(() => { console.log('Service Worker registrado correctamente'); })
+      .catch((error) => { console.error('Error al registrar el Service Worker:', error); });
   });
 }
 
-function Root() {
-  const isDarkMode = useThemeStore(state => state.isDarkMode);
-
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDarkMode]);
-
-  return (
-    <StrictMode>
-      <App />
-    </StrictMode>
-  );
-}
-
-createRoot(document.getElementById('root')!).render(<Root />);
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);

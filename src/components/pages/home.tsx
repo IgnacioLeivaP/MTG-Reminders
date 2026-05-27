@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Sparkles, ArrowRight, AlertTriangle, ChevronDown, ChevronUp, BookOpen, Library } from 'lucide-react';
 import { useNavigationStore } from '../../store/useNavigationStore';
 import { usePersistentStore } from '../../store/usePersistentStore';
@@ -20,7 +20,7 @@ export function Home() {
   return (
     <div className="space-y-8">
       <div className="flex items-center space-x-3">
-        <Sparkles className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+        <Sparkles className="w-6 h-6 text-theme-primary dark:text-dark-accent" />
         <h2 className="text-2xl font-bold dark:text-dark-highlight">{t.home.title}</h2>
       </div>
 
@@ -28,12 +28,12 @@ export function Home() {
         <p className="text-lg">{t.home.subtitle}</p>
 
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="card-base p-8 bg-gradient-to-br from-purple-500 to-purple-700 dark:from-dark-accent dark:to-purple-900 text-white">
+          <div className="card-base p-8 bg-gradient-to-br from-theme-header-from to-theme-header-to dark:from-dark-accent dark:to-dark-header-to text-white">
             <h3 className="text-2xl font-bold mb-4">{t.home.readyToStart}</h3>
-            <p className="mb-6 text-purple-100">{t.home.lifeCounterDesc}</p>
+            <p className="mb-6 text-white/90">{t.home.lifeCounterDesc}</p>
             <button
               onClick={() => setActiveSection('life-counter')}
-              className="px-6 py-3 bg-white text-purple-700 rounded-lg font-medium hover:bg-purple-50 transition-colors inline-flex items-center"
+              className="px-6 py-3 bg-white text-theme-primary-hover rounded-lg font-medium hover:bg-white/80 transition-colors inline-flex items-center"
             >
               {t.home.startLifeCounter}
               <ArrowRight className="w-5 h-5 ml-2" />
@@ -166,7 +166,7 @@ export function Home() {
         </div>
 
         <div className="grid gap-8 mt-8">
-          <h3 className="text-2xl font-bold text-purple-700 dark:text-purple-400">{t.home.featuredTools}</h3>
+          <h3 className="text-2xl font-bold text-theme-primary-hover dark:text-dark-accent">{t.home.featuredTools}</h3>
 
           {(['helperCards', 'gamePhases', 'specialModes', 'allTools'] as const).map((key) => {
             const section = t.home[key];
@@ -178,11 +178,11 @@ export function Home() {
             };
             return (
               <div key={key} className="card-base p-6">
-                <h3 className="text-xl font-semibold mb-4 text-purple-700 dark:text-purple-400">{section.title}</h3>
+                <h3 className="text-xl font-semibold mb-4 text-theme-primary-hover dark:text-dark-accent">{section.title}</h3>
                 <p className="mb-4">{section.description}</p>
                 <button
                   onClick={() => setActiveSection(sectionIds[key])}
-                  className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium inline-flex items-center"
+                  className="text-theme-primary dark:text-dark-accent hover:text-theme-primary-hover dark:hover:text-dark-accent/70 font-medium inline-flex items-center"
                 >
                   {section.action}
                   <ArrowRight className="w-4 h-4 ml-2" />

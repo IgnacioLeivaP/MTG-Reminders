@@ -1,11 +1,31 @@
 import React from 'react';
-import { Settings, Palette, Languages, FileText, Coffee, MessageSquare, Sun, Moon, Github, Smartphone } from 'lucide-react';
-import { useThemeStore } from '../../store/useThemeStore';
+import { Settings, Palette, Languages, FileText, Coffee, MessageSquare, Sun, Moon, Github, Smartphone, Check } from 'lucide-react';
+import { useThemeStore, ColorTheme } from '../../store/useThemeStore';
 import { useLanguageStore } from '../../store/useLanguageStore';
 import { useTranslation } from '../../i18n/useTranslation';
 
+interface ColorOption {
+  id: ColorTheme;
+  labelKey: keyof ReturnType<typeof useTranslation>['settings']['themes'];
+  /** swatch color shown in the picker (light mode representative) */
+  swatch: string;
+  /** darker tint shown beside the main swatch */
+  swatchDark: string;
+  /** mana symbol letter / glyph */
+  symbol: string;
+}
+
+const COLOR_OPTIONS: ColorOption[] = [
+  { id: 'default',   labelKey: 'default', swatch: '#9333ea', swatchDark: '#6e49e1', symbol: '✦' },
+  { id: 'mtg-white', labelKey: 'white',   swatch: '#d4af37', swatchDark: '#b5890a', symbol: 'W' },
+  { id: 'mtg-blue',  labelKey: 'blue',    swatch: '#1976d2', swatchDark: '#0d47a1', symbol: 'U' },
+  { id: 'mtg-black', labelKey: 'black',   swatch: '#4a2d6f', swatchDark: '#1a0d2e', symbol: 'B' },
+  { id: 'mtg-red',   labelKey: 'red',     swatch: '#e53935', swatchDark: '#b71c1c', symbol: 'R' },
+  { id: 'mtg-green', labelKey: 'green',   swatch: '#388e3c', swatchDark: '#1b5e20', symbol: 'G' },
+];
+
 export function Configuration() {
-  const { isDarkMode, toggleTheme } = useThemeStore();
+  const { isDarkMode, toggleTheme, colorTheme, setColorTheme } = useThemeStore();
   const { language, setLanguage } = useLanguageStore();
   const t = useTranslation();
 
@@ -16,17 +36,17 @@ export function Configuration() {
   return (
     <div className="space-y-6">
       <div className="flex items-center space-x-3">
-        <Settings className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+        <Settings className="w-6 h-6 text-theme-primary dark:text-dark-accent" />
         <h2 className="text-2xl font-bold dark:text-gray-100">{t.settings.title}</h2>
       </div>
 
       <div className="space-y-4">
-        {/* Theme Toggle */}
+        {/* Light / Dark toggle */}
         <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow">
           <div className="flex items-center justify-between">
             <div>
               <div className="flex items-center space-x-3">
-                <Palette className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                <Palette className="w-5 h-5 text-theme-primary dark:text-dark-accent" />
                 <h3 className="text-lg font-semibold dark:text-gray-100">{t.settings.appearance}</h3>
               </div>
               <p className="mt-2 text-gray-600 dark:text-gray-300 ml-8">{t.settings.appearanceDesc}</p>
@@ -38,9 +58,59 @@ export function Configuration() {
               {isDarkMode ? (
                 <Sun className="w-5 h-5 text-amber-500" />
               ) : (
-                <Moon className="w-5 h-5 text-purple-600" />
+                <Moon className="w-5 h-5 text-theme-primary" />
               )}
             </button>
+          </div>
+        </div>
+
+        {/* Color identity picker */}
+        <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow">
+          <div className="flex items-center space-x-3 mb-1">
+            <Palette className="w-5 h-5 text-theme-primary dark:text-dark-accent" />
+            <h3 className="text-lg font-semibold dark:text-gray-100">{t.settings.colorTheme}</h3>
+          </div>
+          <p className="text-gray-600 dark:text-gray-300 ml-8 mb-4">{t.settings.colorThemeDesc}</p>
+
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-3 ml-8">
+            {COLOR_OPTIONS.map((opt) => {
+              const isActive = colorTheme === opt.id;
+              return (
+                <button
+                  key={opt.id}
+                  onClick={() => setColorTheme(opt.id)}
+                  title={t.settings.themes[opt.labelKey]}
+                  className={`relative flex flex-col items-center gap-1.5 p-2 rounded-xl border-2 transition-all
+                    ${isActive
+                      ? 'border-gray-800 dark:border-white scale-105 shadow-md'
+                      : 'border-transparent hover:border-gray-300 dark:hover:border-gray-600 hover:scale-105'
+                    }`}
+                >
+                  {/* Swatch gradient */}
+                  <div
+                    className="w-10 h-10 rounded-full shadow-inner relative overflow-hidden"
+                    style={{ background: `linear-gradient(135deg, ${opt.swatch} 50%, ${opt.swatchDark} 50%)` }}
+                  >
+                    {/* Symbol badge */}
+                    <span
+                      className="absolute inset-0 flex items-center justify-center text-white font-bold text-sm drop-shadow"
+                      style={{ textShadow: '0 1px 2px rgba(0,0,0,0.6)' }}
+                    >
+                      {opt.symbol}
+                    </span>
+                    {/* Active checkmark */}
+                    {isActive && (
+                      <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                        <Check className="w-5 h-5 text-white drop-shadow" />
+                      </div>
+                    )}
+                  </div>
+                  <span className="text-xs font-medium text-gray-700 dark:text-gray-300 text-center leading-tight">
+                    {t.settings.themes[opt.labelKey]}
+                  </span>
+                </button>
+              );
+            })}
           </div>
         </div>
 
@@ -49,7 +119,7 @@ export function Configuration() {
           <div className="flex items-center justify-between">
             <div>
               <div className="flex items-center space-x-3">
-                <Languages className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                <Languages className="w-5 h-5 text-theme-primary dark:text-dark-accent" />
                 <h3 className="text-lg font-semibold dark:text-gray-100">{t.settings.language}</h3>
               </div>
               <p className="mt-2 text-gray-600 dark:text-gray-300 ml-8">{t.settings.languageDesc}</p>
@@ -60,7 +130,7 @@ export function Configuration() {
                   onClick={() => setLanguage('en')}
                   className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                     language === 'en'
-                      ? 'bg-purple-600 text-white dark:bg-dark-accent'
+                      ? 'bg-theme-primary text-white dark:bg-dark-accent'
                       : 'bg-gray-100 dark:bg-dark-accent/50 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-accent'
                   }`}
                 >
@@ -70,7 +140,7 @@ export function Configuration() {
                   onClick={() => setLanguage('es')}
                   className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                     language === 'es'
-                      ? 'bg-purple-600 text-white dark:bg-dark-accent'
+                      ? 'bg-theme-primary text-white dark:bg-dark-accent'
                       : 'bg-gray-100 dark:bg-dark-accent/50 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-accent'
                   }`}
                 >
@@ -84,7 +154,7 @@ export function Configuration() {
         {/* Development Status */}
         <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow">
           <div className="flex items-center space-x-3 mb-4">
-            <FileText className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+            <FileText className="w-5 h-5 text-theme-primary dark:text-dark-accent" />
             <h3 className="text-lg font-semibold dark:text-gray-100">{t.settings.devStatus}</h3>
           </div>
           <div className="ml-8 prose prose-purple dark:prose-invert">
@@ -106,7 +176,7 @@ export function Configuration() {
 
           <button
             onClick={handleEmailFeedback}
-            className="flex items-center justify-center space-x-2 bg-purple-100 dark:bg-dark-accent text-purple-700 dark:text-purple-200 p-4 rounded-lg hover:bg-purple-200 dark:hover:bg-dark-highlight transition-colors font-medium"
+            className="flex items-center justify-center space-x-2 bg-theme-surface dark:bg-dark-accent text-theme-primary dark:text-white p-4 rounded-lg hover:bg-theme-surface-hover dark:hover:bg-dark-highlight transition-colors font-medium"
           >
             <MessageSquare className="w-5 h-5" />
             <span>{t.settings.sendFeedback}</span>
@@ -117,7 +187,7 @@ export function Configuration() {
         <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
-              <Smartphone className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+              <Smartphone className="w-5 h-5 text-theme-primary dark:text-dark-accent" />
               <h3 className="text-lg font-semibold dark:text-gray-100">{t.settings.useAsApp}</h3>
             </div>
 
@@ -136,8 +206,8 @@ export function Configuration() {
                 </ol>
               </div>
 
-              <div className="bg-purple-50 dark:bg-dark-accent/30 p-4 rounded-lg">
-                <p className="text-purple-700 dark:text-purple-300 text-sm">{t.settings.pwaDesc}</p>
+              <div className="bg-theme-surface dark:bg-dark-accent/30 p-4 rounded-lg">
+                <p className="text-theme-primary-hover dark:text-dark-accent text-sm">{t.settings.pwaDesc}</p>
               </div>
             </div>
           </div>
@@ -159,8 +229,8 @@ export function Configuration() {
               href="https://github.com/IgnacioLeivaP"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-2 bg-purple-100 dark:bg-dark-accent text-purple-700
-                dark:text-purple-200 p-4 rounded-lg hover:bg-purple-200 dark:hover:bg-dark-highlight
+              className="flex items-center space-x-2 bg-theme-surface dark:bg-dark-accent text-theme-primary
+                dark:text-white p-4 rounded-lg hover:bg-theme-surface-hover dark:hover:bg-dark-highlight
                 transition-colors font-medium"
             >
               <Github className="w-5 h-5" />

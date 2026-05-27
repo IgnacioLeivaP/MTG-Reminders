@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Droplet, ArrowLeft, Plus, Minus, RotateCcw, Sun, Skull, Flame, TreeDeciduous, Diamond } from 'lucide-react';
 import { useNavigationStore } from '../../store/useNavigationStore';
 import { useManaPoolStore } from '../../store/useManaPoolStore';
@@ -45,9 +45,9 @@ export function ManaPool() {
             onClick={() => setActiveSection('tools')}
             className="p-2 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-lg transition-colors"
           >
-            <ArrowLeft className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+            <ArrowLeft className="w-6 h-6 text-theme-primary dark:text-dark-accent" />
           </button>
-          <Droplet className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+          <Droplet className="w-6 h-6 text-theme-primary dark:text-dark-accent" />
           <h2 className="text-2xl font-bold dark:text-dark-highlight">{t.manaPool.title}</h2>
         </div>
         <FavoriteButton 
@@ -98,7 +98,7 @@ export function ManaPool() {
           className="px-6 py-2 bg-gray-100 hover:bg-gray-200 dark:bg-dark-accent/30 
             dark:hover:bg-dark-accent/50 rounded-lg transition-colors flex items-center space-x-2"
         >
-          <RotateCcw className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+          <RotateCcw className="w-5 h-5 text-theme-primary dark:text-dark-accent" />
           <span className="text-gray-700 dark:text-dark-text">{t.manaPool.resetManaPool}</span>
         </button>
       </div>

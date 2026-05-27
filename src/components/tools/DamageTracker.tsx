@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Swords, ArrowLeft, Plus, Trash2, Shield, Heart, HelpCircle } from 'lucide-react';
 import { useNavigationStore } from '../../store/useNavigationStore';
 import { useTranslation } from '../../i18n/useTranslation';
@@ -100,9 +100,9 @@ export function DamageTracker() {
             onClick={() => setActiveSection('tools')}
             className="p-2 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-lg transition-colors"
           >
-            <ArrowLeft className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+            <ArrowLeft className="w-6 h-6 text-theme-primary dark:text-dark-accent" />
           </button>
-          <Swords className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+          <Swords className="w-6 h-6 text-theme-primary dark:text-dark-accent" />
           <h2 className="text-2xl font-bold dark:text-dark-highlight">{t.damageTracker.title}</h2>
         </div>
         
@@ -110,7 +110,7 @@ export function DamageTracker() {
           onClick={() => setShowHelp(true)}
           className="p-2 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-lg transition-colors"
         >
-          <HelpCircle className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+          <HelpCircle className="w-6 h-6 text-theme-primary dark:text-dark-accent" />
         </button>
       </div>
 
@@ -168,8 +168,8 @@ export function DamageTracker() {
             <button
               onClick={handleAddCreature}
               disabled={!newCreature.name}
-              className="w-full px-4 py-2 bg-purple-600 text-white rounded-lg
-                hover:bg-purple-700 dark:bg-dark-accent dark:hover:bg-dark-highlight
+              className="w-full px-4 py-2 bg-theme-primary text-white rounded-lg
+                hover:bg-theme-primary-hover dark:bg-dark-accent dark:hover:bg-dark-highlight
                 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {t.damageTracker.addCreature}
@@ -296,8 +296,8 @@ export function DamageTracker() {
 
               <button
                 onClick={() => setShowHelp(false)}
-                className="w-full mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg
-                  hover:bg-purple-700 dark:bg-dark-accent dark:hover:bg-dark-highlight transition-colors"
+                className="w-full mt-4 px-4 py-2 bg-theme-primary text-white rounded-lg
+                  hover:bg-theme-primary-hover dark:bg-dark-accent dark:hover:bg-dark-highlight transition-colors"
               >
                 {t.damageTracker.gotIt}
               </button>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { ArrowDownAZ, ArrowLeft } from 'lucide-react';
 import { useNavigationStore } from '../../store/useNavigationStore';
 import { FavoriteButton } from '../../components/FavoriteButton';
@@ -43,9 +43,9 @@ export function CascadeHelper() {
             onClick={() => setActiveSection('tools')}
             className="p-2 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-lg transition-colors"
           >
-            <ArrowLeft className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+            <ArrowLeft className="w-6 h-6 text-theme-primary dark:text-dark-accent" />
           </button>
-          <ArrowDownAZ className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+          <ArrowDownAZ className="w-6 h-6 text-theme-primary dark:text-dark-accent" />
           <h2 className="text-2xl font-bold dark:text-dark-highlight">{t.cascadeHelper.title}</h2>
         </div>
         <FavoriteButton 
@@ -73,7 +73,7 @@ export function CascadeHelper() {
           />
           <button
             onClick={addCascadeCard}
-            className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700
+            className="px-4 py-2 bg-theme-primary text-white rounded-lg hover:bg-theme-primary-hover
               dark:bg-dark-accent dark:hover:bg-dark-highlight transition-colors"
           >
             {t.cascadeHelper.addCard}

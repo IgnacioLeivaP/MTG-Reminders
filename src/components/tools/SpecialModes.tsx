@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Sparkles, ArrowLeft, ArrowRight, Search } from 'lucide-react';
 import { useNavigationStore } from '../../store/useNavigationStore';
 import { useTranslation } from '../../i18n/useTranslation';
@@ -267,9 +267,9 @@ export function SpecialModes() {
           onClick={() => setActiveSection('tools')}
           className="p-2 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-lg transition-colors"
         >
-          <ArrowLeft className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+          <ArrowLeft className="w-6 h-6 text-theme-primary dark:text-dark-accent" />
         </button>
-        <Sparkles className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+        <Sparkles className="w-6 h-6 text-theme-primary dark:text-dark-accent" />
         <h2 className="text-2xl font-bold dark:text-dark-highlight">{t.specialModes.title}</h2>
       </div>
 
@@ -280,7 +280,7 @@ export function SpecialModes() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="w-full p-4 pl-12 rounded-lg border border-gray-200 dark:border-gray-700 
-            bg-white dark:bg-dark-card focus:ring-2 focus:ring-purple-500 dark:focus:ring-purple-400 
+            bg-white dark:bg-dark-card focus:ring-2 focus:ring-theme-primary dark:focus:ring-theme-primary/70 
             focus:border-transparent dark:text-dark-text"
         />
         <Search className="w-6 h-6 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
@@ -294,13 +294,13 @@ export function SpecialModes() {
             onClick={() => !mode.comingSoon && setSelectedMode(mode)}
           >
             <div className="flex justify-between items-start mb-2">
-              <h3 className="text-xl font-semibold text-purple-700 dark:text-purple-400">
+              <h3 className="text-xl font-semibold text-theme-primary-hover dark:text-dark-accent">
                 {mode.name}
               </h3>
               <div className="flex gap-2">
                 {mode.officialFormat && (
-                  <span className="px-2 py-1 text-xs bg-purple-100 dark:bg-purple-900/30
-                    text-purple-600 dark:text-purple-400 rounded-full">
+                  <span className="px-2 py-1 text-xs bg-theme-surface dark:bg-dark-accent/20
+                    text-theme-primary dark:text-dark-accent rounded-full">
                     {t.specialModes.official}
                   </span>
                 )}
@@ -326,8 +326,8 @@ export function SpecialModes() {
                   e.stopPropagation();
                   setActiveSection(mode.toolId!);
                 }}
-                className="mt-4 text-purple-600 dark:text-purple-400 hover:text-purple-700
-                  dark:hover:text-purple-300 font-medium inline-flex items-center"
+                className="mt-4 text-theme-primary dark:text-dark-accent hover:text-theme-primary-hover
+                  dark:hover:text-dark-accent/70 font-medium inline-flex items-center"
               >
                 {t.specialModes.tryTool.replace('{name}', mode.name)}
                 <ArrowRight className="w-4 h-4 ml-2" />
@@ -341,14 +341,14 @@ export function SpecialModes() {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
           <div className="bg-white dark:bg-dark-card rounded-lg p-6 max-w-2xl w-full">
             <div className="flex justify-between items-start mb-4">
-              <h3 className="text-2xl font-bold text-purple-700 dark:text-purple-400">
+              <h3 className="text-2xl font-bold text-theme-primary-hover dark:text-dark-accent">
                 {selectedMode.name}
               </h3>
               <button
                 onClick={() => setSelectedMode(null)}
                 className="p-2 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-lg"
               >
-                <ArrowLeft className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+                <ArrowLeft className="w-6 h-6 text-theme-primary dark:text-dark-accent" />
               </button>
             </div>
             <p className="text-gray-600 dark:text-dark-text mb-4">
@@ -365,7 +365,7 @@ export function SpecialModes() {
                   setSelectedMode(null);
                   setActiveSection(selectedMode.toolId!);
                 }}
-                className="w-full p-4 bg-purple-600 hover:bg-purple-700 text-white rounded-lg
+                className="w-full p-4 bg-theme-primary hover:bg-theme-primary-hover text-white rounded-lg
                   transition-colors flex items-center justify-center space-x-2"
               >
                 <span>{t.specialModes.tryTool.replace('{name}', selectedMode.name)}</span>

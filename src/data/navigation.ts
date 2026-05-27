@@ -14,6 +14,12 @@ export const navigationItems: NavItem[] = [
     section: 'main'
   },
   {
+    id: 'summary',
+    name: 'Summary',
+    icon: 'Activity',
+    section: 'main'
+  },
+  {
     id: 'tools',
     name: 'Tools',
     icon: 'Sparkles',

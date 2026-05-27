@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import { Clock } from 'lucide-react';
 import { phases } from '../../data/phases';
 import { PhaseCard } from '../PhaseCard';
@@ -41,7 +41,7 @@ export function GamePhases() {
       <div className="space-y-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <Clock className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+            <Clock className="w-6 h-6 text-theme-primary dark:text-dark-accent" />
             <h2 className="text-2xl font-bold dark:text-dark-highlight">{t.gamePhases.title}</h2>
           </div>
           <FavoriteButton toolId="game-phases" toolName="Game Phases" toolIcon="Clock" />

@@ -3,6 +3,7 @@ import { persist } from 'zustand/middleware';
 import { useMonarchStore } from './useMonarchStore';
 import { useDayNightStore } from './useDayNightStore';
 import { useRingStore } from './useRingStore';
+import { useSpeedStore } from './useSpeedStore';
 import { useRemindersStore } from './useRemindersStore';
 import { useEmblemsStore } from './useEmblemsStore';
 import { useCitysBlessingStore } from './useCitysBlessingStore';
@@ -25,6 +26,7 @@ export const usePersistentStore = create<PersistentState>()(
         useMonarchStore.setState({ isMonarch: false });
         useDayNightStore.setState({ isDay: true });
         useRingStore.setState({ activeSteps: [] });
+        useSpeedStore.getState().resetSpeed();
         useRemindersStore.setState({ reminders: [] });
         useEmblemsStore.setState({ activeEmblems: [] });
         useCitysBlessingStore.setState({ hasBlessing: false });

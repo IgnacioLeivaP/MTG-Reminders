@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useDungeonStore } from '../../store/useDungeonStore';
 import { dungeons } from '../../data/dungeons';
 
@@ -32,9 +32,9 @@ export function DungeonProgress({ dungeonId }: DungeonProgressProps) {
             disabled={!canVisit}
             className={`w-full text-left p-3 rounded-lg transition-all ${
               isVisited
-                ? 'bg-purple-100 dark:bg-dark-accent border-2 border-purple-500 dark:border-dark-highlight'
+                ? 'bg-theme-surface dark:bg-dark-accent border-2 border-theme-primary dark:border-dark-highlight'
                 : canVisit
-                ? 'bg-white dark:bg-dark-card hover:bg-gray-50 dark:hover:bg-dark-accent/50 border-2 border-transparent'
+                ? 'bg-gray-100 dark:bg-dark-accent/40 hover:bg-gray-200 dark:hover:bg-dark-accent/60 border border-gray-200 dark:border-dark-accent/50'
                 : 'opacity-50 cursor-not-allowed'
             }`}
           >

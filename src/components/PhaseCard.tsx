@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Phase } from '../types';
 import { ChevronRight } from 'lucide-react';
 import { ReminderList } from './ReminderList';
@@ -16,7 +16,7 @@ export function PhaseCard({ phase, isActive = false, onClick }: PhaseCardProps) 
         onClick={onClick}
         className={`p-4 rounded-lg shadow-md transition-all cursor-pointer
           ${isActive 
-            ? 'bg-purple-100 dark:bg-dark-accent border-2 border-purple-500 dark:border-dark-highlight' 
+            ? 'bg-theme-surface dark:bg-dark-accent border-2 border-theme-primary dark:border-dark-highlight' 
             : 'bg-white dark:bg-dark-card hover:bg-gray-50 dark:hover:bg-dark-accent/50'
           }`}
       >

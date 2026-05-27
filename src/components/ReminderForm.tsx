@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { phases } from '../data/phases';
 import { useRemindersStore } from '../store/useRemindersStore';
 import { PlusCircle } from 'lucide-react';
@@ -31,7 +31,7 @@ export function ReminderForm() {
             value={text}
             onChange={(e) => setText(e.target.value)}
             className="mt-1 block w-full rounded-md border-gray-300 dark:border-dark-accent dark:bg-dark-bg dark:text-dark-text
-              shadow-sm focus:border-purple-500 dark:focus:border-dark-accent focus:ring-purple-500 dark:focus:ring-dark-accent
+              shadow-sm focus:border-theme-primary dark:focus:border-dark-accent focus:ring-theme-primary dark:focus:ring-dark-accent
               px-3 py-2"
             placeholder={t.reminderForm.placeholder}
           />
@@ -46,7 +46,7 @@ export function ReminderForm() {
             value={phase}
             onChange={(e) => setPhase(e.target.value)}
             className="mt-1 block w-full rounded-md border-gray-300 dark:border-dark-accent dark:bg-dark-bg dark:text-dark-text
-              shadow-sm focus:border-purple-500 dark:focus:border-dark-accent focus:ring-purple-500 dark:focus:ring-dark-accent
+              shadow-sm focus:border-theme-primary dark:focus:border-dark-accent focus:ring-theme-primary dark:focus:ring-dark-accent
               px-3 py-2"
           >
             {phases.map(p => (
@@ -60,8 +60,8 @@ export function ReminderForm() {
         <button
           type="submit"
           className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm
-            text-sm font-medium text-white bg-purple-600 dark:bg-dark-accent hover:bg-purple-700 dark:hover:bg-dark-highlight
-            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 dark:focus:ring-dark-accent
+            text-sm font-medium text-white bg-theme-primary dark:bg-dark-accent hover:bg-theme-primary-hover dark:hover:bg-dark-highlight
+            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-theme-primary dark:focus:ring-dark-accent
             transition-colors"
         >
           <PlusCircle className="w-5 h-5 mr-2" />

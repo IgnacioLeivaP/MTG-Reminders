@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Castle } from 'lucide-react';
 import { DungeonSelector } from './DungeonSelector';
 import { useDungeonStore } from '../../store/useDungeonStore';
@@ -9,8 +9,8 @@ export function DungeonCard() {
   return (
     <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-4">
       <div className="flex items-center space-x-3 mb-4">
-        <div className="p-2 bg-purple-100 dark:bg-dark-accent/50 rounded-lg">
-          <Castle className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+        <div className="p-2 bg-theme-surface dark:bg-dark-accent/50 rounded-lg">
+          <Castle className="w-4 h-4 text-theme-primary dark:text-dark-accent" />
         </div>
         <div>
           <h3 className="text-lg font-semibold text-gray-900 dark:text-dark-highlight">

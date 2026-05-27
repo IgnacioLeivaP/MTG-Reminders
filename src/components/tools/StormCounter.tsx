@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Cloud, ArrowLeft, Plus, RotateCcw, History } from 'lucide-react';
 import { useNavigationStore } from '../../store/useNavigationStore';
 import { FavoriteButton } from '../../components/FavoriteButton';
@@ -95,9 +95,9 @@ export function StormCounter() {
             onClick={() => setActiveSection('tools')}
             className="p-2 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-lg transition-colors"
           >
-            <ArrowLeft className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+            <ArrowLeft className="w-6 h-6 text-theme-primary dark:text-dark-accent" />
           </button>
-          <Cloud className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+          <Cloud className="w-6 h-6 text-theme-primary dark:text-dark-accent" />
           <h2 className="text-2xl font-bold dark:text-dark-highlight">{t.stormCounter.title}</h2>
         </div>
         <FavoriteButton 
@@ -117,19 +117,19 @@ export function StormCounter() {
                 onClick={() => setShowHistory(!showHistory)}
                 className="p-2 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-lg transition-colors"
               >
-                <History className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                <History className="w-5 h-5 text-theme-primary dark:text-dark-accent" />
               </button>
               <button
                 onClick={handleReset}
                 className="p-2 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-lg transition-colors"
               >
-                <RotateCcw className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                <RotateCcw className="w-5 h-5 text-theme-primary dark:text-dark-accent" />
               </button>
             </div>
           </div>
 
           <div className="text-center mb-8">
-            <div className="text-6xl font-bold text-purple-600 dark:text-purple-400">
+            <div className="text-6xl font-bold text-theme-primary dark:text-dark-accent">
               {stormCount.total}
             </div>
             <p className="text-gray-600 dark:text-dark-text">{t.stormCounter.totalSpells}</p>
@@ -143,7 +143,7 @@ export function StormCounter() {
                   key={key}
                   className="bg-gray-50 dark:bg-dark-accent/20 p-3 rounded-lg"
                 >
-                  <div className="font-semibold text-xl text-purple-600 dark:text-purple-400">
+                  <div className="font-semibold text-xl text-theme-primary dark:text-dark-accent">
                     {value}
                   </div>
                   <div className="text-sm text-gray-600 dark:text-dark-text capitalize">
@@ -194,8 +194,8 @@ export function StormCounter() {
             <button
               onClick={handleAddSpell}
               disabled={!newSpell.name}
-              className="w-full px-4 py-2 bg-purple-600 text-white rounded-lg
-                hover:bg-purple-700 dark:bg-dark-accent dark:hover:bg-dark-highlight
+              className="w-full px-4 py-2 bg-theme-primary text-white rounded-lg
+                hover:bg-theme-primary-hover dark:bg-dark-accent dark:hover:bg-dark-highlight
                 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {t.stormCounter.addSpell}

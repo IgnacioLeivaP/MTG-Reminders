@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Star, Trash2, AlertTriangle } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 import { useFavoritesStore } from '../../store/useFavoritesStore';
@@ -14,7 +14,7 @@ export function Favorites() {
 
   const renderIcon = (iconName: string) => {
     const Icon = LucideIcons[iconName as keyof typeof LucideIcons];
-    return Icon ? <Icon className="w-6 h-6 text-purple-600 dark:text-purple-400" /> : null;
+    return Icon ? <Icon className="w-6 h-6 text-theme-primary dark:text-dark-accent" /> : null;
   };
 
   const handleToolClick = (tool: { id: string, name: string, icon: string }) => {
@@ -60,7 +60,7 @@ export function Favorites() {
                 transition-all flex items-center space-x-4 text-left w-full hover:bg-gray-50
                 dark:hover:bg-dark-accent/50"
             >
-              <div className="p-2 bg-purple-100 dark:bg-dark-accent/50 rounded-lg">
+              <div className="p-2 bg-theme-surface dark:bg-dark-accent/50 rounded-lg">
                 {renderIcon(tool.icon)}
               </div>
               <span className="font-medium dark:text-gray-100">{tool.name}</span>

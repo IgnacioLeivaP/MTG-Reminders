@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Calculator, ArrowLeft, HelpCircle } from 'lucide-react';
 import { useNavigationStore } from '../../store/useNavigationStore';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
@@ -154,8 +154,8 @@ export function ManaCalculator() {
 
           <button
             onClick={() => setActiveHelp(null)}
-            className="w-full mt-6 px-4 py-2 bg-purple-600 text-white rounded-lg
-              hover:bg-purple-700 dark:bg-dark-accent dark:hover:bg-dark-highlight transition-colors"
+            className="w-full mt-6 px-4 py-2 bg-theme-primary text-white rounded-lg
+              hover:bg-theme-primary-hover dark:bg-dark-accent dark:hover:bg-dark-highlight transition-colors"
           >
             {t.manaCalculator.gotIt}
           </button>
@@ -171,9 +171,9 @@ export function ManaCalculator() {
           onClick={() => setActiveSection('tools')}
           className="p-2 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-lg transition-colors"
         >
-          <ArrowLeft className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+          <ArrowLeft className="w-6 h-6 text-theme-primary dark:text-dark-accent" />
         </button>
-        <Calculator className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+        <Calculator className="w-6 h-6 text-theme-primary dark:text-dark-accent" />
         <h2 className="text-2xl font-bold dark:text-dark-highlight">{t.manaCalculator.title}</h2>
       </div>
 
@@ -188,7 +188,7 @@ export function ManaCalculator() {
                 onClick={() => setActiveHelp('deckSize')}
                 className="p-1 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-full"
               >
-                <HelpCircle className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                <HelpCircle className="w-4 h-4 text-theme-primary dark:text-dark-accent" />
               </button>
             </div>
             <input
@@ -206,7 +206,7 @@ export function ManaCalculator() {
                 onClick={() => setActiveHelp('manaCurve')}
                 className="p-1 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-full"
               >
-                <HelpCircle className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                <HelpCircle className="w-4 h-4 text-theme-primary dark:text-dark-accent" />
               </button>
             </div>
             <div className="grid grid-cols-7 gap-2 mb-4">
@@ -231,7 +231,7 @@ export function ManaCalculator() {
                 onClick={() => setActiveHelp('colorRequirements')}
                 className="p-1 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-full"
               >
-                <HelpCircle className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                <HelpCircle className="w-4 h-4 text-theme-primary dark:text-dark-accent" />
               </button>
             </div>
             <div className="grid grid-cols-5 gap-2">
@@ -266,8 +266,8 @@ export function ManaCalculator() {
 
           <button
             onClick={calculateManaBase}
-            className="w-full mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg
-              hover:bg-purple-700 dark:bg-dark-accent dark:hover:bg-dark-highlight transition-colors"
+            className="w-full mt-4 px-4 py-2 bg-theme-primary text-white rounded-lg
+              hover:bg-theme-primary-hover dark:bg-dark-accent dark:hover:bg-dark-highlight transition-colors"
           >
             {t.manaCalculator.calculate}
           </button>
@@ -280,14 +280,14 @@ export function ManaCalculator() {
             <div className="space-y-4">
               <div>
                 <p className="font-medium">{t.manaCalculator.avgCmc}</p>
-                <p className="text-2xl text-purple-600 dark:text-purple-400">
+                <p className="text-2xl text-theme-primary dark:text-dark-accent">
                   {result.avgCmc.toFixed(2)}
                 </p>
               </div>
 
               <div>
                 <p className="font-medium">{t.manaCalculator.recommendedLands}</p>
-                <p className="text-2xl text-purple-600 dark:text-purple-400">
+                <p className="text-2xl text-theme-primary dark:text-dark-accent">
                   {result.totalLands} {t.manaCalculator.lands}
                 </p>
               </div>
@@ -329,7 +329,7 @@ export function ManaCalculator() {
               key={format.name}
               className={`mb-4 p-4 rounded-lg ${
                 selectedFormat === format.name
-                  ? 'bg-purple-50 dark:bg-dark-accent/50 border-2 border-purple-500'
+                  ? 'bg-theme-surface/50 dark:bg-dark-accent/50 border-2 border-theme-primary'
                   : 'bg-gray-50 dark:bg-dark-accent/20'
               }`}
             >
@@ -371,8 +371,8 @@ export function ManaCalculator() {
 
                 <button
                   onClick={() => setShowHelp(false)}
-                  className="w-full mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg 
-                    hover:bg-purple-700 dark:bg-dark-accent dark:hover:bg-dark-highlight transition-colors"
+                  className="w-full mt-4 px-4 py-2 bg-theme-primary text-white rounded-lg 
+                    hover:bg-theme-primary-hover dark:bg-dark-accent dark:hover:bg-dark-highlight transition-colors"
                 >
                   Got it
                 </button>

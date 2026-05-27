@@ -1,4 +1,12 @@
 /** @type {import('tailwindcss').Config} */
+
+// Helper: produces a Tailwind color that supports opacity modifiers (/50 etc.)
+// CSS var must hold space-separated RGB channels e.g. "147 51 234"
+const v = (name) => ({ opacityValue }) =>
+  opacityValue !== undefined
+    ? `rgb(var(${name}) / ${opacityValue})`
+    : `rgb(var(${name}))`;
+
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class',
@@ -6,33 +14,36 @@ export default {
     extend: {
       colors: {
         dark: {
-          bg: '#100b22',
-          card: '#2b1e56',
-          accent: '#6e49e1',
-          text: '#b8b2c9',
-          highlight: '#ffffff'
-        }
+          bg:           v('--dark-bg'),
+          card:         v('--dark-card'),
+          accent:       v('--dark-accent'),
+          text:         v('--dark-text'),
+          highlight:    v('--dark-highlight'),
+          'header-to':  v('--dark-header-to'),
+        },
+        theme: {
+          primary:        v('--theme-primary'),
+          'primary-hover': v('--theme-primary-hover'),
+          surface:        v('--theme-surface'),
+          'surface-hover': v('--theme-surface-hover'),
+          'header-from':  v('--theme-header-from'),
+          'header-to':    v('--theme-header-to'),
+        },
       },
-      typography: (theme) => ({
+      typography: () => ({
         DEFAULT: {
           css: {
-            color: theme('colors.gray.900'),
             a: {
-              color: theme('colors.purple.600'),
-              '&:hover': {
-                color: theme('colors.purple.700'),
-              },
+              color: 'rgb(var(--theme-primary))',
+              '&:hover': { color: 'rgb(var(--theme-primary-hover))' },
             },
           },
         },
         invert: {
           css: {
-            color: theme('colors.dark.text'),
             a: {
-              color: theme('colors.dark.accent'),
-              '&:hover': {
-                color: theme('colors.dark.highlight'),
-              },
+              color: 'rgb(var(--dark-accent))',
+              '&:hover': { color: 'rgb(var(--dark-highlight))' },
             },
           },
         },

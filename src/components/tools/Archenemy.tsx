@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Sword, ArrowLeft, Shuffle, RotateCcw, History, Play, X } from 'lucide-react';
 import { useNavigationStore } from '../../store/useNavigationStore';
 import { useTranslation } from '../../i18n/useTranslation';
@@ -123,9 +123,9 @@ export function Archenemy() {
             onClick={() => setActiveSection('tools')}
             className="p-2 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-lg transition-colors"
           >
-            <ArrowLeft className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+            <ArrowLeft className="w-6 h-6 text-theme-primary dark:text-dark-accent" />
           </button>
-          <Sword className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+          <Sword className="w-6 h-6 text-theme-primary dark:text-dark-accent" />
           <h2 className="text-2xl font-bold dark:text-dark-highlight">{t.archenemy.title}</h2>
         </div>
         <div className="flex space-x-2">
@@ -133,19 +133,19 @@ export function Archenemy() {
             onClick={() => setShowHistory(!showHistory)}
             className="p-2 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-lg transition-colors"
           >
-            <History className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+            <History className="w-6 h-6 text-theme-primary dark:text-dark-accent" />
           </button>
           <button
             onClick={shuffleDeck}
             className="p-2 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-lg transition-colors"
           >
-            <Shuffle className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+            <Shuffle className="w-6 h-6 text-theme-primary dark:text-dark-accent" />
           </button>
           <button
             onClick={resetGame}
             className="p-2 hover:bg-gray-100 dark:hover:bg-dark-accent/50 rounded-lg transition-colors"
           >
-            <RotateCcw className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+            <RotateCcw className="w-6 h-6 text-theme-primary dark:text-dark-accent" />
           </button>
         </div>
       </div>
@@ -153,13 +153,13 @@ export function Archenemy() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="card-base p-6">
           <div className="flex flex-col items-center space-y-4">
-            <h3 className="text-xl font-bold text-purple-700 dark:text-purple-400">
+            <h3 className="text-xl font-bold text-theme-primary-hover dark:text-dark-accent">
               {t.archenemy.schemeDeck} ({schemeDeck.length} {t.archenemy.remaining})
             </h3>
             <button
               onClick={drawScheme}
               disabled={schemeDeck.length === 0}
-              className="w-full p-4 bg-purple-600 hover:bg-purple-700 disabled:bg-gray-400
+              className="w-full p-4 bg-theme-primary hover:bg-theme-primary-hover disabled:bg-gray-400
                 text-white rounded-lg transition-colors flex items-center justify-center space-x-2"
             >
               <Play className="w-5 h-5" />
@@ -169,20 +169,20 @@ export function Archenemy() {
         </div>
 
         <div className="card-base p-6">
-          <h3 className="text-xl font-bold mb-4 text-purple-700 dark:text-purple-400">
+          <h3 className="text-xl font-bold mb-4 text-theme-primary-hover dark:text-dark-accent">
             {t.archenemy.activeSchemes} ({activeSchemes.length})
           </h3>
           <div className="space-y-4">
             {activeSchemes.map(scheme => (
-              <div key={scheme.id} className="relative bg-purple-50 dark:bg-purple-900/30 p-4 rounded-lg">
+              <div key={scheme.id} className="relative bg-theme-surface/50 dark:bg-dark-accent/20 p-4 rounded-lg">
                 <button
                   onClick={() => removeOngoingScheme(scheme.id)}
-                  className="absolute top-2 right-2 p-1 hover:bg-purple-200 dark:hover:bg-purple-800 
+                  className="absolute top-2 right-2 p-1 hover:bg-theme-surface-hover dark:hover:bg-dark-accent/50 
                     rounded-full transition-colors"
                 >
-                  <X className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                  <X className="w-4 h-4 text-theme-primary dark:text-dark-accent" />
                 </button>
-                <h4 className="font-medium text-purple-700 dark:text-purple-300 mb-2">
+                <h4 className="font-medium text-theme-primary-hover dark:text-dark-accent/70 mb-2">
                   {scheme.name}
                 </h4>
                 <p className="text-gray-600 dark:text-dark-text">{scheme.effect}</p>
@@ -194,7 +194,7 @@ export function Archenemy() {
 
       {showHistory && usedSchemes.length > 0 && (
         <div className="card-base p-6">
-          <h3 className="text-xl font-bold mb-4 text-purple-700 dark:text-purple-400">
+          <h3 className="text-xl font-bold mb-4 text-theme-primary-hover dark:text-dark-accent">
             {t.archenemy.completedSchemes}
           </h3>
           <div className="space-y-4">

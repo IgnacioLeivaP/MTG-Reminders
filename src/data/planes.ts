@@ -23,8 +23,8 @@ export const planes: Plane[] = [
     "name": "Agyrem",
     "type": "universe",
     "location": "Ravnica",
-    "effect": "Whenever a white creature dies, return it to the battlefield under its owner\u00e2\u0080\u0099s control at the beginning of the next end step. Whenever a nonwhite creature dies, return it to its owner\u00e2\u0080\u0099s hand at the beginning of the next end step.",
-    "chaosEffect": "creatures can\u00e2\u0080\u0099t attack you until a player planeswalks.",
+    "effect": "Whenever a white creature dies, return it to the battlefield under its owner's control at the beginning of the next end step. Whenever a nonwhite creature dies, return it to its owner's hand at the beginning of the next end step.",
+    "chaosEffect": "creatures can't attack you until a player planeswalks.",
     "imageUrl": null
   },
   {
@@ -33,7 +33,7 @@ export const planes: Plane[] = [
     "type": "universe",
     "location": "Zendikar",
     "effect": "Players may cast enchantment spells as though they had flash.",
-    "chaosEffect": "destroy target creature that isn\u00e2\u0080\u0099t enchanted.",
+    "chaosEffect": "destroy target creature that isn't enchanted.",
     "imageUrl": null
   },
   {
@@ -41,7 +41,7 @@ export const planes: Plane[] = [
     "name": "Amy's Home",
     "type": "doctorwho",
     "location": "Earth",
-    "effect": "When you planeswalk to Amy\u00e2\u0080\u0099s Home and at the beginning of your upkeep, you may exile a nonland card from your hand with a number of time counters on it equal to its mana value. If it doesn\u00e2\u0080\u0099t have suspend, it gains suspend.",
+    "effect": "When you planeswalk to Amy's Home and at the beginning of your upkeep, you may exile a nonland card from your hand with a number of time counters on it equal to its mana value. If it doesn't have suspend, it gains suspend.",
     "chaosEffect": "time travel.",
     "imageUrl": null
   },
@@ -60,7 +60,7 @@ export const planes: Plane[] = [
     "type": "doctorwho",
     "location": "Alfava Metraxis",
     "effect": "Byzantium Radiation - At the beginning of your upkeep, put an exposure counter on Aplan Mortarium. Then you lose life equal to the number of exposure counters on it.",
-    "chaosEffect": "create two 2/2 black Alien Angel artifact creature tokens with first strike, vigilance, and \u00e2\u0080\u009cWhenever an opponent casts a creature spell, this permanent isn\u00e2\u0080\u0099t a creature until end of turn.\u00e2\u0080\u009d",
+    "chaosEffect": "create two 2/2 black Alien Angel artifact creature tokens with first strike, vigilance, and \"Whenever an opponent casts a creature spell, this permanent isn't a creature until end of turn.\"",
     "imageUrl": null
   },
   {
@@ -95,8 +95,8 @@ export const planes: Plane[] = [
     "name": "Bad Wolf Bay",
     "type": "doctorwho",
     "location": "Earth",
-    "effect": "At the beginning of combat on your turn, exile up to one target creature. Return it to the battlefield under its owner\u00e2\u0080\u0099s control at the beginning of the next end step. ",
-    "chaosEffect": "Cards can\u0092t enter from exile this turn. Then planeswalk.",
+    "effect": "At the beginning of combat on your turn, exile up to one target creature. Return it to the battlefield under its owner's control at the beginning of the next end step. ",
+    "chaosEffect": "Cards can't enter from exile this turn. Then planeswalk.",
     "imageUrl": null
   },
   {
@@ -113,7 +113,7 @@ export const planes: Plane[] = [
     "name": "Besieged Viking Village",
     "type": "doctorwho",
     "location": "Earth",
-    "effect": "All creatures have \u00e2\u0080\u009cBoast - {1}: Put a +1/+1 counter on this creature.\u00e2\u0080\u009d",
+    "effect": "All creatures have \"Boast - {1}: Put a +1/+1 counter on this creature.\"",
     "chaosEffect": "put an indestructible counter on target creature you control that attacked this turn.",
     "imageUrl": null
   },
@@ -122,8 +122,8 @@ export const planes: Plane[] = [
     "name": "Bicycle Rack",
     "type": "special",
     "location": "Amsterdam",
-    "effect": "Cards in each player\u00e2\u0080\u0099s hand have cycling {2}.",
-    "chaosEffect": "Until end of turn, creatures you control have \u00e2\u0080\u009cThis creature gets +1/+1 for each card you\u00e2\u0080\u0099ve discarded this turn.\u00e2\u0080\u009d",
+    "effect": "Cards in each player's hand have cycling {2}.",
+    "chaosEffect": "Until end of turn, creatures you control have \"This creature gets +1/+1 for each card you've discarded this turn.\"",
     "imageUrl": null
   },
   {
@@ -158,8 +158,8 @@ export const planes: Plane[] = [
     "name": "Celestine Reef",
     "type": "universe",
     "location": "Luvion",
-    "effect": "Creatures without flying or islandwalk can\u00e2\u0080\u0099t attack.",
-    "chaosEffect": "until a player planeswalks, you can\u00e2\u0080\u0099t lose the game and your opponents can\u00e2\u0080\u0099t win the game.",
+    "effect": "Creatures without flying or islandwalk can't attack.",
+    "chaosEffect": "until a player planeswalks, you can't lose the game and your opponents can't win the game.",
     "imageUrl": null
   },
   {
@@ -168,7 +168,7 @@ export const planes: Plane[] = [
     "type": "special",
     "location": "Chicago",
     "effect": "When you planeswalk here, you become the Monarch.",
-    "chaosEffect": "each player may create two tapped treasure tokens. Each player who does can\u0092t attack you on their next turn.",
+    "chaosEffect": "each player may create two tapped treasure tokens. Each player who does can't attack you on their next turn.",
     "imageUrl": null
   },
   {
@@ -204,7 +204,7 @@ export const planes: Plane[] = [
     "type": "doctorwho",
     "location": "The Dalek Asylum",
     "effect": "When you planeswalk to Dalek Intensive Care and at the beginning of your upkeep, exile a non-Dalek creature you control. If you do, create a 3/3 black Dalek artifact creature token with menace. It gains haste until end of turn.",
-    "chaosEffect": "target Dalek you control deals damage equal to its power to target creature you don\u00e2\u0080\u0099t control.",
+    "chaosEffect": "target Dalek you control deals damage equal to its power to target creature you don't control.",
     "imageUrl": null
   },
   {
@@ -222,7 +222,7 @@ export const planes: Plane[] = [
     "type": "universe",
     "location": "Shandalar",
     "effect": "Whenever a player taps a permanent for mana, that player adds one mana of any type that permanent produced.",
-    "chaosEffect": "target player can\u00e2\u0080\u0099t cast spells until a player planeswalks.",
+    "chaosEffect": "target player can't cast spells until a player planeswalks.",
     "imageUrl": null
   },
   {
@@ -249,7 +249,7 @@ export const planes: Plane[] = [
     "type": "special",
     "location": "Blind Eternities",
     "effect": "Nonbasic lands are Wastes. Whenever you tap a permanent for {C}, add an additional {C}.",
-    "chaosEffect": "choose one - \u00e2\u0080\u00a2 Draw four cards. \u00e2\u0080\u00a2 Destroy target permanent. \u00e2\u0080\u00a2 You may return target creature card from your graveyard to the battlefield.",
+    "chaosEffect": "choose one - * Draw four cards. * Destroy target permanent. * You may return target creature card from your graveyard to the battlefield.",
     "imageUrl": null
   },
   {
@@ -258,7 +258,7 @@ export const planes: Plane[] = [
     "type": "universe",
     "location": "Muraganda",
     "effect": "Red spells cost {1} less to cast. Green spells cost {1} less to cast.",
-    "chaosEffect": "put X +1/+1 counters on target creature, where X is that creature\u00e2\u0080\u0099s mana value.",
+    "chaosEffect": "put X +1/+1 counters on target creature, where X is that creature's mana value.",
     "imageUrl": null
   },
   {
@@ -321,7 +321,7 @@ export const planes: Plane[] = [
     "type": "universe",
     "location": "Mirrodin",
     "effect": "Whenever a player casts an instant or sorcery spell with a single target, that player copies that spell for each other spell, permanent, card not on the battlefield, and/or player the spell could target. Each copy targets a different one of them.",
-    "chaosEffect": "choose target creature. Each player except that creature\u00e2\u0080\u0099s controller creates a token that\u00e2\u0080\u0099s a copy of that creature.",
+    "chaosEffect": "choose target creature. Each player except that creature's controller creates a token that's a copy of that creature.",
     "imageUrl": null
   },
   {
@@ -329,7 +329,7 @@ export const planes: Plane[] = [
     "name": "Goldmeadow",
     "type": "universe",
     "location": "Lorwyn",
-    "effect": "Whenever a land enters, that land\u00e2\u0080\u0099s controller creates three 0/1 white Goat creature tokens.",
+    "effect": "Whenever a land enters, that land's controller creates three 0/1 white Goat creature tokens.",
     "chaosEffect": "create a 0/1 white Goat creature token.",
     "imageUrl": null
   },
@@ -347,7 +347,7 @@ export const planes: Plane[] = [
     "name": "Grixis",
     "type": "universe",
     "location": "Alara",
-    "effect": "Blue, black, and/or red creature cards in your graveyard have unearth. The unearth cost is equal to the card\u00e2\u0080\u0099s mana cost.",
+    "effect": "Blue, black, and/or red creature cards in your graveyard have unearth. The unearth cost is equal to the card's mana cost.",
     "chaosEffect": "put target creature card from a graveyard onto the battlefield under your control.",
     "imageUrl": null
   },
@@ -365,7 +365,7 @@ export const planes: Plane[] = [
     "name": "Hedron Fields of Agadeem",
     "type": "universe",
     "location": "Zendikar",
-    "effect": "Creatures with power 7 or greater can\u00e2\u0080\u0099t attack or block.",
+    "effect": "Creatures with power 7 or greater can't attack or block.",
     "chaosEffect": "create a 7/7 colorless Eldrazi creature token with annihilator 1.",
     "imageUrl": null
   },
@@ -374,7 +374,7 @@ export const planes: Plane[] = [
     "name": "Horizon Boughs",
     "type": "universe",
     "location": "Pyrulea",
-    "effect": "All permanents untap during each player\u00e2\u0080\u0099s untap step.",
+    "effect": "All permanents untap during each player's untap step.",
     "chaosEffect": "you may search your library for up to three basic land cards, put them onto the battlefield tapped, then shuffle.",
     "imageUrl": null
   },
@@ -392,8 +392,8 @@ export const planes: Plane[] = [
     "name": "Immersturm",
     "type": "universe",
     "location": "Valla",
-    "effect": "Whenever a creature enters, that creature\u00e2\u0080\u0099s controller may have it deal damage equal to its power to any target of their choice.",
-    "chaosEffect": "exile target creature, then return it to the battlefield under its owner\u00e2\u0080\u0099s control.",
+    "effect": "Whenever a creature enters, that creature's controller may have it deal damage equal to its power to any target of their choice.",
+    "chaosEffect": "exile target creature, then return it to the battlefield under its owner's control.",
     "imageUrl": null
   },
   {
@@ -410,7 +410,7 @@ export const planes: Plane[] = [
     "name": "Isle of Vesuva",
     "type": "universe",
     "location": "Dominaria",
-    "effect": "Whenever a nontoken creature enters, its controller creates a token that\u00e2\u0080\u0099s a copy of that creature.",
+    "effect": "Whenever a nontoken creature enters, its controller creates a token that's a copy of that creature.",
     "chaosEffect": "destroy target creature and all other creatures with the same name as that creature. Zoltan",
     "imageUrl": null
   },
@@ -428,7 +428,7 @@ export const planes: Plane[] = [
     "name": "Jund",
     "type": "universe",
     "location": "Alara",
-    "effect": "Whenever a player casts a creature spell that\u00e2\u0080\u0099s black, red, or green, it gains devour 5.",
+    "effect": "Whenever a player casts a creature spell that's black, red, or green, it gains devour 5.",
     "chaosEffect": "create two 1/1 red Goblin creature tokens.",
     "imageUrl": null
   },
@@ -438,7 +438,7 @@ export const planes: Plane[] = [
     "type": "doctorwho",
     "location": "Kandoka",
     "effect": "Whenever one or more creatures you control deal combat damage to a player, create a Treasure token.",
-    "chaosEffect": "until your next turn, noncreature artifacts you control gain \u00e2\u0080\u009c{T}, Sacrifice this artifact: Flip a coin. If you win the flip, this artifact deals 3 damage to any target.\u00e2\u0080\u009d",
+    "chaosEffect": "until your next turn, noncreature artifacts you control gain \"{T}, Sacrifice this artifact: Flip a coin. If you win the flip, this artifact deals 3 damage to any target.\"",
     "imageUrl": null
   },
   {
@@ -464,7 +464,7 @@ export const planes: Plane[] = [
     "name": "Kharasha Foothills",
     "type": "universe",
     "location": "Mongseng",
-    "effect": "Whenever a creature you control attacks a player, for each other opponent, you may create a token that\u00e2\u0080\u0099s a copy of that creature, tapped and attacking that opponent. Exile those tokens at the beginning of the next end step.",
+    "effect": "Whenever a creature you control attacks a player, for each other opponent, you may create a token that's a copy of that creature, tapped and attacking that opponent. Exile those tokens at the beginning of the next end step.",
     "chaosEffect": "you may sacrifice any number of creatures. If you do, Kharasha Foothills deals that much damage to target creature.",
     "imageUrl": null
   },
@@ -491,7 +491,7 @@ export const planes: Plane[] = [
     "name": "Lair of the Ashen Idol",
     "type": "universe",
     "location": "Azgol",
-    "effect": "At the beginning of your upkeep, sacrifice a creature. If you can\u00e2\u0080\u0099t, planeswalk.",
+    "effect": "At the beginning of your upkeep, sacrifice a creature. If you can't, planeswalk.",
     "chaosEffect": "any number of target players each create a 2/2 black Zombie creature token.",
     "imageUrl": null
   },
@@ -527,7 +527,7 @@ export const planes: Plane[] = [
     "name": "Llanowar",
     "type": "universe",
     "location": "Dominaria",
-    "effect": "All creatures have \u00e2\u0080\u009c{T}: Add {G}{G}.\u00e2\u0080\u009d",
+    "effect": "All creatures have \"{T}: Add {G}{G}.\"",
     "chaosEffect": "untap all creatures you control.",
     "imageUrl": null
   },
@@ -555,7 +555,7 @@ export const planes: Plane[] = [
     "type": "universe",
     "location": "Karsus",
     "effect": "Whenever a player casts a spell, that player flips a coin. If the player loses the flip, counter that spell.",
-    "chaosEffect": "target player reveals the top card of their library. If it\u00e2\u0080\u0099s a nonland card, you may cast it without paying its mana cost.",
+    "chaosEffect": "target player reveals the top card of their library. If it's a nonland card, you may cast it without paying its mana cost.",
     "imageUrl": null
   },
   {
@@ -582,7 +582,7 @@ export const planes: Plane[] = [
     "type": "universe",
     "location": "Zendikar",
     "effect": "Whenever a nontoken creature enters, its controller may search their library for a basic land card, put it onto the battlefield tapped, then shuffle.",
-    "chaosEffect": "target land becomes a 4/4 creature that\u00e2\u0080\u0099s still a land.",
+    "chaosEffect": "target land becomes a 4/4 creature that's still a land.",
     "imageUrl": null
   },
   {
@@ -644,7 +644,7 @@ export const planes: Plane[] = [
     "name": "Norn's Dominion",
     "type": "universe",
     "location": "New Phyrexia",
-    "effect": "When you planeswalk away from Norn\u00e2\u0080\u0099s Dominion, destroy each nonland permanent without a fate counter on it, then remove all fate counters from all permanents.",
+    "effect": "When you planeswalk away from Norn's Dominion, destroy each nonland permanent without a fate counter on it, then remove all fate counters from all permanents.",
     "chaosEffect": "you may put a fate counter on target permanent.",
     "imageUrl": null
   },
@@ -653,8 +653,8 @@ export const planes: Plane[] = [
     "name": "Norn's Seedcore",
     "type": "universe",
     "location": "New Phyrexia",
-    "effect": "When you planeswalk to Norn\u00e2\u0080\u0099s Seedcore, chaos ensues.",
-    "chaosEffect": "reveal cards from the top of your planar deck until you reveal a plane card. Planeswalk to it, except don\u00e2\u0080\u0099t planeswalk away from any plane. Put the rest of the revealed cards on the bottom of your planar deck in any order.",
+    "effect": "When you planeswalk to Norn's Seedcore, chaos ensues.",
+    "chaosEffect": "reveal cards from the top of your planar deck until you reveal a plane card. Planeswalk to it, except don't planeswalk away from any plane. Put the rest of the revealed cards on the bottom of your planar deck in any order.",
     "imageUrl": null
   },
   {
@@ -690,7 +690,7 @@ export const planes: Plane[] = [
     "type": "doctorwho",
     "location": "Horsehead Nebula",
     "effect": "Song of the Ood - Noncreature spells have convoke. Red-Eye -",
-    "chaosEffect": "for each opponent, goad up to one target creature that opponent controls. Until your next turn, those creatures can\u00e2\u0080\u0099t become tapped unless they\u00e2\u0080\u0099re being declared as attackers.",
+    "chaosEffect": "for each opponent, goad up to one target creature that opponent controls. Until your next turn, those creatures can't become tapped unless they're being declared as attackers.",
     "imageUrl": null
   },
   {
@@ -699,7 +699,7 @@ export const planes: Plane[] = [
     "type": "universe",
     "location": "Kamigawa",
     "effect": "Whenever a creature you control deals combat damage to a player, you may search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",
-    "chaosEffect": "target creature can\u00e2\u0080\u0099t be blocked this turn.",
+    "chaosEffect": "target creature can't be blocked this turn.",
     "imageUrl": null
   },
   {
@@ -708,7 +708,7 @@ export const planes: Plane[] = [
     "type": "universe",
     "location": "Ravnica",
     "effect": "When you planeswalk away from Orzhova, each player returns all creature cards from their graveyard to the battlefield.",
-    "chaosEffect": "for each opponent, exile up to one target creature card from that player\u00e2\u0080\u0099s graveyard.",
+    "chaosEffect": "for each opponent, exile up to one target creature card from that player's graveyard.",
     "imageUrl": null
   },
   {
@@ -716,7 +716,7 @@ export const planes: Plane[] = [
     "name": "Otaria",
     "type": "universe",
     "location": "Dominaria",
-    "effect": "Instant and sorcery cards in graveyards have flashback. The flashback cost is equal to the card\u00e2\u0080\u0099s mana cost.",
+    "effect": "Instant and sorcery cards in graveyards have flashback. The flashback cost is equal to the card's mana cost.",
     "chaosEffect": "take an extra turn after this one.",
     "imageUrl": null
   },
@@ -743,7 +743,7 @@ export const planes: Plane[] = [
     "name": "Pin Collector's Booth",
     "type": "special",
     "location": "MagicCon",
-    "effect": "Whenever you attack, create a Pin token attached to target attacking creature you control. It\u00e2\u0080\u0099s an enchantment Pin Aura with \u00e2\u0080\u009cEnchanted creature gets +1/+1.\u00e2\u0080\u009d",
+    "effect": "Whenever you attack, create a Pin token attached to target attacking creature you control. It's an enchantment Pin Aura with \"Enchanted creature gets +1/+1.\"",
     "chaosEffect": "each opponent loses X life, where X is the total number of pins attached to you and creatures you control.",
     "imageUrl": null
   },
@@ -762,7 +762,7 @@ export const planes: Plane[] = [
     "type": "universe",
     "location": "Bolas's Meditation Realm",
     "effect": "At the beginning of your end step, put the cards in your hand on the bottom of your library in any order, then draw that many cards.",
-    "chaosEffect": "reveal the top three cards of your planar deck. Each of the revealed cards\u00e2\u0080\u0099 chaos abilities triggers. Then put the revealed cards on the bottom of your planar deck in any order.",
+    "chaosEffect": "reveal the top three cards of your planar deck. Each of the revealed cards' chaos abilities triggers. Then put the revealed cards on the bottom of your planar deck in any order.",
     "imageUrl": null
   },
   {
@@ -770,7 +770,7 @@ export const planes: Plane[] = [
     "name": "Prahv",
     "type": "universe",
     "location": "Ravnica",
-    "effect": "If you cast a spell this turn, you can\u00e2\u0080\u0099t attack with creatures. If you attacked with creatures this turn, you can\u00e2\u0080\u0099t cast spells.",
+    "effect": "If you cast a spell this turn, you can't attack with creatures. If you attacked with creatures this turn, you can't cast spells.",
     "chaosEffect": "you gain life equal to the number of cards in your hand.",
     "imageUrl": null
   },
@@ -780,7 +780,7 @@ export const planes: Plane[] = [
     "type": "doctorwho",
     "location": "Earth",
     "effect": "At the beginning of combat on your turn, up to one target creature you control becomes a copy of target creature an opponent controls. Will of the council -",
-    "chaosEffect": "starting with you, each player votes for a creature you don\u00e2\u0080\u0099t control. Exile each creature with the most votes or tied for most votes.",
+    "chaosEffect": "starting with you, each player votes for a creature you don't control. Exile each creature with the most votes or tied for most votes.",
     "imageUrl": null
   },
   {
@@ -814,7 +814,7 @@ export const planes: Plane[] = [
     "id": "sanctum-of-serra",
     "name": "Sanctum of Serra",
     "type": "universe",
-    "location": "Serra\u00e2\u0080\u0099s Realm",
+    "location": "Serra's Realm",
     "effect": "When you planeswalk away from Sanctum of Serra, destroy all nonland permanents.",
     "chaosEffect": "you may have your life total become 20.",
     "imageUrl": null
@@ -825,7 +825,7 @@ export const planes: Plane[] = [
     "type": "universe",
     "location": "Rabiah",
     "effect": "Players reveal each card they draw. Whenever a player draws a land card, that player gains 3 life. Whenever a player draws a nonland card, that player loses 3 life.",
-    "chaosEffect": "put target permanent on top of its owner\u00e2\u0080\u0099s library.",
+    "chaosEffect": "put target permanent on top of its owner's library.",
     "imageUrl": null
   },
   {
@@ -842,7 +842,7 @@ export const planes: Plane[] = [
     "name": "Shiv",
     "type": "universe",
     "location": "Dominaria",
-    "effect": "All creatures have \u00e2\u0080\u009c{R}: This creature gets +1/+0 until end of turn.\u00e2\u0080\u009d",
+    "effect": "All creatures have \"{R}: This creature gets +1/+0 until end of turn.\"",
     "chaosEffect": "create a 5/5 red Dragon creature token with flying.",
     "imageUrl": null
   },
@@ -851,7 +851,7 @@ export const planes: Plane[] = [
     "name": "Shrinking Plane",
     "type": "special",
     "location": "Foldaria",
-    "effect": "When you planeswalk here and at the beginning of your upkeep, fold this plane in half. Draw cards equal to the number of times it\u00e2\u0080\u0099s been folded. If you can\u00e2\u0080\u0099t fold it, planeswalk.",
+    "effect": "When you planeswalk here and at the beginning of your upkeep, fold this plane in half. Draw cards equal to the number of times it's been folded. If you can't fold it, planeswalk.",
     "chaosEffect": "Completely unfold this plane. Each opponent discards two cards.",
     "imageUrl": null
   },
@@ -860,8 +860,8 @@ export const planes: Plane[] = [
     "name": "Shy Town",
     "type": "special",
     "location": "Chicago",
-    "effect": "Whenever you planeswalk here and whenever chaos ensues, for each opponent, put a shy counter on up to one target creature they control. That creature becomes a Coward in addition to its other types. At the beginning of your upkeep, create a 2/2 red Warrior creature token with haste and \u00e2\u0080\u009cCowards can\u00e2\u0080\u0099t block Warriors.\u00e2\u0080\u009d",
-    "chaosEffect": NaN,
+    "effect": "Whenever you planeswalk here and whenever chaos ensues, for each opponent, put a shy counter on up to one target creature they control. That creature becomes a Coward in addition to its other types. At the beginning of your upkeep, create a 2/2 red Warrior creature token with haste and \"Cowards can't block Warriors.\"",
+    "chaosEffect": "",
     "imageUrl": null
   },
   {
@@ -878,7 +878,7 @@ export const planes: Plane[] = [
     "name": "Skybreen",
     "type": "universe",
     "location": "Kaldheim",
-    "effect": "Players play with the top card of their libraries revealed. Spells that share a card type with the top card of a library can\u00e2\u0080\u0099t be cast.",
+    "effect": "Players play with the top card of their libraries revealed. Spells that share a card type with the top card of a library can't be cast.",
     "chaosEffect": "target player loses life equal to the number of cards in their hand.",
     "imageUrl": null
   },
@@ -888,7 +888,7 @@ export const planes: Plane[] = [
     "type": "special",
     "location": "Chicago",
     "effect": "Whenever you planeswalk here, at the beginning of your upkeep, or whenever chaos ensues, put a glass counter on up to one target nonland permanent. When you planeswalk away from here, destroy all permanents with glass counters on them.",
-    "chaosEffect": NaN,
+    "chaosEffect": "",
     "imageUrl": null
   },
   {
@@ -897,7 +897,7 @@ export const planes: Plane[] = [
     "type": "universe",
     "location": "Kamigawa",
     "effect": "All creatures get +1/+1 and have haste.",
-    "chaosEffect": "untap all creatures that attacked this turn. If it\u00e2\u0080\u0099s a main phase, there is an additional combat phase after this phase, followed by an additional main phase. Brian Sn\u00c3\u00b5ddy",
+    "chaosEffect": "untap all creatures that attacked this turn. If it's a main phase, there is an additional combat phase after this phase, followed by an additional main phase. Brian Sn\u00c3\u00b5ddy",
     "imageUrl": null
   },
   {
@@ -924,7 +924,7 @@ export const planes: Plane[] = [
     "type": "universe",
     "location": "Innistrad",
     "effect": "Whenever a creature deals damage to one or more players for the first time each turn, put a +1/+1 counter on it.",
-    "chaosEffect": "each creature you control gains \u00e2\u0080\u009c{T}: This creature deals 1 damage to target player or planeswalker\u00e2\u0080\u009d until end of turn.",
+    "chaosEffect": "each creature you control gains \"{T}: This creature deals 1 damage to target player or planeswalker\" until end of turn.",
     "imageUrl": null
   },
   {
@@ -932,7 +932,7 @@ export const planes: Plane[] = [
     "name": "Stormcage Containment Facility",
     "type": "doctorwho",
     "location": "Unknown Planet",
-    "effect": "Each creature card in your graveyard has escape. The escape cost is equal to the card\u00e2\u0080\u0099s mana cost plus exile three other cards from your graveyard.",
+    "effect": "Each creature card in your graveyard has escape. The escape cost is equal to the card's mana cost plus exile three other cards from your graveyard.",
     "chaosEffect": "detain target creature an opponent controls.",
     "imageUrl": null
   },
@@ -942,7 +942,7 @@ export const planes: Plane[] = [
     "type": "universe",
     "location": "Arcavios",
     "effect": "Instant and sorcery spells players cast have demonstrate.",
-    "chaosEffect": "return up to one target instant or sorcery card from a graveyard to its owner\u00e2\u0080\u0099s hand.",
+    "chaosEffect": "return up to one target instant or sorcery card from a graveyard to its owner's hand.",
     "imageUrl": null
   },
   {
@@ -959,7 +959,7 @@ export const planes: Plane[] = [
     "name": "Stroopwafel Cafe",
     "type": "special",
     "location": "Amsterdam",
-    "effect": "Players may look at the top card of their library at any time and may play cards from the top of their library. The top card of each player\u00e2\u0080\u0099s library is a Food artifact.",
+    "effect": "Players may look at the top card of their library at any time and may play cards from the top of their library. The top card of each player's library is a Food artifact.",
     "chaosEffect": "You may sacrifice a Food. If you do, draw a card, gain three life and each opponent loses 3 life.",
     "imageUrl": null
   },
@@ -969,7 +969,7 @@ export const planes: Plane[] = [
     "type": "universe",
     "location": "Kamigawa",
     "effect": "Whenever a creature leaves the battlefield, its controller draws a card.",
-    "chaosEffect": "return target creature you control to its owner\u00e2\u0080\u0099s hand.",
+    "chaosEffect": "return target creature you control to its owner's hand.",
     "imageUrl": null
   },
   {
@@ -977,7 +977,7 @@ export const planes: Plane[] = [
     "name": "Talon Gates",
     "type": "universe",
     "location": "Dominaria",
-    "effect": "Any time you could cast a sorcery, you may exile a nonland card from your hand with X time counters on it, where X is its mana value. If the exiled card doesn\u00e2\u0080\u0099t have suspend, it gains suspend.",
+    "effect": "Any time you could cast a sorcery, you may exile a nonland card from your hand with X time counters on it, where X is its mana value. If the exiled card doesn't have suspend, it gains suspend.",
     "chaosEffect": "remove two time counters from each suspended card you own.",
     "imageUrl": null
   },
@@ -995,7 +995,7 @@ export const planes: Plane[] = [
     "name": "Tazeem",
     "type": "universe",
     "location": "Zendikar",
-    "effect": "Creatures can\u00e2\u0080\u0099t block.",
+    "effect": "Creatures can't block.",
     "chaosEffect": "draw a card for each land you control.",
     "imageUrl": null
   },
@@ -1014,7 +1014,7 @@ export const planes: Plane[] = [
     "type": "doctorwho",
     "location": "Time",
     "effect": "At the beginning of each of your postcombat main phases, there is an additional beginning phase after this phase. ",
-    "chaosEffect": "reverse the game\u0092s turn order. Then planeswalk.\u00a0(For example, if play had proceeded clockwise around the table, it now goes counterclockwise.)",
+    "chaosEffect": "reverse the game's turn order. Then planeswalk.\u00a0(For example, if play had proceeded clockwise around the table, it now goes counterclockwise.)",
     "imageUrl": null
   },
   {
@@ -1040,8 +1040,8 @@ export const planes: Plane[] = [
     "name": "The Bean",
     "type": "special",
     "location": "Chicago",
-    "effect": "Whenever you planeswalk here, each player chooses a creature they control and creates a token copy of it. It\u00e2\u0080\u0099s a reflection in addition to its other types, and its power and toughness are inverted.",
-    "chaosEffect": "\u00a0create a token that\u0092s a copy of a creature you control. It\u0092s a reflection in addition to its other types, and its power and toughness are inverted.",
+    "effect": "Whenever you planeswalk here, each player chooses a creature they control and creates a token copy of it. It's a reflection in addition to its other types, and its power and toughness are inverted.",
+    "chaosEffect": "\u00a0create a token that's a copy of a creature you control. It's a reflection in addition to its other types, and its power and toughness are inverted.",
     "imageUrl": null
   },
   {
@@ -1076,7 +1076,7 @@ export const planes: Plane[] = [
     "name": "The Dark Barony",
     "type": "universe",
     "location": "Ulgrotha",
-    "effect": "Whenever a nonblack card is put into a player\u00e2\u0080\u0099s graveyard from anywhere, that player loses 1 life.",
+    "effect": "Whenever a nonblack card is put into a player's graveyard from anywhere, that player loses 1 life.",
     "chaosEffect": "each opponent discards a card.",
     "imageUrl": null
   },
@@ -1095,7 +1095,7 @@ export const planes: Plane[] = [
     "type": "doctorwho",
     "location": "Gallifrey",
     "effect": "Creatures enter tapped.",
-    "chaosEffect": "for each opponent, choose up to one target nonland permanent that opponent controls. Untap those permanents. They phase out. They can\u00e2\u0080\u0099t phase in for as long as The Doctor\u00e2\u0080\u0099s Childhood Barn remains face up. When a player planeswalks, those permanents phase in.",
+    "chaosEffect": "for each opponent, choose up to one target nonland permanent that opponent controls. Untap those permanents. They phase out. They can't phase in for as long as The Doctor's Childhood Barn remains face up. When a player planeswalks, those permanents phase in.",
     "imageUrl": null
   },
   {
@@ -1103,8 +1103,8 @@ export const planes: Plane[] = [
     "name": "The Doctor's Tomb",
     "type": "doctorwho",
     "location": "Trenzalore",
-    "effect": "If a creature would die, instead exile it and that creature\u00e2\u0080\u0099s controller loses 2 life.",
-    "chaosEffect": "redistribute any number of players\u00e2\u0080\u0099 life totals.",
+    "effect": "If a creature would die, instead exile it and that creature's controller loses 2 life.",
+    "chaosEffect": "redistribute any number of players' life totals.",
     "imageUrl": null
   },
   {
@@ -1148,7 +1148,7 @@ export const planes: Plane[] = [
     "name": "The Golden City of Orazca",
     "type": "universe",
     "location": "Ixalan",
-    "effect": "Ascend Whenever one or more creatures you control deal combat damage to a player, create a Treasure token. Then draw a card if you have the city\u00e2\u0080\u0099s blessing.",
+    "effect": "Ascend Whenever one or more creatures you control deal combat damage to a player, create a Treasure token. Then draw a card if you have the city's blessing.",
     "chaosEffect": "you may put a permanent card from your hand onto the battlefield tapped.",
     "imageUrl": null
   },
@@ -1193,7 +1193,7 @@ export const planes: Plane[] = [
     "name": "The Maelstrom",
     "type": "universe",
     "location": "Alara",
-    "effect": "When you planeswalk to The Maelstrom and at the beginning of your upkeep, you may reveal the top card of your library. If it\u00e2\u0080\u0099s a permanent card, you may put it onto the battlefield. If you revealed a card but didn\u00e2\u0080\u0099t put it onto the battlefield, put it on the bottom of your library.",
+    "effect": "When you planeswalk to The Maelstrom and at the beginning of your upkeep, you may reveal the top card of your library. If it's a permanent card, you may put it onto the battlefield. If you revealed a card but didn't put it onto the battlefield, put it on the bottom of your library.",
     "chaosEffect": "return target permanent card from your graveyard to the battlefield.",
     "imageUrl": null
   },
@@ -1202,7 +1202,7 @@ export const planes: Plane[] = [
     "name": "The Matrix of Time",
     "type": "doctorwho",
     "location": "Gallifrey",
-    "effect": "When you planeswalk to The Matrix of Time, each player exiles the top card of their library. During your turn, you may play lands and cast spells from among cards exiled with The Matrix of Time. Whenever you play a land or cast a spell from among cards exiled with The Matrix of Time, that card\u00e2\u0080\u0099s owner loses 3 life and exiles the top card of their library.",
+    "effect": "When you planeswalk to The Matrix of Time, each player exiles the top card of their library. During your turn, you may play lands and cast spells from among cards exiled with The Matrix of Time. Whenever you play a land or cast a spell from among cards exiled with The Matrix of Time, that card's owner loses 3 life and exiles the top card of their library.",
     "chaosEffect": "create two Treasure tokens.",
     "imageUrl": null
   },
@@ -1211,8 +1211,8 @@ export const planes: Plane[] = [
     "name": "The Moonbase",
     "type": "doctorwho",
     "location": "Moon",
-    "effect": "Low Gravity - All creatures have \u00e2\u0080\u009c{2}: This creature gains flying until end of turn. Activate only as a sorcery.\u00e2\u0080\u009d",
-    "chaosEffect": "for each opponent, choose up to one target creature card in that player\u00e2\u0080\u0099s graveyard. Put those cards onto the battlefield face down under your control. They\u00e2\u0080\u0099re 2/2 Cyberman artifact creatures.",
+    "effect": "Low Gravity - All creatures have \"{2}: This creature gains flying until end of turn. Activate only as a sorcery.\"",
+    "chaosEffect": "for each opponent, choose up to one target creature card in that player's graveyard. Put those cards onto the battlefield face down under your control. They're 2/2 Cyberman artifact creatures.",
     "imageUrl": null
   },
   {
@@ -1220,7 +1220,7 @@ export const planes: Plane[] = [
     "name": "The Pit",
     "type": "universe",
     "location": "The Abyss",
-    "effect": "When you planeswalk to The Pit, each player creates their choice of a 3/3 white Angel creature token with flying or a 6/6 black Demon creature token with flying, trample, and \u00e2\u0080\u009cAt the beginning of your upkeep, sacrifice another creature. If you can\u00e2\u0080\u0099t, this creature deals 6 damage to you.\u00e2\u0080\u009d",
+    "effect": "When you planeswalk to The Pit, each player creates their choice of a 3/3 white Angel creature token with flying or a 6/6 black Demon creature token with flying, trample, and \"At the beginning of your upkeep, sacrifice another creature. If you can't, this creature deals 6 damage to you.\"",
     "chaosEffect": "each player sacrifices a nonartifact creature of their choice.",
     "imageUrl": null
   },
@@ -1248,7 +1248,7 @@ export const planes: Plane[] = [
     "type": "universe",
     "location": "Eldraine",
     "effect": "When you planeswalk to The Wilds and at the beginning of your upkeep, create a Food token.",
-    "chaosEffect": "target player sacrifices a creature of their choice. If they do, you create a Food token. You create two Food tokens instead if the sacrificed creature\u00e2\u0080\u0099s toughness was 4 or greater.",
+    "chaosEffect": "target player sacrifices a creature of their choice. If they do, you create a Food token. You create two Food tokens instead if the sacrificed creature's toughness was 4 or greater.",
     "imageUrl": null
   },
   {
@@ -1257,7 +1257,7 @@ export const planes: Plane[] = [
     "type": "special",
     "location": "Chicago",
     "effect": "When you planeswalk here, at the beginning of your upkeep, or whenever chaos ensues, put a flying counter on target creature you control without flying. When you planeswalk away, exile all creatures with flying until the beginning of the next end step.",
-    "chaosEffect": NaN,
+    "chaosEffect": "",
     "imageUrl": null
   },
   {
@@ -1274,7 +1274,7 @@ export const planes: Plane[] = [
     "name": "Towashi",
     "type": "universe",
     "location": "Kamigawa",
-    "effect": "Modified creatures you control have trample and \u00e2\u0080\u009cWhenever this creature deals combat damage to a player or planeswalker, draw a card.\u00e2\u0080\u009d",
+    "effect": "Modified creatures you control have trample and \"Whenever this creature deals combat damage to a player or planeswalker, draw a card.\"",
     "chaosEffect": "distribute three +1/+1 counters among one, two, or three target creatures you control.",
     "imageUrl": null
   },
@@ -1292,7 +1292,7 @@ export const planes: Plane[] = [
     "name": "Truga Jungle",
     "type": "universe",
     "location": "Ergamon",
-    "effect": "All lands have \u00e2\u0080\u009c{T}: Add one mana of any color.\u00e2\u0080\u009d",
+    "effect": "All lands have \"{T}: Add one mana of any color.\"",
     "chaosEffect": "reveal the top three cards of your library. Put all land cards revealed this way into your hand and the rest on the bottom of your library in any order.",
     "imageUrl": null
   },
@@ -1347,7 +1347,7 @@ export const planes: Plane[] = [
     "type": "universe",
     "location": "Kylem",
     "effect": "Whenever your team attacks with exactly two creatures, those creatures gain double strike until end of turn.",
-    "chaosEffect": "untap up to two target creatures your team controls. If it\u00e2\u0080\u0099s a main phase, there is an additional combat phase after this phase, followed by an additional main phase.",
+    "chaosEffect": "untap up to two target creatures your team controls. If it's a main phase, there is an additional combat phase after this phase, followed by an additional main phase.",
     "imageUrl": null
   },
   {
@@ -1364,8 +1364,8 @@ export const planes: Plane[] = [
     "name": "Windmill Farm",
     "type": "special",
     "location": "Amsterdam",
-    "effect": "When you planeswalk here and at the beginning of your upkeep, create a Tulip Petal artifact token that has \u00e2\u0080\u009c{T}, Sacrifice this artifact: Add one mana of any color.\u00e2\u0080\u009d",
-    "chaosEffect": "Spin this plane until the arrow lands on a permanent. If the plane rotated at least 360 degrees during the spin, create a token that\u00e2\u0080\u0099s a copy of that permanent.",
+    "effect": "When you planeswalk here and at the beginning of your upkeep, create a Tulip Petal artifact token that has \"{T}, Sacrifice this artifact: Add one mana of any color.\"",
+    "chaosEffect": "Spin this plane until the arrow lands on a permanent. If the plane rotated at least 360 degrees during the spin, create a token that's a copy of that permanent.",
     "imageUrl": null
   },
   {
@@ -1373,7 +1373,7 @@ export const planes: Plane[] = [
     "name": "Windriddle Palaces",
     "type": "universe",
     "location": "Belenon",
-    "effect": "Players play with the top card of their libraries revealed. You may play lands and cast spells from the top of any player\u00e2\u0080\u0099s library.",
+    "effect": "Players play with the top card of their libraries revealed. You may play lands and cast spells from the top of any player's library.",
     "chaosEffect": "each player mills a card.",
     "imageUrl": null
   }

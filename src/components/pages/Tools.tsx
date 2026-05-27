@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Sparkles, Search } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 import { useNavigationStore } from '../../store/useNavigationStore';
@@ -56,7 +56,7 @@ export function Tools() {
   return (
     <div className="space-y-6">
       <div className="flex items-center space-x-3">
-        <Sparkles className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+        <Sparkles className="w-6 h-6 text-theme-primary dark:text-dark-accent" />
         <h2 className="text-2xl font-bold dark:text-dark-highlight">{t.tools.title}</h2>
       </div>
 
@@ -68,7 +68,7 @@ export function Tools() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="pl-10 pr-4 py-2 w-full rounded-lg border-gray-300 dark:border-dark-accent dark:bg-dark-card dark:text-dark-text
-            focus:border-purple-500 dark:focus:border-dark-accent focus:ring-purple-500 dark:focus:ring-dark-accent transition-colors"
+            focus:border-theme-primary dark:focus:border-dark-accent focus:ring-theme-primary dark:focus:ring-dark-accent transition-colors"
         />
       </div>
 
@@ -77,7 +77,7 @@ export function Tools() {
           {sections.map(({ key, title, desc }) => (
             <div key={key} className="space-y-4">
               <div className="mb-6">
-                <h3 className="text-xl font-semibold text-purple-600 dark:text-purple-400">{title}</h3>
+                <h3 className="text-xl font-semibold text-theme-primary dark:text-dark-accent">{title}</h3>
                 <p className="text-gray-600 dark:text-dark-text mt-1">{desc}</p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -131,14 +131,14 @@ function ToolCard({ tool, toolData, onToolClick, renderIcon }: {
     >
       <div className="p-4">
         <div className="flex items-center space-x-3 mb-3">
-          <div className="p-2 bg-purple-100 dark:bg-dark-accent/50 rounded-lg text-purple-600 dark:text-purple-400">
+          <div className="p-2 bg-theme-surface dark:bg-dark-accent/50 rounded-lg text-theme-primary dark:text-dark-accent">
             {renderIcon(tool.icon)}
           </div>
           <div>
             <div className="flex items-center gap-2">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-dark-highlight">{toolData.name}</h3>
               {tool.comingSoon && (
-                <span className="px-2 py-1 text-xs font-medium bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full">
+                <span className="px-2 py-1 text-xs font-medium bg-theme-surface dark:bg-dark-accent/20 text-theme-primary dark:text-dark-accent rounded-full">
                   Coming Soon
                 </span>
               )}
@@ -151,8 +151,8 @@ function ToolCard({ tool, toolData, onToolClick, renderIcon }: {
         {!tool.comingSoon && (
           <button
             onClick={onToolClick}
-            className="w-full px-4 py-2 bg-purple-600 hover:bg-purple-100 text-white hover:text-purple-700
-              dark:bg-dark-accent dark:hover:bg-dark-highlight dark:hover:text-purple-900
+            className="w-full px-4 py-2 bg-theme-primary hover:bg-theme-surface text-white hover:text-theme-primary-hover
+              dark:bg-dark-accent dark:hover:bg-dark-highlight dark:hover:text-dark-bg
               rounded-lg transition-colors text-sm font-medium"
           >
             {toolData.action}

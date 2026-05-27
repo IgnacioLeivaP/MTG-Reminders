@@ -2,6 +2,108 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─────────────────────────────────────────────────────────────
+   CSS THEME VARIABLES  —  space-separated RGB channels
+   so Tailwind's /opacity modifiers (bg-dark-accent/50 etc.)
+   work correctly: rgb(var(--name) / opacity)
+   ───────────────────────────────────────────────────────────── */
+
+/* Default — purple (original identity) */
+:root {
+  --theme-primary:        147 51 234;   /* #9333ea */
+  --theme-primary-hover:  126 34 206;   /* #7e22ce */
+  --theme-surface:        243 232 255;  /* #f3e8ff */
+  --theme-surface-hover:  233 213 255;  /* #e9d5ff */
+  --theme-header-from:    168 85 247;   /* #a855f7 */
+  --theme-header-to:      124 58 237;   /* #7c3aed */
+  --dark-bg:              16 11 34;     /* #100b22 */
+  --dark-card:            43 30 86;     /* #2b1e56 */
+  --dark-accent:          110 73 225;   /* #6e49e1 */
+  --dark-text:            184 178 201;  /* #b8b2c9 */
+  --dark-highlight:       255 255 255;  /* #ffffff */
+  --dark-header-to:       59 7 100;     /* #3b0764 */
+}
+
+/* White — Plains (cream / warm gold) */
+[data-theme="mtg-white"] {
+  --theme-primary:        181 137 10;   /* #b5890a */
+  --theme-primary-hover:  138 101 8;    /* #8a6508 */
+  --theme-surface:        253 245 228;  /* #fdf5e4 */
+  --theme-surface-hover:  245 230 192;  /* #f5e6c0 */
+  --theme-header-from:    212 175 55;   /* #d4af37 */
+  --theme-header-to:      181 137 10;   /* #b5890a */
+  --dark-bg:              24 16 10;     /* #18100a */
+  --dark-card:            46 30 14;     /* #2e1e0e */
+  --dark-accent:          201 162 60;   /* #c9a23c */
+  --dark-text:            200 184 144;  /* #c8b890 */
+  --dark-highlight:       253 245 208;  /* #fdf5d0 */
+  --dark-header-to:       61 32 4;      /* #3d2004 */
+}
+
+/* Blue — Island (ocean / arcane) */
+[data-theme="mtg-blue"] {
+  --theme-primary:        21 101 192;   /* #1565c0 */
+  --theme-primary-hover:  13 71 161;    /* #0d47a1 */
+  --theme-surface:        227 242 253;  /* #e3f2fd */
+  --theme-surface-hover:  187 222 251;  /* #bbdefb */
+  --theme-header-from:    25 118 210;   /* #1976d2 */
+  --theme-header-to:      13 71 161;    /* #0d47a1 */
+  --dark-bg:              4 14 28;      /* #040e1c */
+  --dark-card:            13 30 54;     /* #0d1e36 */
+  --dark-accent:          41 121 192;   /* #2979c0 */
+  --dark-text:            144 184 216;  /* #90b8d8 */
+  --dark-highlight:       187 222 251;  /* #bbdefb */
+  --dark-header-to:       1 26 64;      /* #011a40 */
+}
+
+/* Black — Swamp (bone / eerie) */
+[data-theme="mtg-black"] {
+  --theme-primary:        74 45 111;    /* #4a2d6f */
+  --theme-primary-hover:  50 30 79;     /* #321e4f */
+  --theme-surface:        237 224 240;  /* #ede0f0 */
+  --theme-surface-hover:  216 200 232;  /* #d8c8e8 */
+  --theme-header-from:    61 43 92;     /* #3d2b5c */
+  --theme-header-to:      26 13 46;     /* #1a0d2e */
+  --dark-bg:              8 6 8;        /* #080608 */
+  --dark-card:            17 13 20;     /* #110d14 */
+  --dark-accent:          124 90 156;   /* #7c5a9c */
+  --dark-text:            176 160 192;  /* #b0a0c0 */
+  --dark-highlight:       219 208 232;  /* #dbd0e8 */
+  --dark-header-to:       10 4 16;      /* #0a0410 */
+}
+
+/* Red — Mountain (fire / chaos) */
+[data-theme="mtg-red"] {
+  --theme-primary:        192 57 43;    /* #c0392b */
+  --theme-primary-hover:  146 43 33;    /* #922b21 */
+  --theme-surface:        252 228 228;  /* #fce4e4 */
+  --theme-surface-hover:  249 192 192;  /* #f9c0c0 */
+  --theme-header-from:    229 57 53;    /* #e53935 */
+  --theme-header-to:      183 28 28;    /* #b71c1c */
+  --dark-bg:              26 6 6;       /* #1a0606 */
+  --dark-card:            42 15 15;     /* #2a0f0f */
+  --dark-accent:          211 47 47;    /* #d32f2f */
+  --dark-text:            224 144 144;  /* #e09090 */
+  --dark-highlight:       255 215 215;  /* #ffd7d7 */
+  --dark-header-to:       74 10 10;     /* #4a0a0a */
+}
+
+/* Green — Forest (nature / growth) */
+[data-theme="mtg-green"] {
+  --theme-primary:        46 125 50;    /* #2e7d32 */
+  --theme-primary-hover:  27 94 32;     /* #1b5e20 */
+  --theme-surface:        232 245 233;  /* #e8f5e9 */
+  --theme-surface-hover:  200 230 201;  /* #c8e6c9 */
+  --theme-header-from:    56 142 60;    /* #388e3c */
+  --theme-header-to:      27 94 32;     /* #1b5e20 */
+  --dark-bg:              6 14 8;       /* #060e08 */
+  --dark-card:            13 30 16;     /* #0d1e10 */
+  --dark-accent:          56 142 60;    /* #388e3c */
+  --dark-text:            144 200 144;  /* #90c890 */
+  --dark-highlight:       200 230 201;  /* #c8e6c9 */
+  --dark-header-to:       10 42 12;     /* #0a2a0c */
+}
+
 @layer base {
   body {
     @apply antialiased bg-gray-100 dark:bg-dark-bg text-gray-900 dark:text-dark-text transition-colors;
@@ -14,18 +116,25 @@
   }
 
   .input {
-    @apply block w-full rounded-md border-gray-300 dark:border-dark-accent dark:bg-dark-card dark:text-dark-text 
-    shadow-sm focus:border-purple-500 dark:focus:border-dark-accent focus:ring-purple-500 dark:focus:ring-dark-accent
-    transition-colors;
+    @apply block w-full rounded-md border-gray-300 dark:border-dark-accent dark:bg-dark-card dark:text-dark-text
+    shadow-sm focus:outline-none focus:ring-2 transition-colors;
+  }
+  .input:focus {
+    border-color: rgb(var(--theme-primary));
+    --tw-ring-color: rgb(var(--theme-primary));
+  }
+  .dark .input:focus {
+    border-color: rgb(var(--dark-accent));
+    --tw-ring-color: rgb(var(--dark-accent));
   }
 
   .button-primary {
-    @apply bg-purple-600 dark:bg-dark-accent text-white hover:bg-purple-700 dark:hover:bg-dark-highlight 
+    @apply bg-theme-primary dark:bg-dark-accent text-white hover:bg-theme-primary-hover dark:hover:bg-dark-highlight
     transition-colors rounded-lg px-4 py-2 font-medium;
   }
 
   .button-secondary {
-    @apply bg-gray-100 dark:bg-dark-card text-gray-700 dark:text-dark-text hover:bg-gray-200 
+    @apply bg-gray-100 dark:bg-dark-card text-gray-700 dark:text-dark-text hover:bg-gray-200
     dark:hover:bg-dark-accent transition-colors rounded-lg px-4 py-2 font-medium;
   }
 

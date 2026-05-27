@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { ScrollText } from 'lucide-react';
 import { Navigation } from './components/Navigation';
 import { Home } from './components/pages/Home';
@@ -27,6 +27,7 @@ import { Archenemy } from './components/tools/Archenemy';
 import { SpecialModes } from './components/tools/SpecialModes';
 import { useEffect } from 'react';
 import { Favorites } from './components/pages/Favorites';
+import { GameSummary } from './components/pages/GameSummary';
 
 function App() {
   const activeSection = useNavigationStore(state => state.activeSection);
@@ -46,6 +47,8 @@ function App() {
         return <Home />;
       case 'favorites':
         return <Favorites />;
+      case 'summary':
+        return <GameSummary />;
       case 'tools':
         return <Tools />;
       case 'helper-cards':
@@ -89,7 +92,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-dark-bg transition-colors pb-20 md:pb-0">
-      <header className="bg-gradient-to-br from-purple-500 to-purple-700 dark:from-dark-accent dark:to-purple-900 text-white py-4 md:py-6 shadow-lg transition-colors">
+      <header className="bg-gradient-to-br from-theme-header-from to-theme-header-to dark:from-dark-accent dark:to-dark-header-to text-white py-4 md:py-6 shadow-lg transition-colors">
         <div className="container mx-auto px-4">
           <div className="flex items-center">
             <img 
@@ -99,7 +102,7 @@ function App() {
             />
             <div className="ml-3">
               <h1 className="text-xl md:text-2xl font-bold">MTG Reminders</h1>
-              <p className="text-sm md:text-base mt-1 text-purple-100 dark:text-dark-highlight/90 italic">
+              <p className="text-sm md:text-base mt-1 text-white/90 dark:text-dark-highlight/90 italic">
                 {currentTagline}
               </p>
             </div>

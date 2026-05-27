@@ -186,5 +186,74 @@ export const helperCards: HelperCard[] = [
     icon: 'FlipHorizontal',
     hasCounter: false,
     powerToughness: '2/2'
+  },
+  {
+    id: '22',
+    name: 'Speed',
+    mechanic: 'Speed / Start Your Engines',
+    description: 'Speed is a player trait tracked outside the game. Play a "Start your engines!" permanent to reach Speed 1. Speed increases by 1 each turn an opponent loses life (max 4). Speed 4 = Max Speed.',
+    icon: 'Gauge',
+    hasCounter: false
+  },
+  {
+    id: '23',
+    name: 'Exhaust',
+    mechanic: 'Exhaust',
+    description: 'Exhaust abilities can only be activated once per game object. When activated, mark it as used — you cannot use it again unless the card changes zones (e.g., blinked to hand and back).',
+    icon: 'BatteryLow',
+    hasCounter: false
+  },
+  {
+    id: '24',
+    name: 'Impending',
+    mechanic: 'Impending',
+    description: 'Cast for its impending cost: enters with N time counters and is not yet a creature. At the beginning of your end step, remove one time counter. When the last counter is removed, it becomes a creature permanently.',
+    icon: 'Clock',
+    hasCounter: true,
+    counterValue: 0,
+    isDecrementMode: true
+  },
+  {
+    id: '25',
+    name: 'Blight Counter',
+    mechanic: 'Blight',
+    description: 'A land with a blight counter on it loses all basic land types and loses "{T}: Add [mana]." Track how many lands are currently blighted.',
+    icon: 'Biohazard',
+    hasCounter: true,
+    counterValue: 0,
+    isDecrementMode: false
+  },
+  {
+    id: '26',
+    name: 'Connive',
+    mechanic: 'Connive',
+    description: 'When a creature connives: draw a card, then discard a card. If the discarded card was a nonland card, put a +1/+1 counter on that creature. Connive is an activated or triggered ability.',
+    icon: 'Lightbulb',
+    hasCounter: false
+  },
+  {
+    id: '27',
+    name: 'Endure',
+    mechanic: 'Endure',
+    description: 'Endure is a keyword action. When a spell or ability tells you to endure, you choose: put a +1/+1 counter on target creature, or create a 2/2 white Spirit creature token with flying.',
+    icon: 'Dumbbell',
+    hasCounter: false
+  },
+  {
+    id: '28',
+    name: 'Manifest Dread',
+    mechanic: 'Manifest Dread',
+    description: 'Mill two cards, then put a card from your hand face down onto the battlefield as a 2/2 colorless creature with ward {2}. You may turn it face up any time for its mana cost if it\'s a creature card.',
+    icon: 'Ghost',
+    hasCounter: false,
+    powerToughness: '2/2'
+  },
+  {
+    id: '29',
+    name: 'Sneak',
+    mechanic: 'Sneak (Ninjutsu variant)',
+    description: 'Pay the Sneak cost and return an unblocked attacking non-Ninja creature you control to hand: put this card onto the battlefield tapped and attacking. Like Ninjutsu, but only works with non-Ninja creatures.',
+    icon: 'EyeOff',
+    hasCounter: false
   }
 ];

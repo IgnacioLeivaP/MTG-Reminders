@@ -1,5 +1,4 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
 
 interface Player {
   id: number;
@@ -8,6 +7,7 @@ interface Player {
   radiation: number;
   poison: number;
   isMonarch: boolean;
+  commanderDamage: Record<number, number>; // sourcePlayerId -> damage dealt
 }
 
 interface LifeCounterState {
@@ -18,6 +18,8 @@ interface LifeCounterState {
   toggleMonarch: (playerId: number) => void;
   setPlayerCount: (count: number) => void;
   resetPlayers: () => void;
+  renamePlayer: (playerId: number, name: string) => void;
+  updateCommanderDamage: (targetPlayerId: number, sourcePlayerId: number, amount: number) => void;
 }
 
 const createDefaultPlayer = (id: number): Player => ({
@@ -27,11 +29,12 @@ const createDefaultPlayer = (id: number): Player => ({
   radiation: 0,
   poison: 0,
   isMonarch: false,
+  commanderDamage: {},
 });
 
 export const useLifeCounterStore = create<LifeCounterState>((set) => ({
   players: [createDefaultPlayer(1), createDefaultPlayer(2)],
-  
+
   updateLife: (playerId, amount) =>
     set((state) => ({
       players: state.players.map((p) =>
@@ -64,12 +67,8 @@ export const useLifeCounterStore = create<LifeCounterState>((set) => ({
     set((state) => {
       const newPlayers: Player[] = [];
       for (let i = 1; i <= count; i++) {
-        const existingPlayer = state.players.find(p => p.id === i);
-        if (existingPlayer) {
-          newPlayers.push(existingPlayer);
-        } else {
-          newPlayers.push(createDefaultPlayer(i));
-        }
+        const existing = state.players.find((p) => p.id === i);
+        newPlayers.push(existing ?? createDefaultPlayer(i));
       }
       return { players: newPlayers };
     }),
@@ -82,6 +81,24 @@ export const useLifeCounterStore = create<LifeCounterState>((set) => ({
         radiation: 0,
         poison: 0,
         isMonarch: false,
+        commanderDamage: {},
       })),
+    })),
+
+  renamePlayer: (playerId, name) =>
+    set((state) => ({
+      players: state.players.map((p) =>
+        p.id === playerId ? { ...p, name } : p
+      ),
+    })),
+
+  updateCommanderDamage: (targetPlayerId, sourcePlayerId, amount) =>
+    set((state) => ({
+      players: state.players.map((p) => {
+        if (p.id !== targetPlayerId) return p;
+        const current = p.commanderDamage[sourcePlayerId] ?? 0;
+        const next = Math.max(0, current + amount);
+        return { ...p, commanderDamage: { ...p.commanderDamage, [sourcePlayerId]: next } };
+      }),
     })),
 }));

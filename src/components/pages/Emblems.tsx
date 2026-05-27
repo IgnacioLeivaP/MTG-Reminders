@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Badge, Search } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 import { emblems } from '../../data/emblems';
@@ -34,7 +34,7 @@ export function Emblems() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <Badge className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+          <Badge className="w-6 h-6 text-theme-primary dark:text-dark-accent" />
           <h2 className="text-2xl font-bold dark:text-dark-highlight">{t.emblems.title}</h2>
         </div>
         <FavoriteButton toolId="emblems" toolName="Emblems" toolIcon="Badge" />
@@ -48,7 +48,7 @@ export function Emblems() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="pl-10 pr-4 py-2 w-full rounded-lg border-gray-300 dark:border-dark-accent dark:bg-dark-card dark:text-dark-text
-            focus:border-purple-500 dark:focus:border-dark-accent focus:ring-purple-500 dark:focus:ring-dark-accent transition-colors"
+            focus:border-theme-primary dark:focus:border-dark-accent focus:ring-theme-primary dark:focus:ring-dark-accent transition-colors"
         />
       </div>
 
@@ -63,24 +63,24 @@ export function Emblems() {
                 rounded-lg shadow-md overflow-hidden hover:shadow-lg
                 transition-all cursor-pointer transform hover:scale-[1.02]
                 ${isActive
-                  ? 'bg-purple-100 dark:bg-dark-accent border-2 border-purple-500 dark:border-dark-highlight'
+                  ? 'bg-theme-surface dark:bg-dark-accent border-2 border-theme-primary dark:border-dark-highlight'
                   : 'bg-white dark:bg-dark-card hover:bg-gray-50 dark:hover:bg-dark-accent/50'
                 }
               `}
             >
               <div className="p-4">
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className={`p-2 rounded-lg ${isActive ? 'bg-purple-200 dark:bg-dark-accent/80' : 'bg-purple-100 dark:bg-dark-accent/50'}`}>
+                  <div className={`p-2 rounded-lg ${isActive ? 'bg-theme-surface-hover dark:bg-dark-accent/80' : 'bg-theme-surface dark:bg-dark-accent/50'}`}>
                     {renderIcon(emblem.icon)}
                   </div>
                   <div>
-                    <h3 className={`text-lg font-semibold ${isActive ? 'text-purple-900 dark:text-dark-highlight' : 'text-gray-900 dark:text-dark-text'}`}>
+                    <h3 className={`text-lg font-semibold ${isActive ? 'text-theme-primary-hover dark:text-dark-highlight' : 'text-gray-900 dark:text-dark-text'}`}>
                       {emblem.name}
                     </h3>
-                    <span className="text-sm text-purple-600 dark:text-purple-400">{emblem.planeswalker}</span>
+                    <span className="text-sm text-theme-primary dark:text-dark-accent">{emblem.planeswalker}</span>
                   </div>
                 </div>
-                <p className={isActive ? 'text-purple-800 dark:text-dark-highlight' : 'text-gray-600 dark:text-dark-text'}>
+                <p className={isActive ? 'text-theme-primary-hover dark:text-dark-highlight' : 'text-gray-600 dark:text-dark-text'}>
                   {emblem.effect}
                 </p>
               </div>

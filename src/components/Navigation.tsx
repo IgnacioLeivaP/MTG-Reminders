@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import * as LucideIcons from 'lucide-react';
 import { navigationItems } from '../data/navigation';
 import { useTranslation } from '../i18n/useTranslation';
@@ -30,7 +30,7 @@ export function Navigation({ activeSection, onNavigate }: NavigationProps) {
                 onClick={() => onNavigate(item.id)}
                 className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors
                   ${activeSection === item.id
-                    ? 'bg-purple-100 dark:bg-dark-accent text-purple-700 dark:text-dark-highlight'
+                    ? 'bg-theme-surface dark:bg-dark-accent text-theme-primary-hover dark:text-dark-highlight'
                     : 'text-gray-600 dark:text-dark-text hover:bg-gray-50 dark:hover:bg-dark-accent/50'
                   }`}
               >
@@ -51,7 +51,7 @@ export function Navigation({ activeSection, onNavigate }: NavigationProps) {
                 onClick={() => onNavigate(item.id)}
                 className={`w-full flex flex-col items-center justify-center py-1 px-2 space-y-1
                   ${activeSection === item.id
-                    ? 'text-purple-600 dark:text-purple-400'
+                    ? 'text-theme-primary dark:text-dark-accent'
                     : 'text-gray-600 dark:text-dark-text'
                   }`}
               >

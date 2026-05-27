@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { X } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 import { HelperCard } from '../types';
@@ -6,6 +6,7 @@ import { useDayNightStore } from '../store/useDayNightStore';
 import { useMonarchStore } from '../store/useMonarchStore';
 import { useCitysBlessingStore } from '../store/useCitysBlessingStore';
 import { RingTimeline } from './RingTimeline';
+import { SpeedTracker } from './SpeedTracker';
 import { CitysBlessingRules } from './CitysBlessingRules';
 import { useThemeStore } from '../store/useThemeStore';
 
@@ -41,9 +42,12 @@ export function HelperCardModal({ card, onClose }: HelperCardModalProps) {
 
   const getModalClasses = () => {
     if (card.name === 'Day/Night') {
-      return isDay 
+      return isDay
         ? 'bg-gradient-to-br from-[#e05e00] to-[#ff3d00] text-white'
         : 'bg-gradient-to-br from-[#03013c] to-[#11002e] border-2 border-[#6e49e1] text-white';
+    }
+    if (card.name === 'Speed') {
+      return 'bg-white dark:bg-dark-card';
     }
     if (card.name === 'Monarch' && isMonarch) {
       return isDarkMode
@@ -77,7 +81,7 @@ export function HelperCardModal({ card, onClose }: HelperCardModalProps) {
     if (card.name === "City's Blessing" && hasBlessing) {
       return isDarkMode ? 'bg-[#3f939a]' : 'bg-sky-600';
     }
-    return 'bg-purple-600 dark:bg-dark-accent';
+    return 'bg-theme-primary dark:bg-dark-accent';
   };
 
   const getDescriptionBoxClasses = () => {
@@ -138,7 +142,7 @@ export function HelperCardModal({ card, onClose }: HelperCardModalProps) {
                     ? isDarkMode ? 'bg-[#bb9b49]/50 text-white' : 'bg-[#b48811] text-white'
                     : card.name === "City's Blessing" && hasBlessing
                       ? isDarkMode ? 'bg-[#71f9ff]/20 text-white' : 'bg-sky-500 text-white'
-                      : 'bg-purple-100 dark:bg-dark-accent/50'
+                      : 'bg-theme-surface dark:bg-dark-accent/50'
                 } rounded-full mb-4`}>
                   {renderIcon(card.icon)}
                 </div>
@@ -202,7 +206,7 @@ export function HelperCardModal({ card, onClose }: HelperCardModalProps) {
                   <RingTimeline isVertical={true} />
                 </div>
                 <div className={`bg-gray-50 dark:bg-dark-accent/30 rounded-lg p-4 space-y-4`}>
-                  <h3 className="text-lg font-semibold text-purple-700 dark:text-purple-400 mb-3">The Ring Tempts You</h3>
+                  <h3 className="text-lg font-semibold text-theme-primary-hover dark:text-dark-accent mb-3">The Ring Tempts You</h3>
                   <p className="text-gray-700 dark:text-dark-text leading-relaxed">
                     As the Ring tempts you, you get an emblem named The Ring if you don't have one. Then your emblem gains its next ability and you choose a creature you control to become or remain your Ring-bearer.
                   </p>
@@ -214,6 +218,12 @@ export function HelperCardModal({ card, onClose }: HelperCardModalProps) {
                   </ul>
                 </div>
               </>
+            )}
+
+            {card.name === 'Speed' && (
+              <div className="mt-6">
+                <SpeedTracker isCompact={false} />
+              </div>
             )}
           </div>
         </div>
